@@ -1,0 +1,292 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap');
+
+/* GENERAL */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #303030;
+    background: #ffffff;
+    line-height: 1.7;
+}
+
+/* NAVIGATION */
+
+header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #303030;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    font-size: 15px;
+    font-weight: 400;
+    color: #555555;
+    text-decoration: none;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #2457a7;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #2457a7;
+    padding-bottom: 5px;
+}
+
+/* BANNER */
+
+.banner {
+    background: #263c59;
+    color: white;
+    text-align: center;
+    padding: 64px 20px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.banner p {
+    margin: 8px 0 0;
+    color: #d9e2ed;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+/* MAIN CONTENT */
+
+main {
+    max-width: 900px;
+    margin: 50px auto 75px;
+    padding: 0 25px;
+}
+
+h1, h2, h3 {
+    font-family: 'Lato', Arial, sans-serif;
+    color: inherit;
+}
+
+h2 {
+    font-size: 27px;
+    font-weight: 600;
+    margin: 36px 0 15px;
+    line-height: 1.35;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.85;
+}
+
+a {
+    color: #2457a7;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #dddddd;
+    margin: 35px 0;
+}
+
+/* MATHEMATICAL FORMULAS */
+
+.formula {
+    background: #f4f6fa;
+    padding: 14px 18px;
+    text-align: center;
+    border-left: 3px solid #263c59;
+    font-size: 19px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+/* INTERACTIVE EXPERIMENT */
+
+.experiment {
+    background: #fafbfc;
+    border: 1px solid #e1e5eb;
+    border-radius: 6px;
+    padding: 23px;
+    margin: 20px 0;
+}
+
+.experiment label {
+    font-weight: 600;
+}
+
+.experiment input {
+    font-family: inherit;
+    font-size: 16px;
+    width: 90px;
+    padding: 8px;
+    border: 1px solid #ccd3dc;
+    border-radius: 4px;
+    margin: 0 12px;
+}
+
+.experiment button {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    background: #263c59;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    padding: 9px 17px;
+    cursor: pointer;
+}
+
+.experiment button:hover {
+    background: #365879;
+}
+
+.output {
+    margin-top: 18px;
+    padding: 12px;
+    background: #eaf0f8;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+/* TABLES */
+
+.scroll {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+th, td {
+    border-bottom: 1px solid #dddddd;
+    padding: 9px 12px;
+    text-align: left;
+}
+
+th {
+    background: #f3f5f8;
+    font-weight: 600;
+}
+
+/* STATISTICAL CHARTS */
+
+.chart-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 7px 0;
+    font-size: 14px;
+}
+
+.chart-row span:first-child {
+    width: 35px;
+}
+
+.track {
+    background: #ecf0f4;
+    height: 16px;
+    flex: 1;
+}
+
+.fill {
+    height: 100%;
+    background: #5279a7;
+}
+
+/* ADDITIONAL TEXT */
+
+.minor {
+    font-size: 14px;
+    color: #666666;
+}
+
+.error {
+    color: #a32222;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #777777;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 25px;
+    border-top: 1px solid #e5e5e5;
+    background: #f7f7f7;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        gap: 17px;
+    }
+
+    main {
+        margin-top: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .experiment {
+        padding: 15px;
+    }
+}
