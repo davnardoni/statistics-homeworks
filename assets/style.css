@@ -660,7 +660,7 @@ body.page-homework-2 .hw-main h2 {
 
 
   
-body.page-homework-2true .hw-main h3 {
+body.page-homework-2 .hw-main h3 {
     margin-top: 28px;
   }
 
@@ -672,7 +672,7 @@ body.page-homework-2 .hw-main p {
 
 
   
-body.page-homework-2 .hw-subtitle, body.page-homework-2true .hw-small {
+body.page-homework-2 .hw-subtitle, body.page-homework-2 .hw-small {
     color: #64748b;
   }
 
