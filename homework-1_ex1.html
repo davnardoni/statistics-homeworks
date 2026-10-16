@@ -1,294 +1,32 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Homework 1 - Statistics</title>
+<link href="assets/style.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/style.css">
-
-<style>
-/* Homework 1: additional page styling */
-
-.hw-main {
-  max-width: 900px;
-  margin: 45px auto 80px;
-  padding: 0 25px;
-}
-
-.hw-main h1 {
-  font-size: 38px;
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-
-.hw-main h2 {
-  margin-top: 45px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid #dedede;
-}
-
-.hw-main h3 {
-  margin-top: 30px;
-}
-
-.hw-main p {
-  line-height: 1.85;
-}
-
-.hw-subtitle {
-  color: #64748b;
-}
-
-.hw-formula {
-  text-align: center;
-  background: #f2f5f9;
-  border-radius: 5px;
-  padding: 17px;
-  margin: 22px 0;
-  font-size: 20px;
-  color: #263c59;
-}
-
-.hw-experiment {
-  border: 1px solid #dce2ea;
-  border-radius: 7px;
-  padding: 23px;
-  margin: 25px 0;
-  background: #fafbfd;
-}
-
-.hw-controls {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 20px 0;
-}
-
-.hw-controls input {
-  width: 85px;
-  padding: 9px;
-  font: inherit;
-  border: 1px solid #bfc8d4;
-  border-radius: 4px;
-}
-
-.hw-button {
-  padding: 10px 17px;
-  background: #263c59;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font: inherit;
-  cursor: pointer;
-}
-
-.hw-button:hover {
-  background: #3b5c81;
-}
-
-.hw-button:disabled {
-  opacity: .45;
-  cursor: not-allowed;
-}
-
-.hw-secondary {
-  background: white;
-  color: #263c59;
-  border: 1px solid #aebdce;
-}
-
-.hw-secondary:hover {
-  background: #edf1f6;
-}
-
-.hw-result {
-  margin: 22px 0 8px;
-  padding: 17px;
-  text-align: center;
-  font-size: 21px;
-  color: #203d61;
-  background: #eaf0f8;
-  border-radius: 5px;
-}
-
-.hw-small {
-  color: #64748b;
-  font-size: 14px;
-}
-
-.hw-table-wrap {
-  overflow-x: auto;
-}
-
-.hw-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 15px;
-}
-
-.hw-table th,
-.hw-table td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #e2e5e9;
-  text-align: left;
-}
-
-.hw-table th {
-  background: #f2f5f9;
-}
-
-.hw-table tr.highlight {
-  background: #eaf0f8;
-  font-weight: 600;
-}
-
-.hw-animation {
-  margin: 25px 0;
-  border: 1px solid #dce2ea;
-  border-radius: 7px;
-  padding: 20px;
-  background: white;
-}
-
-.hw-animation svg {
-  display: block;
-  width: 100%;
-  max-width: 440px;
-  margin: 10px auto;
-}
-
-.hw-animation-info {
-  text-align: center;
-  margin-bottom: 16px;
-  min-height: 30px;
-  font-weight: 600;
-}
-
-.hw-animation-controls {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 17px;
-}
-
-.hw-legend {
-  text-align: center;
-  font-size: 13px;
-  color: #64748b;
-}
-
-.hw-legend span {
-  margin: 0 8px;
-}
-
-.hw-dot {
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-
-.hw-bars {
-  margin: 18px 0 25px;
-  max-width: 600px;
-}
-
-.hw-bar-row {
-  display: grid;
-  grid-template-columns: 38px 1fr 35px;
-  gap: 12px;
-  align-items: center;
-  margin: 9px 0;
-  font-size: 14px;
-}
-
-.hw-track {
-  height: 18px;
-  background: #edf1f6;
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.hw-fill {
-  height: 100%;
-  background: #5578a3;
-}
-
-.hw-stat-box {
-  background: #f5f7fa;
-  border-left: 3px solid #5578a3;
-  padding: 12px 17px;
-  margin: 17px 0;
-}
-
-.hw-comparison {
-  margin: 25px 0;
-}
-
-.hw-comparison td:first-child {
-  font-weight: 600;
-}
-
-.hw-conclusion {
-  margin-top: 25px;
-  padding: 18px;
-  background: #f2f5f9;
-  border-radius: 5px;
-}
-
-@media (max-width: 600px) {
-  .hw-main {
-    padding: 0 18px;
-  }
-
-  .hw-main h1 {
-    font-size: 30px;
-  }
-
-  .hw-experiment,
-  .hw-animation {
-    padding: 15px;
-  }
-
-  .hw-button {
-    font-size: 14px;
-  }
-}
-</style>
 </head>
-
-<body>
-
+<body class="page-homework-1-ex1">
 <header>
-  <nav>
-    <a href="index.html" class="logo">Statistics</a>
-
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="homework-1_ex1.html" class="active">Homework 1.1</a>
-      <a href="homework-1_ex2.html">Homework 1.2</a>
-      <a href="homework-2.html">Homework 1.2</a>
-    </div>
-  </nav>
+<nav>
+<a class="logo" href="index.html">Statistics</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a class="active" href="homework-1_ex1.html">Homework 1.1</a>
+<a href="homework-1_ex2.html">Homework 1.2</a>
+<a href="homework-2.html">Homework 2</a>
+</div>
+</nav>
 </header>
-
 <main class="hw-main">
-
 <h1>Homework 1</h1>
 <p class="hw-subtitle">
   Public-Key Cryptography: From Private Key to Public Key
 </p>
-
 <!-- 1. INTRODUCTION -->
-
 <h2>1. Introduction</h2>
-
 <p>
 Public-key cryptography is based on two mathematically
 related keys: a private key, which must remain secret,
@@ -296,16 +34,13 @@ and a public key, which can be shared with other users.
 These keys are used in cryptographic systems to perform
 operations such as digital signatures and verification.
 </p>
-
 <p>
 Ethereum uses Elliptic-Curve Cryptography (ECC),
 specifically the secp256k1 elliptic curve.
 In ECC, a public key is generated from a private key
 through an operation called scalar multiplication:
 </p>
-
 <div class="hw-formula">Q = kG</div>
-
 <p>
 Here, <strong>k</strong> is the private key,
 <strong>G</strong> is a publicly known base point
@@ -314,7 +49,6 @@ the resulting public key.
 Scalar multiplication means repeatedly adding
 the base point G according to the scalar k.
 </p>
-
 <p>
 This operation is deterministic: the same private key
 and base point always produce the same public key.
@@ -325,7 +59,6 @@ computationally difficult. This is the
 <strong>Elliptic Curve Discrete Logarithm Problem
 (ECDLP)</strong>.
 </p>
-
 <p>
 Scalar multiplication therefore shares the
 hard-to-reverse characteristic of cryptographic
@@ -334,7 +67,6 @@ cryptographic hash function: it has a specific
 algebraic structure and is primarily used in
 public-key cryptography.
 </p>
-
 <p>
 The goal of this homework is to implement scalar
 multiplication in JavaScript using a small
@@ -342,20 +74,15 @@ elliptic curve, visualize the intermediate steps,
 and investigate the statistical properties
 of the resulting public points.
 </p>
-
 <!-- 2. MATHEMATICAL BACKGROUND -->
-
 <h2>2. The Toy Elliptic Curve</h2>
-
 <p>
 Real cryptographic curves operate over very large
 finite fields. To make the calculations easier to
 understand, this experiment uses the following
 small elliptic curve:
 </p>
-
 <div class="hw-formula">y² ≡ x³ + 7 (mod 17)</div>
-
 <p>
 The modulus 17 means that all calculations take
 place in the finite field F17, so the coordinates
@@ -363,62 +90,50 @@ of each finite point are integers between 0 and 16.
 A point belongs to the curve if its coordinates
 satisfy the equation.
 </p>
-
 <p>
 We choose the base point <strong>G = (1, 5)</strong>.
 We can verify that this point belongs to the curve:
 </p>
-
 <div class="hw-formula">
   5² mod 17 = 8
-  <br>
+  <br/>
   (1³ + 7) mod 17 = 8
 </div>
-
 <p>
 Since the two expressions are equal, G is a valid
 point on our elliptic curve.
 </p>
-
 <h3>Point Addition and Point Doubling</h3>
-
 <p>
 To calculate kG, we need to add points on the curve.
 If P = (x₁, y₁) and R = (x₂, y₂) are distinct
 points with different x coordinates, their sum
 is obtained using a slope λ:
 </p>
-
 <div class="hw-formula">
   λ = (y₂ − y₁)(x₂ − x₁)⁻¹ mod 17
 </div>
-
 <p>
 If we add a point to itself, we perform
 <strong>point doubling</strong>, using:
 </p>
-
 <div class="hw-formula">
   λ = 3x₁²(2y₁)⁻¹ mod 17
 </div>
-
 <p>
 In both cases, the resulting point has coordinates:
 </p>
-
 <div class="hw-formula">
   x₃ = (λ² − x₁ − x₂) mod 17
-  <br>
+  <br/>
   y₃ = (λ(x₁ − x₃) − y₁) mod 17
 </div>
-
 <p>
 The inverse symbol refers to a modular
 multiplicative inverse, not ordinary division.
 The special point at infinity, denoted by O,
 acts as the identity of point addition.
 </p>
-
 <p>
 For example, starting from G = (1, 5),
 we can calculate 2G by point doubling.
@@ -429,11 +144,8 @@ Substituting into the coordinate formulas gives
 We can then calculate 3G = 2G + G,
 and continue until reaching kG.
 </p>
-
 <!-- 3. EXPERIMENT -->
-
 <h2>3. Interactive Experiment</h2>
-
 <p>
 The following JavaScript program implements
 elliptic-curve point addition and scalar
@@ -441,110 +153,77 @@ multiplication. We start with the private key
 <strong>k = 6</strong>, as suggested in the assignment,
 but you can change it to observe other results.
 </p>
-
 <p>
 Choose a private key and click Calculate.
 The program generates the corresponding public
 point and displays all intermediate multiples
 of G, from G to kG.
 </p>
-
 <div class="hw-experiment">
-
-  <div class="hw-controls">
-    <label for="privateKey">Private key (k):</label>
-
-    <input
-      type="number"
-      id="privateKey"
-      min="1"
-      max="8"
-      step="1"
-      value="6"
-    >
-
-    <button class="hw-button" id="calculateButton">
+<div class="hw-controls">
+<label for="privateKey">Private key (k):</label>
+<input id="privateKey" max="8" min="1" step="1" type="number" value="6"/>
+<button class="hw-button" id="calculateButton">
       Calculate
     </button>
-  </div>
-
-  <div class="hw-result" id="publicKeyResult"></div>
-
-  <p class="hw-small">
+</div>
+<div class="hw-result" id="publicKeyResult"></div>
+<p class="hw-small">
     Available private keys: 1 to 8.
     This toy base point generates a subgroup of
     order 9; the ninth multiple is the point
     at infinity.
   </p>
-
-  <h3>Calculation Steps</h3>
-
-  <div class="hw-table-wrap">
-    <table class="hw-table">
-      <thead>
-        <tr>
-          <th>Step</th>
-          <th>Operation</th>
-          <th>Result</th>
-        </tr>
-      </thead>
-      <tbody id="stepsTable"></tbody>
-    </table>
-  </div>
-
+<h3>Calculation Steps</h3>
+<div class="hw-table-wrap">
+<table class="hw-table">
+<thead>
+<tr>
+<th>Step</th>
+<th>Operation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody id="stepsTable"></tbody>
+</table>
 </div>
-
+</div>
 <h3>Visual Representation</h3>
-
 <p>
 The diagram below represents the finite points
 satisfying the curve equation. Each dot corresponds
 to a valid point (x, y) over F17.
 </p>
-
 <p>
 Click Play to see how repeated point addition
 generates G, 2G, 3G and finally kG.
 The highlighted point changes at each step,
 illustrating the scalar multiplication process.
 </p>
-
 <div class="hw-animation">
-
-  <div class="hw-animation-info" id="animationInfo"></div>
-
-  <svg
-    id="curveSVG"
-    viewBox="0 0 440 440"
-    role="img"
-    aria-label="Points of the elliptic curve over F17">
-  </svg>
-
-  <div class="hw-legend">
-    <span>
-      <i class="hw-dot" style="background:#5578a3"></i>
+<div class="hw-animation-info" id="animationInfo"></div>
+<svg aria-label="Points of the elliptic curve over F17" id="curveSVG" role="img" viewbox="0 0 440 440">
+</svg>
+<div class="hw-legend">
+<span>
+<i class="hw-dot hw-legend-blue"></i>
       Curve points
     </span>
-    <span>
-      <i class="hw-dot" style="background:#16a34a"></i>
+<span>
+<i class="hw-dot hw-legend-green"></i>
       Base point G
     </span>
-    <span>
-      <i class="hw-dot" style="background:#dc3545"></i>
+<span>
+<i class="hw-dot hw-legend-red"></i>
       Current point
     </span>
-  </div>
-
-  <div class="hw-animation-controls">
-    <button class="hw-button" id="playButton">Play</button>
-    <button class="hw-button hw-secondary"
-            id="nextButton">Next step</button>
-    <button class="hw-button hw-secondary"
-            id="resetButton">Reset</button>
-  </div>
-
 </div>
-
+<div class="hw-animation-controls">
+<button class="hw-button" id="playButton">Play</button>
+<button class="hw-button hw-secondary" id="nextButton">Next step</button>
+<button class="hw-button hw-secondary" id="resetButton">Reset</button>
+</div>
+</div>
 <p class="hw-small">
 Note: Unlike a continuous elliptic curve over
 the real numbers, this finite-field curve consists
@@ -552,9 +231,7 @@ of discrete points. The animation highlights
 the results of repeated group addition; it does
 not represent a continuous geometric motion.
 </p>
-
 <h3>Observations</h3>
-
 <p>
 With k = 6, the program produces the public point
 <strong>Q = (5, 8)</strong>.
@@ -562,7 +239,6 @@ An interesting characteristic is that the base point
 has order 9, meaning that 9G = O and 10G = G.
 Consequently, the generated sequence is periodic.
 </p>
-
 <p>
 This makes the toy curve insecure: a possible
 private key can be recovered by trying a very
@@ -571,27 +247,21 @@ systems, a base point with a sufficiently large
 prime order is used to make this kind of attack
 computationally infeasible.
 </p>
-
 <!-- 4. STATISTICAL EXPLORATION -->
-
 <h2>4. Statistical Exploration</h2>
-
 <p>
 To study the properties of elliptic-curve scalar
 multiplication, we repeat the experiment for
 all eight private keys in the subgroup:
 k = 1, 2, ..., 8.
 </p>
-
 <p>
 For each input, we collect its public point,
 examine the coordinate frequencies, investigate
 the binary representations, and compare the
 inputs with their corresponding outputs.
 </p>
-
 <h3>4.1 Distribution of Coordinates</h3>
-
 <p>
 The first experiment analyzes the frequency
 of the x and y coordinates of the generated
@@ -599,29 +269,23 @@ public points.
 A uniform distribution would assign the same
 frequency to each possible coordinate value.
 </p>
-
 <p>
 However, elliptic-curve coordinates are
 constrained by the curve equation, and not
 every field element needs to appear equally
 often in the selected subgroup.
 </p>
-
 <h3>X-coordinate frequencies</h3>
-<div id="xChart" class="hw-bars"></div>
-
+<div class="hw-bars" id="xChart"></div>
 <h3>Y-coordinate frequencies</h3>
-<div id="yChart" class="hw-bars"></div>
-
+<div class="hw-bars" id="yChart"></div>
 <div class="hw-stat-box" id="coordinateSummary"></div>
-
 <p>
 The x coordinates are repeated in pairs because
 opposite points P and -P have the same x
 coordinate. The y coordinates in our sample are
 all different.
 </p>
-
 <p>
 Therefore, the coordinates are not uniformly
 distributed over the entire finite field.
@@ -629,18 +293,14 @@ An apparently balanced distribution over only
 the observed values should not be confused
 with randomness or cryptographic security.
 </p>
-
 <h3>4.2 Bit Distribution</h3>
-
 <p>
 Each coordinate is an integer between 0 and 16
 and can be represented using five binary digits.
 We count the number of zero and one bits in
 all generated x and y coordinates.
 </p>
-
 <div class="hw-stat-box" id="bitResults"></div>
-
 <p>
 For cryptographic applications, balanced bit
 distributions can be an interesting statistical
@@ -649,16 +309,13 @@ approximately equal numbers of zeros and ones
 does not prove that a function is secure
 or computationally difficult to invert.
 </p>
-
 <p>
 Our experiment contains only eight finite public
 points, so these frequencies are descriptive
 rather than evidence about the randomness
 of real elliptic-curve cryptography.
 </p>
-
 <h3>4.3 Input-Output Correlation</h3>
-
 <p>
 We now investigate whether the numerical value
 of the private key is linearly related to either
@@ -666,32 +323,26 @@ coordinate of the public key.
 For this purpose, we use Pearson's
 correlation coefficient.
 </p>
-
 <div class="hw-stat-box" id="correlationResults"></div>
-
 <p>
 A correlation close to zero indicates little
 linear association between the quantities
 being compared. However, it does not exclude
 nonlinear or algebraic relationships.
 </p>
-
 <p>
 In fact, elliptic-curve multiplication has a
 well-defined algebraic structure. Even if the
 observed correlation is zero, it does not
 follow that the private key cannot be recovered.
 </p>
-
 <h3>4.4 Avalanche-like Behaviour</h3>
-
 <p>
 A desirable property of cryptographic hash
 functions is the avalanche effect: changing
 a small part of the input should produce
 substantial changes in the output bits.
 </p>
-
 <p>
 We explore similar behaviour by comparing
 the binary coordinates of public points
@@ -699,9 +350,7 @@ generated from consecutive private keys.
 The Hamming distance measures how many
 corresponding output bits are different.
 </p>
-
 <div class="hw-stat-box" id="avalancheResults"></div>
-
 <p>
 Since we use two 5-bit coordinates, each
 public point is represented by ten bits
@@ -709,7 +358,6 @@ for this experiment.
 A Hamming distance of 5 therefore means
 that half of the output bits have changed.
 </p>
-
 <p>
 It is important to note that consecutive
 integer keys do not always differ by only
@@ -717,7 +365,6 @@ one bit. Therefore, this is an illustrative
 avalanche-like experiment, not a formal
 test of the strict avalanche criterion.
 </p>
-
 <p>
 Furthermore, the avalanche effect is mainly
 a desirable property of cryptographic hash
@@ -725,11 +372,8 @@ functions and block ciphers, rather than a
 primary security requirement for
 elliptic-curve scalar multiplication.
 </p>
-
 <!-- 5. DISCUSSION -->
-
 <h2>5. Discussion and Conclusions</h2>
-
 <p>
 The experiment demonstrates that elliptic-curve
 scalar multiplication is a deterministic
@@ -739,7 +383,6 @@ The same input always generates the same
 output, and the forward computation can
 be performed efficiently.
 </p>
-
 <p>
 The statistical exploration shows that the
 generated points have observable coordinate
@@ -748,72 +391,65 @@ input-output relationships. However,
 these simple statistical properties do
 not directly measure one-wayness.
 </p>
-
 <h3>One-Way Functions and Cryptographic Hashes</h3>
-
 <p>
 Although scalar multiplication and cryptographic
 hash functions share some characteristics,
 they are designed for different purposes.
 </p>
-
 <div class="hw-table-wrap">
 <table class="hw-table hw-comparison">
-  <thead>
-    <tr>
-      <th>Property</th>
-      <th>ECC Scalar Multiplication</th>
-      <th>Cryptographic Hash</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>Deterministic</td>
-      <td>Yes</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Forward computation</td>
-      <td>Efficient</td>
-      <td>Efficient</td>
-    </tr>
-    <tr>
-      <td>Hard to invert</td>
-      <td>Based on ECDLP</td>
-      <td>Preimage resistance</td>
-    </tr>
-    <tr>
-      <td>Output</td>
-      <td>Curve point</td>
-      <td>Fixed-length bit string</td>
-    </tr>
-    <tr>
-      <td>Algebraic structure</td>
-      <td>Group operation</td>
-      <td>No comparable requirement</td>
-    </tr>
-    <tr>
-      <td>Avalanche property</td>
-      <td>Not a main requirement</td>
-      <td>Desirable</td>
-    </tr>
-    <tr>
-      <td>Typical purpose</td>
-      <td>Public-key cryptography</td>
-      <td>Hashing and integrity</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Property</th>
+<th>ECC Scalar Multiplication</th>
+<th>Cryptographic Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Deterministic</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Forward computation</td>
+<td>Efficient</td>
+<td>Efficient</td>
+</tr>
+<tr>
+<td>Hard to invert</td>
+<td>Based on ECDLP</td>
+<td>Preimage resistance</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Curve point</td>
+<td>Fixed-length bit string</td>
+</tr>
+<tr>
+<td>Algebraic structure</td>
+<td>Group operation</td>
+<td>No comparable requirement</td>
+</tr>
+<tr>
+<td>Avalanche property</td>
+<td>Not a main requirement</td>
+<td>Desirable</td>
+</tr>
+<tr>
+<td>Typical purpose</td>
+<td>Public-key cryptography</td>
+<td>Hashing and integrity</td>
+</tr>
+</tbody>
 </table>
 </div>
-
 <p>
 In particular, elliptic-curve multiplication
 preserves the relation:
 </p>
-
 <div class="hw-formula">(a + b)G = aG + bG</div>
-
 <p>
 This algebraic relationship is fundamental
 to elliptic-curve cryptography and digital
@@ -822,25 +458,21 @@ hash functions generally seek to avoid
 predictable relationships between inputs
 and outputs.
 </p>
-
 <div class="hw-conclusion">
-  <strong>Conclusion</strong>
-
-  <p>
+<strong>Conclusion</strong>
+<p>
   Using the curve y² = x³ + 7 (mod 17),
   the base point G = (1, 5), and the
   private key k = 6, we obtained the
   toy public key Q = (5, 8).
   </p>
-
-  <p>
+<p>
   The experiment helped illustrate scalar
   multiplication, repeated point addition
   and the mathematical relationship between
   private and public keys.
   </p>
-
-  <p>
+<p>
   It also highlighted why simple statistical
   properties, such as coordinate uniformity,
   bit balance or low correlation, are not
@@ -851,504 +483,10 @@ and outputs.
   Logarithm Problem.
   </p>
 </div>
-
 </main>
-
 <footer>
   Statistics - Academic Year 2026/2027
 </footer>
-
-<script>
-"use strict";
-
-// =======================================
-// ELLIPTIC CURVE IMPLEMENTATION
-// y² = x³ + 7 (mod 17)
-// =======================================
-
-const P = 17;
-const G = { x: 1, y: 5 };
-const INF = null;
-
-// Modular arithmetic
-function mod(n) {
-  return ((n % P) + P) % P;
-}
-
-// Modular inverse
-function inverse(n) {
-  n = mod(n);
-
-  for (let i = 1; i < P; i++) {
-    if (mod(n * i) === 1) return i;
-  }
-
-  throw new Error("Inverse does not exist");
-}
-
-// Check curve membership
-function onCurve(point) {
-  if (point === INF) return true;
-
-  return mod(point.y ** 2) ===
-         mod(point.x ** 3 + 7);
-}
-
-// Point addition, including doubling
-function add(a, b) {
-  if (a === INF) return b;
-  if (b === INF) return a;
-
-  if (a.x === b.x &&
-      mod(a.y + b.y) === 0) {
-    return INF;
-  }
-
-  let slope;
-
-  if (a.x === b.x && a.y === b.y) {
-    slope = mod(
-      3 * a.x * a.x * inverse(2 * a.y)
-    );
-  } else {
-    slope = mod(
-      (b.y - a.y) * inverse(b.x - a.x)
-    );
-  }
-
-  const x = mod(slope ** 2 - a.x - b.x);
-  const y = mod(slope * (a.x - x) - a.y);
-
-  return { x, y };
-}
-
-// Scalar multiplication by repeated addition
-function multiply(k) {
-  let point = INF;
-
-  for (let i = 0; i < k; i++) {
-    point = add(point, G);
-  }
-
-  return point;
-}
-
-function formatPoint(point) {
-  if (point === INF) return "O";
-  return `(${point.x}, ${point.y})`;
-}
-
-// =======================================
-// INTERACTIVE EXPERIMENT
-// =======================================
-
-let sequence = [];
-let animationIndex = -1;
-let timer = null;
-
-function calculate() {
-  const k = Number(
-    document.getElementById("privateKey").value
-  );
-
-  if (!Number.isInteger(k) || k < 1 || k > 8) {
-    alert("Choose an integer from 1 to 8.");
-    return;
-  }
-
-  stopAnimation();
-
-  sequence = [];
-  let current = INF;
-
-  const tbody = document.getElementById("stepsTable");
-  tbody.replaceChildren();
-
-  for (let i = 1; i <= k; i++) {
-    current = add(current, G);
-    sequence.push(current);
-
-    const row = document.createElement("tr");
-
-    const operation = i === 1
-      ? "G"
-      : `${i - 1}G + G`;
-
-    [i, operation, formatPoint(current)].forEach(value => {
-      const cell = document.createElement("td");
-      cell.textContent = value;
-      row.appendChild(cell);
-    });
-
-    tbody.appendChild(row);
-  }
-
-  document.getElementById("publicKeyResult")
-    .textContent =
-    `Toy Public Key: Q = ${k}G = ${formatPoint(current)}`;
-
-  animationIndex = -1;
-  updateAnimation();
-}
-
-// =======================================
-// SVG VISUALIZATION
-// =======================================
-
-const SVG_NS = "http://www.w3.org/2000/svg";
-
-function svgNode(parent, tag, attrs, text) {
-  const node = document.createElementNS(SVG_NS, tag);
-
-  for (const [key, value] of Object.entries(attrs)) {
-    node.setAttribute(key, value);
-  }
-
-  if (text !== undefined) node.textContent = text;
-
-  parent.appendChild(node);
-  return node;
-}
-
-function allCurvePoints() {
-  const result = [];
-
-  for (let x = 0; x < P; x++) {
-    for (let y = 0; y < P; y++) {
-      const point = { x, y };
-
-      if (onCurve(point)) result.push(point);
-    }
-  }
-
-  return result;
-}
-
-const CURVE_POINTS = allCurvePoints();
-
-function drawCurve(selectedPoint) {
-  const svg = document.getElementById("curveSVG");
-  svg.replaceChildren();
-
-  const offset = 45;
-  const unit = 21;
-
-  const sx = x => offset + unit * x;
-  const sy = y => 395 - unit * y;
-
-  // Grid and axis labels
-  for (let i = 0; i < 17; i++) {
-    svgNode(svg, "line", {
-      x1: sx(i), y1: sy(0),
-      x2: sx(i), y2: sy(16),
-      stroke: "#e5e9ef"
-    });
-
-    svgNode(svg, "line", {
-      x1: sx(0), y1: sy(i),
-      x2: sx(16), y2: sy(i),
-      stroke: "#e5e9ef"
-    });
-
-    svgNode(svg, "text", {
-      x: sx(i), y: 420,
-      "text-anchor": "middle",
-      "font-size": 11,
-      fill: "#64748b"
-    }, String(i));
-
-    svgNode(svg, "text", {
-      x: 24, y: sy(i) + 4,
-      "text-anchor": "middle",
-      "font-size": 11,
-      fill: "#64748b"
-    }, String(i));
-  }
-
-  // All finite points of the toy curve
-  for (const point of CURVE_POINTS) {
-    const isBase =
-      point.x === G.x && point.y === G.y;
-
-    const isSelected =
-      selectedPoint !== null &&
-      point.x === selectedPoint.x &&
-      point.y === selectedPoint.y;
-
-    const circle = svgNode(svg, "circle", {
-      cx: sx(point.x),
-      cy: sy(point.y),
-      r: isSelected ? 9 : isBase ? 7 : 5,
-      fill: isSelected
-        ? "#dc3545"
-        : isBase ? "#16a34a" : "#5578a3"
-    });
-
-    svgNode(circle, "title", {},
-      formatPoint(point));
-  }
-}
-
-function updateAnimation() {
-  const active = animationIndex >= 0
-    ? sequence[animationIndex]
-    : INF;
-
-  drawCurve(active);
-
-  const info = document.getElementById("animationInfo");
-
-  info.textContent = animationIndex < 0
-    ? "Press Play to start"
-    : `${animationIndex + 1}G = ${formatPoint(active)}`;
-
-  const rows = document.querySelectorAll(
-    "#stepsTable tr"
-  );
-
-  rows.forEach((row, i) => {
-    row.classList.toggle(
-      "highlight", i === animationIndex
-    );
-  });
-}
-
-function stopAnimation() {
-  if (timer !== null) {
-    clearInterval(timer);
-    timer = null;
-  }
-
-  document.getElementById("playButton")
-    .textContent = "Play";
-}
-
-function nextStep() {
-  stopAnimation();
-
-  if (animationIndex < sequence.length - 1) {
-    animationIndex++;
-    updateAnimation();
-  }
-}
-
-function play() {
-  if (timer !== null) {
-    stopAnimation();
-    return;
-  }
-
-  if (animationIndex >= sequence.length - 1) {
-    animationIndex = -1;
-    updateAnimation();
-  }
-
-  document.getElementById("playButton")
-    .textContent = "Pause";
-
-  timer = setInterval(() => {
-    if (animationIndex < sequence.length - 1) {
-      animationIndex++;
-      updateAnimation();
-    } else {
-      stopAnimation();
-    }
-  }, 1000);
-}
-
-function reset() {
-  stopAnimation();
-  animationIndex = -1;
-  updateAnimation();
-}
-
-// =======================================
-// STATISTICAL EXPLORATION
-// =======================================
-
-// All eight non-identity multiples of G.
-const SAMPLE = [];
-
-for (let k = 1; k <= 8; k++) {
-  SAMPLE.push({
-    k: k,
-    point: multiply(k)
-  });
-}
-
-function counts(values) {
-  const map = new Map();
-
-  values.forEach(value => {
-    map.set(value, (map.get(value) || 0) + 1);
-  });
-
-  return [...map.entries()].sort((a, b) => a[0] - b[0]);
-}
-
-function drawBars(id, values) {
-  const container = document.getElementById(id);
-  container.replaceChildren();
-
-  const data = counts(values);
-  const maximum = Math.max(...data.map(d => d[1]));
-
-  data.forEach(([value, count]) => {
-    const row = document.createElement("div");
-    row.className = "hw-bar-row";
-
-    const label = document.createElement("span");
-    label.textContent = value;
-
-    const track = document.createElement("div");
-    track.className = "hw-track";
-
-    const bar = document.createElement("div");
-    bar.className = "hw-fill";
-    bar.style.width = `${100 * count / maximum}%`;
-
-    track.appendChild(bar);
-
-    const number = document.createElement("span");
-    number.textContent = count;
-
-    row.append(label, track, number);
-    container.appendChild(row);
-  });
-}
-
-// Number of one-bits in a nonnegative integer
-function bitCount(n) {
-  return n.toString(2)
-    .split("")
-    .filter(bit => bit === "1").length;
-}
-
-// Pearson correlation
-function pearson(xs, ys) {
-  const n = xs.length;
-
-  const mx = xs.reduce((a, b) => a + b, 0) / n;
-  const my = ys.reduce((a, b) => a + b, 0) / n;
-
-  let numerator = 0;
-  let vx = 0;
-  let vy = 0;
-
-  for (let i = 0; i < n; i++) {
-    const dx = xs[i] - mx;
-    const dy = ys[i] - my;
-
-    numerator += dx * dy;
-    vx += dx * dx;
-    vy += dy * dy;
-  }
-
-  return numerator / Math.sqrt(vx * vy);
-}
-
-function hamming(a, b) {
-  return bitCount(a.x ^ b.x) +
-         bitCount(a.y ^ b.y);
-}
-
-function showStatistics() {
-  const ks = SAMPLE.map(item => item.k);
-  const xs = SAMPLE.map(item => item.point.x);
-  const ys = SAMPLE.map(item => item.point.y);
-
-  // Coordinate frequencies
-  drawBars("xChart", xs);
-  drawBars("yChart", ys);
-
-  document.getElementById("coordinateSummary")
-    .textContent =
-    `Distinct x values: ${new Set(xs).size}. ` +
-    `Distinct y values: ${new Set(ys).size}. ` +
-    `Sample size: ${SAMPLE.length} points.`;
-
-  // Five bits per coordinate (values 0 to 16)
-  const xOnes = xs.reduce(
-    (sum, x) => sum + bitCount(x), 0
-  );
-
-  const yOnes = ys.reduce(
-    (sum, y) => sum + bitCount(y), 0
-  );
-
-  document.getElementById("bitResults")
-    .textContent =
-    `X coordinates: ${xOnes} one-bits out of 40 ` +
-    `(${(100 * xOnes / 40).toFixed(1)}%). ` +
-    `Y coordinates: ${yOnes} one-bits out of 40 ` +
-    `(${(100 * yOnes / 40).toFixed(1)}%).`;
-
-  // Input-output linear correlation
-  const rx = pearson(ks, xs);
-  const ry = pearson(ks, ys);
-
-  document.getElementById("correlationResults")
-    .textContent =
-    `Pearson r(k, x) = ${rx.toFixed(4)}. ` +
-    `Pearson r(k, y) = ${ry.toFixed(4)}.`;
-
-  // Hamming distances between consecutive points
-  const distances = [];
-
-  for (let i = 0; i < SAMPLE.length - 1; i++) {
-    distances.push(
-      hamming(SAMPLE[i].point, SAMPLE[i + 1].point)
-    );
-  }
-
-  const average = distances.reduce(
-    (a, b) => a + b, 0
-  ) / distances.length;
-
-  document.getElementById("avalancheResults")
-    .textContent =
-    `Hamming distances (k to k+1): ` +
-    `${distances.join(", ")} bits. ` +
-    `Average: ${average.toFixed(2)} out of 10 bits.`;
-}
-
-// =======================================
-// INITIALIZATION
-// =======================================
-
-document.getElementById("calculateButton")
-  .addEventListener("click", calculate);
-
-document.getElementById("playButton")
-  .addEventListener("click", play);
-
-document.getElementById("nextButton")
-  .addEventListener("click", nextStep);
-
-document.getElementById("resetButton")
-  .addEventListener("click", reset);
-
-document.getElementById("privateKey")
-  .addEventListener("keydown", event => {
-    if (event.key === "Enter") calculate();
-  });
-
-// Verify base point and expected example
-if (!onCurve(G)) {
-  throw new Error("Invalid base point.");
-}
-
-const test = multiply(6);
-
-if (test.x !== 5 || test.y !== 8 ||
-    multiply(9) !== INF) {
-  throw new Error("ECC mathematical test failed.");
-}
-
-calculate();
-showStatistics();
-
-</script>
+<script src="assets/js/homework-1_ex1.js"></script>
 </body>
 </html>
-

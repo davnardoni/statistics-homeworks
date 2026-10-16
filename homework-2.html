@@ -1,233 +1,45 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Homework 2 - Encryption and Cryptanalysis</title>
+<link href="assets/style.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/style.css">
-
-<style>
-/* Homework 2 - Additional styling */
-
-.hw-main {
-    max-width: 900px;
-    margin: 45px auto 80px;
-    padding: 0 25px;
-}
-
-.hw-main h2 {
-    margin-top: 45px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #dedede;
-}
-
-.hw-main h3 {
-    margin-top: 25px;
-}
-
-.hw-main p {
-    line-height: 1.85;
-}
-
-.hw-subtitle,
-.hw-small {
-    color: #64748b;
-}
-
-.hw-small {
-    font-size: 14px;
-}
-
-.hw-formula {
-    background: #f2f5f9;
-    border-left: 3px solid #263c59;
-    padding: 17px;
-    margin: 22px 0;
-    text-align: center;
-    color: #263c59;
-    overflow-wrap: anywhere;
-}
-
-.hw-experiment {
-    background: #fafbfd;
-    border: 1px solid #dce2ea;
-    border-radius: 7px;
-    padding: 23px;
-    margin: 25px 0;
-}
-
-.hw-experiment label {
-    display: block;
-    margin-top: 13px;
-    font-weight: 600;
-}
-
-.hw-button {
-    padding: 10px 18px;
-    border: none;
-    border-radius: 4px;
-    background: #263c59;
-    color: white;
-    font: inherit;
-    cursor: pointer;
-    margin: 12px 7px 5px 0;
-}
-
-.hw-button:hover {
-    background: #3b5c81;
-}
-
-.hw-input {
-    font: inherit;
-    padding: 9px;
-    border: 1px solid #bac5d2;
-    border-radius: 4px;
-    margin: 6px 12px 6px 0;
-    max-width: 100%;
-}
-
-textarea.hw-input {
-    display: block;
-    width: 100%;
-    min-height: 85px;
-    resize: vertical;
-}
-
-.hw-output {
-    background: white;
-    border: 1px solid #e2e5e9;
-    padding: 13px 15px;
-    margin: 12px 0;
-    border-radius: 5px;
-    overflow-wrap: anywhere;
-    white-space: pre-wrap;
-    font-family: monospace;
-    font-size: 14px;
-}
-
-.hw-table-wrap {
-    overflow-x: auto;
-}
-
-.hw-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 20px 0;
-    font-size: 14px;
-}
-
-.hw-table th,
-.hw-table td {
-    padding: 11px;
-    border-bottom: 1px solid #e2e5e9;
-    text-align: left;
-}
-
-.hw-table th {
-    background: #f2f5f9;
-}
-
-.hw-stat {
-    padding: 14px 17px;
-    margin: 15px 0;
-    border-left: 3px solid #5578a3;
-    background: #f5f7fa;
-}
-
-.bars {
-    display: grid;
-    gap: 5px;
-    margin: 15px 0;
-}
-
-.bar-row {
-    display: grid;
-    grid-template-columns: 20px 1fr 55px;
-    gap: 8px;
-    align-items: center;
-    font-size: 12px;
-}
-
-.bar-track {
-    height: 11px;
-    background: #e2e8f0;
-}
-
-.bar-fill {
-    height: 100%;
-    background: #5578a3;
-}
-
-.hw-conclusion {
-    padding: 18px;
-    background: #f2f5f9;
-    border-radius: 5px;
-    margin: 25px 0;
-}
-
-@media (max-width: 600px) {
-    .hw-experiment {
-        padding: 15px;
-    }
-
-    .hw-main {
-        padding: 0 18px;
-    }
-}
-</style>
 </head>
-
-<body>
-
+<body class="page-homework-2">
 <!-- NAVIGATION -->
-
 <header>
 <nav>
-    <a href="index.html" class="logo">Statistics</a>
-
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-
-        <a href="homework-1_ex1.html">
+<a class="logo" href="index.html">Statistics</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="homework-1_ex1.html">
             Homework 1.1
         </a>
-
-        <a href="homework-1_ex2.html">
+<a href="homework-1_ex2.html">
             Homework 1.2
         </a>
-
-        <a href="homework-2.html"
-           class="active"
-           aria-current="page">
+<a aria-current="page" class="active" href="homework-2.html">
             Homework 2
         </a>
-    </div>
+</div>
 </nav>
 </header>
-
 <!-- MAIN CONTENT -->
-
 <main class="hw-main">
-
 <h1>Homework 2</h1>
-
 <p class="hw-subtitle">
 Encryption, Decryption and Statistical Cryptanalysis
 </p>
-
 <h2>1. Introduction</h2>
-
 <p>
 The objective of this homework is to investigate encryption,
 decryption, and cryptanalysis using two different cryptographic
 constructions: a toy elliptic-curve encryption scheme and the
 classical Caesar cipher.
 </p>
-
 <p>
 We first encrypt and decrypt the same message using both
 algorithms. We then compare their procedures, key spaces,
@@ -235,138 +47,92 @@ and statistical properties.
 Finally, we implement attacks that exploit the specific
 weaknesses of each construction.
 </p>
-
 <p>
 The previous homework introduced the secp256k1 elliptic
 curve and the public-key relationship Q = dG.
 Its interactive demonstration used a much smaller
 educational curve:
 </p>
-
 <div class="hw-formula">
     y² = x³ + 7 (mod 17)
-    <br>
+    <br/>
     G = (1, 5)
-    <br>
+    <br/>
     d ∈ {1, 2, ..., 8}
 </div>
-
 <p>
 We reuse this small curve to make the encryption and
 key-recovery experiments computationally transparent.
 It is important to distinguish this educational construction
 from a secure implementation of secp256k1.
 </p>
-
-
 <!-- SECTION 2 -->
-
 <h2>2. Elliptic-Curve Encryption and Decryption</h2>
-
 <p>
 We implement a simplified ECIES-like hybrid encryption scheme.
 The recipient generates a private scalar d and its corresponding
 public key Q:
 </p>
-
 <div class="hw-formula">
     Q = dG
 </div>
-
 <p>
 The sender uses the recipient's public key and selects
 an ephemeral scalar r.
 The following two elliptic-curve points are computed:
 </p>
-
 <div class="hw-formula">
     R = rG
-    <br>
+    <br/>
     S = rQ
 </div>
-
 <p>
 The point R can be transmitted publicly. The point S
 represents the shared secret used to derive a byte mask
 for encrypting the message.
 </p>
-
 <p>
 The recipient uses the private key d to reconstruct
 the same shared point:
 </p>
-
 <div class="hw-formula">
     S = dR = d(rG) = r(dG) = rQ
 </div>
-
 <p>
 In our toy implementation, each plaintext byte is XORed
 with a deterministic mask generated from the coordinates
 of S. Decryption applies the same XOR operation again.
 </p>
-
 <div class="hw-formula">
     Cᵢ = Mᵢ XOR mask(S, i)
-    <br>
+    <br/>
     Mᵢ = Cᵢ XOR mask(S, i)
 </div>
-
 <p>
 This mask is intentionally simple and insecure.
 A real encryption scheme would require a secure
 key-derivation function, authenticated encryption,
 and carefully generated randomness.
 </p>
-
 <div class="hw-experiment">
-
 <h3>Experiment A — ECC Encryption</h3>
-
 <label for="message">Message:</label>
-
-<textarea id="message" class="hw-input">STATISTICS AND CRYPTOGRAPHY HELP US UNDERSTAND INFORMATION SECURITY</textarea>
-
+<textarea class="hw-input" id="message">STATISTICS AND CRYPTOGRAPHY HELP US UNDERSTAND INFORMATION SECURITY</textarea>
 <label for="private">Private key d (1–8):</label>
-
-<input
-    type="number"
-    id="private"
-    class="hw-input"
-    min="1"
-    max="8"
-    value="6"
->
-
+<input class="hw-input" id="private" max="8" min="1" type="number" value="6"/>
 <label for="ephemeral">Ephemeral scalar r (1–8):</label>
-
-<input
-    type="number"
-    id="ephemeral"
-    class="hw-input"
-    min="1"
-    max="8"
-    value="3"
->
-
+<input class="hw-input" id="ephemeral" max="8" min="1" type="number" value="2"/>
 <button class="hw-button" id="eccRun">
     Encrypt and Decrypt
 </button>
-
-<div id="eccResult"
-     class="hw-output"
-     aria-live="polite"></div>
-
+<div aria-live="polite" class="hw-output" id="eccResult"></div>
 </div>
-
 <h3>2.1 Role of the Keys</h3>
-
 <p>
 The private key d is known only to the recipient.
 The corresponding public key Q can be distributed
 to anyone who wants to encrypt a message.
 </p>
-
 <p>
 The ephemeral scalar r is selected by the sender
 and determines the temporary public point R.
@@ -374,7 +140,6 @@ The shared point S can then be obtained by the
 sender using r and Q, or by the recipient using
 d and R.
 </p>
-
 <p>
 In a properly designed elliptic-curve encryption system,
 the private key must be sufficiently large and randomly
@@ -382,144 +147,101 @@ generated. In this experiment, the private-key range
 contains only eight possible values, making exhaustive
 search trivial.
 </p>
-
-
 <!-- SECTION 3 -->
-
 <h2>3. The Caesar Cipher</h2>
-
 <p>
 The Caesar cipher is a classical substitution cipher
 that shifts every letter of the alphabet by a fixed
 integer k.
 </p>
-
 <p>
 For an alphabet containing 26 letters, encryption
 and decryption can be expressed as:
 </p>
-
 <div class="hw-formula">
     Eₖ(x) = (x + k) mod 26
-    <br>
+    <br/>
     Dₖ(y) = (y − k) mod 26
 </div>
-
 <p>
 Unlike the elliptic-curve construction, Caesar is
 a symmetric-key cipher: the same shift k is used
 for encryption and decryption.
 </p>
-
 <p>
 In our implementation, uppercase and lowercase letters
 are preserved and nonalphabetic characters remain
 unchanged.
 </p>
-
 <div class="hw-experiment">
-
 <h3>Experiment B — Caesar Encryption</h3>
-
 <label for="shift">Shift k (0–25):</label>
-
-<input
-    type="number"
-    id="shift"
-    class="hw-input"
-    min="0"
-    max="25"
-    value="7"
->
-
+<input class="hw-input" id="shift" max="25" min="0" type="number" value="7"/>
 <button class="hw-button" id="caesarRun">
     Encrypt and Decrypt
 </button>
-
-<div id="caesarResult"
-     class="hw-output"
-     aria-live="polite"></div>
-
+<div aria-live="polite" class="hw-output" id="caesarResult"></div>
 </div>
-
 <p>
 The experiment uses the same message entered in
 Experiment A. This allows us to directly compare
 the ciphertexts produced by the two constructions.
 </p>
-
-
 <!-- SECTION 4 -->
-
 <h2>4. Comparison of the Two Schemes</h2>
-
 <div class="hw-table-wrap">
-
 <table class="hw-table">
-
 <thead>
 <tr>
-    <th>Property</th>
-    <th>Toy ECC Scheme</th>
-    <th>Caesar Cipher</th>
+<th>Property</th>
+<th>Toy ECC Scheme</th>
+<th>Caesar Cipher</th>
 </tr>
 </thead>
-
 <tbody>
-
 <tr>
 <td>Cryptographic model</td>
 <td>Asymmetric key agreement with symmetric masking</td>
 <td>Symmetric substitution</td>
 </tr>
-
 <tr>
 <td>Encryption</td>
 <td>Shared point and XOR mask</td>
 <td>Alphabet rotation</td>
 </tr>
-
 <tr>
 <td>Decryption</td>
 <td>Reconstruct shared point and apply XOR</td>
 <td>Reverse rotation</td>
 </tr>
-
 <tr>
 <td>Keys</td>
 <td>Private d, public Q, ephemeral r</td>
 <td>Shared shift k</td>
 </tr>
-
 <tr>
 <td>Experimental key space</td>
 <td>8 recipient private keys</td>
 <td>26 possible shifts</td>
 </tr>
-
 <tr>
 <td>Statistical properties</td>
 <td>Byte values are masked, but the toy mask is insecure</td>
 <td>Letter frequencies are preserved up to permutation</td>
 </tr>
-
 <tr>
 <td>Attack investigated</td>
 <td>Exhaustive private-key search</td>
 <td>Letter-frequency analysis</td>
 </tr>
-
 </tbody>
 </table>
-
 </div>
-
 <p>
 The Caesar cipher preserves the relative frequency
 of letters because every occurrence of a given letter
 is always mapped to the same ciphertext letter.
 </p>
-
 <p>
 The ECC-based toy scheme instead operates on message
 bytes through a shared-secret-derived mask.
@@ -527,12 +249,8 @@ However, the simple mask used in this experiment
 does not provide the security properties of a
 properly designed encryption algorithm.
 </p>
-
-
 <!-- SECTION 5 -->
-
 <h2>5. Statistical Cryptanalysis of Caesar</h2>
-
 <p>
 Natural languages have characteristic statistical
 distributions of letters.
@@ -540,251 +258,173 @@ For example, the letters E, T, A, and O appear
 relatively frequently in ordinary English text,
 while letters such as Q, X, and Z appear less often.
 </p>
-
 <p>
 A Caesar cipher does not destroy these frequencies.
 It simply rotates their positions in the alphabet.
 This property allows an attacker to estimate the
 unknown encryption shift.
 </p>
-
 <h3>5.1 Frequency Analysis</h3>
-
 <p>
 Our attack tests every candidate shift from 0 to 25.
 For each candidate, it decrypts the ciphertext
 and calculates how closely the resulting letter
 distribution matches the expected English frequencies.
 </p>
-
 <p>
 We use the chi-square statistic:
 </p>
-
 <div class="hw-formula">
     χ²(k) = Σ [ (Oᵢ(k) − Npᵢ)² / (Npᵢ) ]
 </div>
-
 <p>
 Here, Oᵢ(k) is the observed frequency count of letter i
 after decrypting with shift k, N is the number of
 alphabetic characters, and pᵢ represents the expected
 relative frequency of that letter in English.
 </p>
-
 <p>
 The shift producing the smallest chi-square statistic
 is selected as the most likely key.
 </p>
-
 <div class="hw-experiment">
-
 <h3>Experiment C — Recover the Caesar Key</h3>
-
 <label for="cipherInput">
     Ciphertext to analyze:
 </label>
-
-<textarea
-    class="hw-input"
-    id="cipherInput"></textarea>
-
-<button
-    class="hw-button"
-    id="attackCaesar">
+<textarea class="hw-input" id="cipherInput"></textarea>
+<button class="hw-button" id="attackCaesar">
     Recover Key
 </button>
-
-<div id="attackResult"
-     class="hw-output"
-     aria-live="polite"></div>
-
+<div aria-live="polite" class="hw-output" id="attackResult"></div>
 <h3>Ciphertext Letter Distribution</h3>
-
-<div id="frequencyBars" class="bars"></div>
-
+<div class="bars" id="frequencyBars"></div>
 </div>
-
-
 <h3>5.2 Effect of Ciphertext Length</h3>
-
 <p>
 Frequency analysis depends on the amount of available
 ciphertext. Very short messages may have letter
 distributions that differ substantially from the
 expected English distribution.
 </p>
-
 <p>
 As the sample size increases, the observed frequencies
 generally become more representative of the language.
 We test this behavior using different prefix lengths
 from a fixed English sample.
 </p>
-
 <div class="hw-experiment">
-
 <h3>Experiment D — Ciphertext Length</h3>
-
-<button
-    class="hw-button"
-    id="lengthTest">
+<button class="hw-button" id="lengthTest">
     Run Length Experiment
 </button>
-
 <div class="hw-table-wrap">
-
 <table class="hw-table">
-
 <thead>
 <tr>
-    <th>Letters</th>
-    <th>Actual Shift</th>
-    <th>Estimated Shift</th>
-    <th>Correct?</th>
-    <th>Chi-Square</th>
+<th>Letters</th>
+<th>Actual Shift</th>
+<th>Estimated Shift</th>
+<th>Correct?</th>
+<th>Chi-Square</th>
 </tr>
 </thead>
-
 <tbody id="lengthRows"></tbody>
-
 </table>
-
 </div>
-
-<p id="lengthNote" class="hw-small"></p>
-
+<p class="hw-small" id="lengthNote"></p>
 </div>
-
 <div class="hw-stat">
-
 <strong>Observations and Limitations</strong>
-
 <p>
 Statistical cryptanalysis generally becomes more
 reliable as more ciphertext is available, but
 its effectiveness also depends on how representative
 the plaintext is of the reference language.
 </p>
-
 <p>
 Short messages, unusual vocabulary, repetitive
 text, and texts in a different language can
 produce incorrect key estimates.
 </p>
-
 <p>
 The Caesar cipher also has a very small key space,
 so exhaustive search is always practical.
 N-gram scoring could improve candidate ranking,
 especially for some shorter messages.
 </p>
-
 </div>
-
-
 <!-- SECTION 6 -->
-
 <h2>6. Recovering the ECC Private Key</h2>
-
 <p>
 We now investigate an attack against the restricted
 private-key range of the educational elliptic-curve
 scheme.
 </p>
-
 <p>
 The attacker knows the public key:
 </p>
-
 <div class="hw-formula">
     Q = dG
 </div>
-
 <p>
 Because d can only take values from 1 to 8,
 the attacker can simply calculate:
 </p>
-
 <div class="hw-formula">
     G, 2G, 3G, ..., 8G
 </div>
-
 <p>
 The candidate matching Q reveals the private
 scalar d. Once d is recovered, the attacker
 can compute the shared point using the
 transmitted ephemeral public point R:
 </p>
-
 <div class="hw-formula">
     S = dR
 </div>
-
 <p>
 The attacker can then reconstruct the byte mask
 and decrypt the intercepted ciphertext.
 </p>
-
 <div class="hw-experiment">
-
 <h3>Experiment E — Private-Key Recovery</h3>
-
-<button
-    class="hw-button"
-    id="attackEcc">
+<button class="hw-button" id="attackEcc">
     Recover Private Key
 </button>
-
-<div id="eccAttackResult"
-     class="hw-output"
-     aria-live="polite"></div>
-
+<div aria-live="polite" class="hw-output" id="eccAttackResult"></div>
 <div class="hw-table-wrap">
-
 <table class="hw-table">
-
 <thead>
 <tr>
-    <th>Candidate d</th>
-    <th>Computed dG</th>
-    <th>Matches Q?</th>
+<th>Candidate d</th>
+<th>Computed dG</th>
+<th>Matches Q?</th>
 </tr>
 </thead>
-
 <tbody id="eccAttackRows"></tbody>
-
 </table>
-
 </div>
 </div>
-
-
 <h3>6.1 Why the Attack Works</h3>
-
 <p>
 The vulnerability is caused by the restricted
 private-key space.
 An attacker only needs to test eight possible
 private scalars to find the correct one.
 </p>
-
 <p>
 The attack does not require any statistical
 information about the plaintext.
 It relies entirely on the mathematical relationship
 between the public and private keys.
 </p>
-
-
 <h3>6.2 Why Real ECC Is Different</h3>
-
 <p>
 In a properly configured secp256k1 system,
 private keys are selected from a group of order
 approximately 2²⁵⁶.
 </p>
-
 <p>
 Trying every possible private key is therefore
 computationally infeasible.
@@ -792,88 +432,65 @@ Generic discrete-logarithm algorithms such as
 Pollard's rho still require approximately
 2¹²⁸ group operations.
 </p>
-
 <p>
 Importantly, even if a real secp256k1 curve
 were used, restricting its private keys to
 only eight possible values would make
 the same exhaustive attack practical.
 </p>
-
 <p>
 Therefore, the security problem is not simply
 the choice of elliptic curve, but the combination
 of curve parameters, key generation, entropy,
 and encryption design.
 </p>
-
-
 <!-- SECTION 7 -->
-
 <h2>7. Comparison of the Attacks</h2>
-
 <div class="hw-table-wrap">
-
 <table class="hw-table">
-
 <thead>
 <tr>
-    <th>Aspect</th>
-    <th>Caesar Attack</th>
-    <th>ECC Attack</th>
+<th>Aspect</th>
+<th>Caesar Attack</th>
+<th>ECC Attack</th>
 </tr>
 </thead>
-
 <tbody>
-
 <tr>
 <td>Exploited weakness</td>
 <td>Language statistics</td>
 <td>Restricted private-key space</td>
 </tr>
-
 <tr>
 <td>Required information</td>
 <td>Ciphertext and reference frequencies</td>
 <td>Public key and curve parameters</td>
 </tr>
-
 <tr>
 <td>Recovery method</td>
 <td>Chi-square minimization</td>
 <td>Exhaustive scalar multiplication</td>
 </tr>
-
 <tr>
 <td>Role of message length</td>
 <td>Strongly influences accuracy</td>
 <td>Not needed to identify the private key</td>
 </tr>
-
 <tr>
 <td>Application to secure systems</td>
 <td>Caesar is inherently insecure</td>
 <td>Exhaustive recovery becomes infeasible with a large key space</td>
 </tr>
-
 </tbody>
-
 </table>
-
 </div>
-
-
 <!-- SECTION 8 -->
-
 <h2>8. Conclusions</h2>
-
 <div class="hw-conclusion">
-
 <p>
 These experiments illustrate two fundamentally
 different forms of cryptanalysis.
 </p>
-
 <p>
 The Caesar cipher can be attacked by exploiting
 the statistical redundancy of natural language.
@@ -881,7 +498,6 @@ Its substitution operation preserves letter
 frequencies, allowing the shift to be estimated
 using a reference distribution.
 </p>
-
 <p>
 The toy elliptic-curve scheme is vulnerable
 because the private-key range is extremely small.
@@ -889,738 +505,24 @@ The attacker can recover the key by computing
 all possible public points and comparing
 them with the known public key.
 </p>
-
 <p>
 While increasing the ciphertext length generally
 helps statistical analysis of Caesar, the
 exhaustive ECC attack depends primarily
 on the number of possible private keys.
 </p>
-
 <p>
 The main lesson is that cryptographic security
 depends not only on the mathematical algorithm,
 but also on key-space size, secure randomness,
 implementation choices, and protocol design.
 </p>
-
 </div>
-
 </main>
-
 <footer>
     Statistics - Academic Year 2026/2027
 </footer>
-
-
 <!-- JAVASCRIPT IMPLEMENTATION -->
-
-<script>
-"use strict";
-
-/* ==========================================
-   1. TOY ELLIPTIC CURVE
-   ========================================== */
-
-const P = 17;
-const G = { x: 1, y: 5 };
-
-// Positive modulo
-function mod(n) {
-    return ((n % P) + P) % P;
-}
-
-// Multiplicative inverse modulo P
-function inverse(n) {
-    for (let i = 1; i < P; i++) {
-        if (mod(n * i) === 1) {
-            return i;
-        }
-    }
-
-    throw new Error("Modular inverse not found");
-}
-
-// Elliptic curve point addition
-function pointAdd(a, b) {
-
-    if (a === null) return b;
-    if (b === null) return a;
-
-    if (
-        a.x === b.x &&
-        mod(a.y + b.y) === 0
-    ) {
-        return null;
-    }
-
-    let slope;
-
-    if (a.x === b.x && a.y === b.y) {
-        slope = mod(
-            3 * a.x * a.x *
-            inverse(2 * a.y)
-        );
-    } else {
-        slope = mod(
-            (b.y - a.y) *
-            inverse(b.x - a.x)
-        );
-    }
-
-    const x = mod(
-        slope * slope - a.x - b.x
-    );
-
-    const y = mod(
-        slope * (a.x - x) - a.y
-    );
-
-    return { x, y };
-}
-
-// Scalar multiplication
-function scalarMultiply(k, point = G) {
-
-    let result = null;
-
-    for (let i = 0; i < k; i++) {
-        result = pointAdd(result, point);
-    }
-
-    return result;
-}
-
-function samePoint(a, b) {
-
-    if (a === null || b === null) {
-        return a === b;
-    }
-
-    return a.x === b.x && a.y === b.y;
-}
-
-function formatPoint(point) {
-
-    if (point === null) {
-        return "O";
-    }
-
-    return `(${point.x}, ${point.y})`;
-}
-
-// Validate integer inputs
-function readInteger(id, min, max) {
-
-    const raw = document
-        .getElementById(id)
-        .value.trim();
-
-    const value = Number(raw);
-
-    if (
-        !/^\d+$/.test(raw) ||
-        !Number.isInteger(value) ||
-        value < min ||
-        value > max
-    ) {
-        throw new Error(
-            `${id} must be between ${min} and ${max}`
-        );
-    }
-
-    return value;
-}
-
-
-/* ==========================================
-   2. TOY ECC ENCRYPTION
-   ========================================== */
-
-const encoder = new TextEncoder();
-const decoder = new TextDecoder();
-
-function toHex(data) {
-
-    return Array.from(data, byte =>
-        byte.toString(16).padStart(2, "0")
-    ).join("");
-}
-
-// Insecure deterministic educational mask
-function generateMask(sharedPoint, index) {
-
-    return (
-        sharedPoint.x * 17 +
-        sharedPoint.y * 29 +
-        index * 31
-    ) & 255;
-}
-
-// XOR encrypt/decrypt
-function xorCrypt(data, sharedPoint) {
-
-    if (sharedPoint === null) {
-        throw new Error("Invalid shared point");
-    }
-
-    return Uint8Array.from(
-        data,
-        (byte, i) =>
-            byte ^ generateMask(sharedPoint, i)
-    );
-}
-
-// Simulated transmitted packet
-let packet = null;
-
-function runECC() {
-
-    const output =
-        document.getElementById("eccResult");
-
-    try {
-
-        const d = readInteger("private", 1, 8);
-        const r = readInteger("ephemeral", 1, 8);
-
-        const message =
-            document.getElementById("message").value;
-
-        // Recipient's public key
-        const Q = scalarMultiply(d);
-
-        // Sender's ephemeral public point
-        const R = scalarMultiply(r);
-
-        // Sender's shared secret
-        const sharedSender =
-            scalarMultiply(r, Q);
-
-        // Encrypt message
-        const plaintextBytes =
-            encoder.encode(message);
-
-        const ciphertext =
-            xorCrypt(plaintextBytes, sharedSender);
-
-        // Recipient reconstructs shared point
-        const sharedReceiver =
-            scalarMultiply(d, R);
-
-        // Decrypt
-        const decryptedBytes =
-            xorCrypt(ciphertext, sharedReceiver);
-
-        const recovered =
-            decoder.decode(decryptedBytes);
-
-        // Publicly intercepted information
-        packet = {
-            Q: Q,
-            R: R,
-            ciphertext: ciphertext
-        };
-
-        output.textContent =
-            `Public key Q = ${formatPoint(Q)}\n` +
-            `Ephemeral point R = ${formatPoint(R)}\n` +
-            `Shared point S = ${formatPoint(sharedSender)}\n\n` +
-            `Ciphertext (hex):\n${toHex(ciphertext)}\n\n` +
-            `Decrypted message:\n${recovered}\n\n` +
-            `Successful: ${recovered === message}`;
-
-    } catch (error) {
-
-        packet = null;
-        output.textContent = error.message;
-    }
-}
-
-
-/* ==========================================
-   3. CAESAR CIPHER
-   ========================================== */
-
-function caesar(text, shift) {
-
-    return text.replace(/[A-Za-z]/g, char => {
-
-        const base =
-            char >= "A" && char <= "Z"
-                ? 65
-                : 97;
-
-        const position =
-            char.charCodeAt(0) - base;
-
-        const shifted =
-            (position + shift + 26) % 26;
-
-        return String.fromCharCode(
-            base + shifted
-        );
-    });
-}
-
-function runCaesar() {
-
-    const output =
-        document.getElementById("caesarResult");
-
-    try {
-
-        const shift =
-            readInteger("shift", 0, 25);
-
-        const message =
-            document.getElementById("message").value;
-
-        const ciphertext =
-            caesar(message, shift);
-
-        const decrypted =
-            caesar(ciphertext, 26 - shift);
-
-        document.getElementById(
-            "cipherInput"
-        ).value = ciphertext;
-
-        output.textContent =
-            `Shift: ${shift}\n\n` +
-            `Ciphertext:\n${ciphertext}\n\n` +
-            `Decrypted message:\n${decrypted}\n\n` +
-            `Successful: ${decrypted === message}`;
-
-    } catch (error) {
-
-        output.textContent = error.message;
-    }
-}
-
-
-/* ==========================================
-   4. ENGLISH LETTER FREQUENCIES
-   ========================================== */
-
-const englishFrequencies = [
-    8.167, 1.492, 2.782, 4.253,
-    12.702, 2.228, 2.015, 6.094,
-    6.966, 0.153, 0.772, 4.025,
-    2.406, 6.749, 7.507, 1.929,
-    0.095, 5.987, 6.327, 9.056,
-    2.758, 0.978, 2.360, 0.150,
-    1.974, 0.074
-].map(value => value / 100);
-
-
-/* ==========================================
-   5. CHI-SQUARE STATISTIC
-   ========================================== */
-
-function chiSquare(text) {
-
-    const letters = text
-        .toUpperCase()
-        .replace(/[^A-Z]/g, "");
-
-    const N = letters.length;
-
-    if (N === 0) {
-        return Infinity;
-    }
-
-    const counts = Array(26).fill(0);
-
-    for (const char of letters) {
-        counts[char.charCodeAt(0) - 65]++;
-    }
-
-    let chi = 0;
-
-    for (let i = 0; i < 26; i++) {
-
-        const expected =
-            N * englishFrequencies[i];
-
-        const observed = counts[i];
-
-        chi +=
-            Math.pow(observed - expected, 2) /
-            expected;
-    }
-
-    return chi;
-}
-
-
-/* ==========================================
-   6. RECOVER CAESAR SHIFT
-   ========================================== */
-
-function estimateShift(ciphertext) {
-
-    const candidates = [];
-
-    for (let shift = 0; shift < 26; shift++) {
-
-        const plaintext =
-            caesar(ciphertext, 26 - shift);
-
-        const score =
-            chiSquare(plaintext);
-
-        candidates.push({
-            shift,
-            plaintext,
-            score
-        });
-    }
-
-    candidates.sort(
-        (a, b) => a.score - b.score
-    );
-
-    return candidates;
-}
-
-function attackCaesar() {
-
-    const ciphertext =
-        document.getElementById(
-            "cipherInput"
-        ).value;
-
-    const output =
-        document.getElementById(
-            "attackResult"
-        );
-
-    if (!/[A-Za-z]/.test(ciphertext)) {
-
-        output.textContent =
-            "Enter ciphertext containing letters.";
-
-        document.getElementById(
-            "frequencyBars"
-        ).replaceChildren();
-
-        return;
-    }
-
-    const candidates =
-        estimateShift(ciphertext);
-
-    const best = candidates[0];
-
-    output.textContent =
-        `Estimated shift: ${best.shift}\n` +
-        `Chi-square: ${best.score.toFixed(2)}\n\n` +
-        `Recovered plaintext:\n${best.plaintext}\n\n` +
-        `Top candidates:\n` +
-        candidates.slice(0, 5)
-            .map(item =>
-                `k=${item.shift}, ` +
-                `χ²=${item.score.toFixed(2)}`
-            )
-            .join("\n");
-
-    showFrequencies(ciphertext);
-}
-
-
-/* ==========================================
-   7. LETTER FREQUENCY CHART
-   ========================================== */
-
-function showFrequencies(text) {
-
-    const container =
-        document.getElementById(
-            "frequencyBars"
-        );
-
-    container.replaceChildren();
-
-    const counts = Array(26).fill(0);
-
-    const letters = text
-        .toUpperCase()
-        .replace(/[^A-Z]/g, "");
-
-    for (const char of letters) {
-
-        counts[char.charCodeAt(0) - 65]++;
-    }
-
-    const maximum = Math.max(...counts);
-
-    counts.forEach((count, index) => {
-
-        const row =
-            document.createElement("div");
-
-        row.className = "bar-row";
-
-        const letter =
-            document.createElement("span");
-
-        letter.textContent =
-            String.fromCharCode(65 + index);
-
-        const track =
-            document.createElement("div");
-
-        track.className = "bar-track";
-
-        const fill =
-            document.createElement("div");
-
-        fill.className = "bar-fill";
-
-        fill.style.width =
-            `${100 * count / maximum}%`;
-
-        track.appendChild(fill);
-
-        const label =
-            document.createElement("span");
-
-        label.textContent = count;
-
-        row.append(letter, track, label);
-
-        container.appendChild(row);
-    });
-}
-
-
-/* ==========================================
-   8. CIPHERTEXT LENGTH EXPERIMENT
-   ========================================== */
-
-const corpus = (
-    "The study of statistics provides a systematic " +
-    "way to understand information and uncertainty. " +
-    "Researchers collect observations and compare " +
-    "hypotheses using experimental evidence. " +
-    "Cryptography protects information exchanged " +
-    "across untrusted networks. " +
-    "A sender encrypts a message so that the intended " +
-    "recipient can recover its contents. " +
-    "Natural languages contain characteristic patterns " +
-    "that can be useful for statistical cryptanalysis. " +
-    "Common English letters appear more frequently " +
-    "than uncommon letters in sufficiently large samples. " +
-    "The reliability of an estimate depends on the " +
-    "amount of available information. " +
-    "Short samples may differ considerably from the " +
-    "expected distribution of the language. " +
-    "Repeated experiments help researchers understand " +
-    "the effectiveness and limitations of their methods. "
-).repeat(15);
-
-function testLengths() {
-
-    const output =
-        document.getElementById("lengthNote");
-
-    let shift;
-
-    try {
-        shift = readInteger("shift", 0, 25);
-    } catch (error) {
-        output.textContent = error.message;
-        return;
-    }
-
-    const letters = corpus
-        .toUpperCase()
-        .replace(/[^A-Z]/g, "");
-
-    const lengths = [
-        10, 25, 50, 100,
-        250, 500, 1000, 2000
-    ];
-
-    const table =
-        document.getElementById(
-            "lengthRows"
-        );
-
-    table.replaceChildren();
-
-    for (const length of lengths) {
-
-        const plaintext =
-            letters.slice(0, length);
-
-        const ciphertext =
-            caesar(plaintext, shift);
-
-        const best =
-            estimateShift(ciphertext)[0];
-
-        const correct =
-            best.shift === shift;
-
-        const row =
-            document.createElement("tr");
-
-        const values = [
-            length,
-            shift,
-            best.shift,
-            correct ? "Yes" : "No",
-            best.score.toFixed(2)
-        ];
-
-        for (const value of values) {
-
-            const cell =
-                document.createElement("td");
-
-            cell.textContent = value;
-
-            row.appendChild(cell);
-        }
-
-        table.appendChild(row);
-    }
-
-    output.textContent =
-        "This experiment uses a fixed English corpus " +
-        "and the selected Caesar shift. Results describe " +
-        "one sample per length rather than an average " +
-        "success rate over independent trials.";
-}
-
-
-/* ==========================================
-   9. ECC PRIVATE-KEY ATTACK
-   ========================================== */
-
-function attackECC() {
-
-    const output =
-        document.getElementById(
-            "eccAttackResult"
-        );
-
-    const table =
-        document.getElementById(
-            "eccAttackRows"
-        );
-
-    table.replaceChildren();
-
-    if (packet === null) {
-
-        output.textContent =
-            "First run the ECC encryption experiment.";
-
-        return;
-    }
-
-    let recoveredKey = null;
-    let attempts = 0;
-
-    // Exhaustive search over private-key range
-    for (let candidate = 1; candidate <= 8; candidate++) {
-
-        attempts++;
-
-        const candidatePublic =
-            scalarMultiply(candidate);
-
-        const matches =
-            samePoint(candidatePublic, packet.Q);
-
-        const row =
-            document.createElement("tr");
-
-        const values = [
-            candidate,
-            formatPoint(candidatePublic),
-            matches ? "Yes" : "No"
-        ];
-
-        for (const value of values) {
-
-            const cell =
-                document.createElement("td");
-
-            cell.textContent = value;
-
-            row.appendChild(cell);
-        }
-
-        table.appendChild(row);
-
-        if (matches) {
-
-            recoveredKey = candidate;
-            break;
-        }
-    }
-
-    if (recoveredKey === null) {
-
-        output.textContent =
-            "Private key not found.";
-
-        return;
-    }
-
-    // Reconstruct shared secret
-    const sharedPoint =
-        scalarMultiply(recoveredKey, packet.R);
-
-    // Decrypt intercepted ciphertext
-    const plaintextBytes =
-        xorCrypt(packet.ciphertext, sharedPoint);
-
-    const plaintext =
-        decoder.decode(plaintextBytes);
-
-    output.textContent =
-        `Recovered private key: ${recoveredKey}\n` +
-        `Candidate tests: ${attempts}\n` +
-        `Recovered shared point: ${formatPoint(sharedPoint)}\n\n` +
-        `Decrypted message:\n${plaintext}`;
-}
-
-
-/* ==========================================
-   10. EVENT LISTENERS
-   ========================================== */
-
-document.getElementById("eccRun")
-    .addEventListener("click", runECC);
-
-document.getElementById("caesarRun")
-    .addEventListener("click", runCaesar);
-
-document.getElementById("attackCaesar")
-    .addEventListener("click", attackCaesar);
-
-document.getElementById("lengthTest")
-    .addEventListener("click", testLengths);
-
-document.getElementById("attackEcc")
-    .addEventListener("click", attackECC);
-
-
-/* ==========================================
-   11. INITIAL EXPERIMENTS
-   ========================================== */
-
-runECC();
-runCaesar();
-attackCaesar();
-testLengths();
-
-</script>
-
+<script src="assets/js/homework-2.js"></script>
 </body>
 </html>

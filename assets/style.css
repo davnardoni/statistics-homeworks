@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap');
 
 /* GENERAL */
@@ -290,3 +289,928 @@ footer {
         padding: 15px;
     }
 }
+
+
+
+/* ===== Styles originally from homework-1_ex1.html (scoped for exact appearance) ===== */
+
+
+/* Homework 1: additional page styling */
+
+
+
+body.page-homework-1-ex1 .hw-main {
+  max-width: 900px;
+  margin: 45px auto 80px;
+  padding: 0 25px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-main h1 {
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-main h2 {
+  margin-top: 45px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dedede;
+}
+
+
+
+body.page-homework-1-ex1 .hw-main h3 {
+  margin-top: 30px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-main p {
+  line-height: 1.85;
+}
+
+
+
+body.page-homework-1-ex1 .hw-subtitle {
+  color: #64748b;
+}
+
+
+
+body.page-homework-1-ex1 .hw-formula {
+  text-align: center;
+  background: #f2f5f9;
+  border-radius: 5px;
+  padding: 17px;
+  margin: 22px 0;
+  font-size: 20px;
+  color: #263c59;
+}
+
+
+
+body.page-homework-1-ex1 .hw-experiment {
+  border: 1px solid #dce2ea;
+  border-radius: 7px;
+  padding: 23px;
+  margin: 25px 0;
+  background: #fafbfd;
+}
+
+
+
+body.page-homework-1-ex1 .hw-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px 0;
+}
+
+
+
+body.page-homework-1-ex1 .hw-controls input {
+  width: 85px;
+  padding: 9px;
+  font: inherit;
+  border: 1px solid #bfc8d4;
+  border-radius: 4px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-button {
+  padding: 10px 17px;
+  background: #263c59;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  cursor: pointer;
+}
+
+
+
+body.page-homework-1-ex1 .hw-button:hover {
+  background: #3b5c81;
+}
+
+
+
+body.page-homework-1-ex1 .hw-button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+
+
+body.page-homework-1-ex1 .hw-secondary {
+  background: white;
+  color: #263c59;
+  border: 1px solid #aebdce;
+}
+
+
+
+body.page-homework-1-ex1 .hw-secondary:hover {
+  background: #edf1f6;
+}
+
+
+
+body.page-homework-1-ex1 .hw-result {
+  margin: 22px 0 8px;
+  padding: 17px;
+  text-align: center;
+  font-size: 21px;
+  color: #203d61;
+  background: #eaf0f8;
+  border-radius: 5px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-small {
+  color: #64748b;
+  font-size: 14px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-table-wrap {
+  overflow-x: auto;
+}
+
+
+
+body.page-homework-1-ex1 .hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-table th, body.page-homework-1-ex1 .hw-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e5e9;
+  text-align: left;
+}
+
+
+
+body.page-homework-1-ex1 .hw-table th {
+  background: #f2f5f9;
+}
+
+
+
+body.page-homework-1-ex1 .hw-table tr.highlight {
+  background: #eaf0f8;
+  font-weight: 600;
+}
+
+
+
+body.page-homework-1-ex1 .hw-animation {
+  margin: 25px 0;
+  border: 1px solid #dce2ea;
+  border-radius: 7px;
+  padding: 20px;
+  background: white;
+}
+
+
+
+body.page-homework-1-ex1 .hw-animation svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  margin: 10px auto;
+}
+
+
+
+body.page-homework-1-ex1 .hw-animation-info {
+  text-align: center;
+  margin-bottom: 16px;
+  min-height: 30px;
+  font-weight: 600;
+}
+
+
+
+body.page-homework-1-ex1 .hw-animation-controls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-legend {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+
+body.page-homework-1-ex1 .hw-legend span {
+  margin: 0 8px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-bars {
+  margin: 18px 0 25px;
+  max-width: 600px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-bar-row {
+  display: grid;
+  grid-template-columns: 38px 1fr 35px;
+  gap: 12px;
+  align-items: center;
+  margin: 9px 0;
+  font-size: 14px;
+}
+
+
+
+body.page-homework-1-ex1 .hw-track {
+  height: 18px;
+  background: #edf1f6;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+
+
+body.page-homework-1-ex1 .hw-fill {
+  height: 100%;
+  background: #5578a3;
+}
+
+
+
+body.page-homework-1-ex1 .hw-stat-box {
+  background: #f5f7fa;
+  border-left: 3px solid #5578a3;
+  padding: 12px 17px;
+  margin: 17px 0;
+}
+
+
+
+body.page-homework-1-ex1 .hw-comparison {
+  margin: 25px 0;
+}
+
+
+
+body.page-homework-1-ex1 .hw-comparison td:first-child {
+  font-weight: 600;
+}
+
+
+
+body.page-homework-1-ex1 .hw-conclusion {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f2f5f9;
+  border-radius: 5px;
+}
+
+
+
+@media  (max-width: 600px) {
+
+  
+body.page-homework-1-ex1 .hw-main {
+    padding: 0 18px;
+  }
+
+
+  
+body.page-homework-1-ex1 .hw-main h1 {
+    font-size: 30px;
+  }
+
+
+  
+body.page-homework-1-ex1 .hw-experiment, body.page-homework-1-ex1 .hw-animation {
+    padding: 15px;
+  }
+
+
+  
+body.page-homework-1-ex1 .hw-button {
+    font-size: 14px;
+  }
+
+
+}
+
+
+
+/* ===== Styles originally from homework-1_ex2.html (scoped for exact appearance) ===== */
+
+  
+body.page-homework-1-ex2 .hw-main {
+    max-width: 900px;
+    margin: 45px auto 80px;
+    padding: 0 25px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-main h1 {
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-main h2 {
+    margin-top: 45px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #dedede;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-main h3 {
+    margin-top: 28px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-main p {
+    line-height: 1.85;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-subtitle, body.page-homework-1-ex2 .hw-small {
+    color: #64748b;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-small {
+    font-size: 14px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-formula {
+    text-align: center;
+    background: #f2f5f9;
+    border-radius: 5px;
+    padding: 17px;
+    margin: 22px 0;
+    font-size: 17px;
+    color: #263c59;
+    overflow-wrap: anywhere;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-experiment {
+    background: #fafbfd;
+    border: 1px solid #dce2ea;
+    border-radius: 7px;
+    padding: 23px;
+    margin: 25px 0;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-button {
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 4px;
+    background: #263c59;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-button:hover {
+    background: #3b5c81;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-button:disabled {
+    opacity: .5;
+    cursor: wait;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-input {
+    font: inherit;
+    padding: 9px;
+    border: 1px solid #bac5d2;
+    border-radius: 4px;
+    width: 90px;
+    margin: 10px 14px 10px 0;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-output {
+    background: white;
+    border: 1px solid #e2e5e9;
+    padding: 13px 15px;
+    margin: 12px 0;
+    border-radius: 5px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-output strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #263c59;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-output code {
+    display: block;
+    font-size: 13px;
+    font-family: Consolas, monospace;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.7;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-address {
+    background: #eaf0f8;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-pipeline {
+    max-width: 490px;
+    margin: 25px auto;
+    text-align: center;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-pipeline-item {
+    padding: 13px;
+    border: 1px solid #dce2ea;
+    border-radius: 5px;
+    background: #f7f9fc;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-pipeline-item strong {
+    display: block;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-pipeline-item span {
+    font-size: 13px;
+    color: #64748b;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-pipeline-arrow {
+    color: #5578a3;
+    padding: 7px 0;
+    font-size: 20px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-table-wrap {
+    overflow-x: auto;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-table th, body.page-homework-1-ex2 .hw-table td {
+    padding: 11px;
+    border-bottom: 1px solid #e2e5e9;
+    text-align: left;
+    vertical-align: top;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-table th {
+    background: #f2f5f9;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-stat {
+    padding: 14px 17px;
+    margin: 15px 0;
+    border-left: 3px solid #5578a3;
+    background: #f5f7fa;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-conclusion {
+    padding: 18px;
+    background: #f2f5f9;
+    border-radius: 5px;
+    margin: 25px 0;
+  }
+
+
+  
+body.page-homework-1-ex2 .hw-error {
+    color: #a32222;
+  }
+
+
+  
+@media  (max-width: 600px) {
+
+    
+body.page-homework-1-ex2 .hw-main {
+      padding: 0 18px;
+    }
+
+
+    
+body.page-homework-1-ex2 .hw-main h1 {
+      font-size: 30px;
+    }
+
+
+    
+body.page-homework-1-ex2 .hw-experiment {
+      padding: 15px;
+    }
+
+  
+}
+
+
+
+/* ===== Styles originally from homework-2.html (scoped for exact appearance) ===== */
+
+
+/* Homework 2 - Additional styling */
+
+
+
+body.page-homework-2 .hw-main {
+    max-width: 900px;
+    margin: 45px auto 80px;
+    padding: 0 25px;
+}
+
+
+
+body.page-homework-2 .hw-main h2 {
+    margin-top: 45px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dedede;
+}
+
+
+
+body.page-homework-2 .hw-main h3 {
+    margin-top: 25px;
+}
+
+
+
+body.page-homework-2 .hw-main p {
+    line-height: 1.85;
+}
+
+
+
+body.page-homework-2 .hw-subtitle, body.page-homework-2 .hw-small {
+    color: #64748b;
+}
+
+
+
+body.page-homework-2 .hw-small {
+    font-size: 14px;
+}
+
+
+
+body.page-homework-2 .hw-formula {
+    background: #f2f5f9;
+    border-left: 3px solid #263c59;
+    padding: 17px;
+    margin: 22px 0;
+    text-align: center;
+    color: #263c59;
+    overflow-wrap: anywhere;
+}
+
+
+
+body.page-homework-2 .hw-experiment {
+    background: #fafbfd;
+    border: 1px solid #dce2ea;
+    border-radius: 7px;
+    padding: 23px;
+    margin: 25px 0;
+}
+
+
+
+body.page-homework-2 .hw-experiment label {
+    display: block;
+    margin-top: 13px;
+    font-weight: 600;
+}
+
+
+
+body.page-homework-2 .hw-button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 4px;
+    background: #263c59;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    margin: 12px 7px 5px 0;
+}
+
+
+
+body.page-homework-2 .hw-button:hover {
+    background: #3b5c81;
+}
+
+
+
+body.page-homework-2 .hw-input {
+    font: inherit;
+    padding: 9px;
+    border: 1px solid #bac5d2;
+    border-radius: 4px;
+    margin: 6px 12px 6px 0;
+    max-width: 100%;
+}
+
+
+
+body.page-homework-2 textarea.hw-input {
+    display: block;
+    width: 100%;
+    min-height: 85px;
+    resize: vertical;
+}
+
+
+
+body.page-homework-2 .hw-output {
+    background: white;
+    border: 1px solid #e2e5e9;
+    padding: 13px 15px;
+    margin: 12px 0;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+
+
+body.page-homework-2 .hw-table-wrap {
+    overflow-x: auto;
+}
+
+
+
+body.page-homework-2 .hw-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+
+
+body.page-homework-2 .hw-table th, body.page-homework-2 .hw-table td {
+    padding: 11px;
+    border-bottom: 1px solid #e2e5e9;
+    text-align: left;
+}
+
+
+
+body.page-homework-2 .hw-table th {
+    background: #f2f5f9;
+}
+
+
+
+body.page-homework-2 .hw-stat {
+    padding: 14px 17px;
+    margin: 15px 0;
+    border-left: 3px solid #5578a3;
+    background: #f5f7fa;
+}
+
+
+
+body.page-homework-2 .bars {
+    display: grid;
+    gap: 5px;
+    margin: 15px 0;
+}
+
+
+
+body.page-homework-2 .bar-row {
+    display: grid;
+    grid-template-columns: 20px 1fr 55px;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+}
+
+
+
+body.page-homework-2 .bar-track {
+    height: 11px;
+    background: #e2e8f0;
+}
+
+
+
+body.page-homework-2 .bar-fill {
+    height: 100%;
+    background: #5578a3;
+}
+
+
+
+body.page-homework-2 .hw-conclusion {
+    padding: 18px;
+    background: #f2f5f9;
+    border-radius: 5px;
+    margin: 25px 0;
+}
+
+
+
+@media  (max-width: 600px) {
+
+    
+body.page-homework-2 .hw-experiment {
+        padding: 15px;
+    }
+
+
+    
+body.page-homework-2 .hw-main {
+        padding: 0 18px;
+    }
+
+
+}
+
+
+
+/* ===== Styles originally from index.html (scoped for exact appearance) ===== */
+
+    
+body.page-index * { box-sizing: border-box; }
+
+    
+body.page-index { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #303030; background: #ffffff; line-height: 1.7; }
+
+    
+body.page-index header { background: white; border-bottom: 1px solid #e5e5e5; }
+
+    
+body.page-index nav { max-width: 1100px; margin: auto; padding: 18px 25px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+
+    
+body.page-index .logo { font-size: 20px; font-weight: bold; text-decoration: none; color: #303030; }
+
+    
+body.page-index .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
+
+    
+body.page-index .nav-links a { font-size: 14px; text-decoration: none; color: #555; }
+
+    
+body.page-index .nav-links a:hover { color: #2457a7; }
+
+    
+body.page-index .nav-links .active { color: #2457a7; border-bottom: 2px solid #2457a7; padding-bottom: 5px; }
+
+    
+body.page-index .hero { background: #263c59; color: white; text-align: center; padding: 95px 20px; }
+
+    
+body.page-index .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 400; margin: 0; }
+
+    
+body.page-index .hero p { margin: 12px 0 0; font-size: 18px; color: #d9e2ed; }
+
+    
+body.page-index main { max-width: 900px; margin: 55px auto 80px; padding: 0 25px; }
+
+    
+body.page-index h2 { font-size: 27px; font-weight: 500; margin-bottom: 18px; }
+
+    
+body.page-index p { font-size: 16px; line-height: 1.8; }
+
+    
+body.page-index hr { border: 0; border-top: 1px solid #ddd; margin: 40px 0; }
+
+    
+body.page-index .homework-list { margin-top: 22px; }
+
+    
+body.page-index .homework { margin-bottom: 28px; }
+
+    
+body.page-index .homework a { color: #2457a7; font-size: 18px; font-weight: 500; text-decoration: none; }
+
+    
+body.page-index .homework a:hover { text-decoration: underline; }
+
+    
+body.page-index .homework p { margin: 5px 0 0; color: #666; font-size: 15px; }
+
+    
+body.page-index footer { padding: 25px; text-align: center; background: #f7f7f7; color: #777; font-size: 13px; border-top: 1px solid #e5e5e5; }
+
+    
+@media  (max-width: 600px) {
+
+      
+body.page-index nav { flex-direction: column; gap: 15px; }
+
+      
+body.page-index .nav-links { gap: 17px; justify-content: center; }
+
+      
+body.page-index .hero { padding: 65px 20px; }
+
+      
+body.page-index main { margin-top: 35px; }
+
+    
+}
+
+  
+
+/* Legend swatches moved out of inline style attributes. */
+.hw-legend-blue { background: #5578a3; }
+.hw-legend-green { background: #16a34a; }
+.hw-legend-red { background: #dc3545; }

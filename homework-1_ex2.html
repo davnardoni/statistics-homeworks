@@ -1,234 +1,33 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Homework 2 - Statistics</title>
+<link href="assets/style.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="assets/style.css">
-
-<style>
-  .hw-main {
-    max-width: 900px;
-    margin: 45px auto 80px;
-    padding: 0 25px;
-  }
-
-  .hw-main h1 {
-    font-size: 38px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-
-  .hw-main h2 {
-    margin-top: 45px;
-    padding-bottom: 9px;
-    border-bottom: 1px solid #dedede;
-  }
-
-  .hw-main h3 {
-    margin-top: 28px;
-  }
-
-  .hw-main p {
-    line-height: 1.85;
-  }
-
-  .hw-subtitle, .hw-small {
-    color: #64748b;
-  }
-
-  .hw-small {
-    font-size: 14px;
-  }
-
-  .hw-formula {
-    text-align: center;
-    background: #f2f5f9;
-    border-radius: 5px;
-    padding: 17px;
-    margin: 22px 0;
-    font-size: 17px;
-    color: #263c59;
-    overflow-wrap: anywhere;
-  }
-
-  .hw-experiment {
-    background: #fafbfd;
-    border: 1px solid #dce2ea;
-    border-radius: 7px;
-    padding: 23px;
-    margin: 25px 0;
-  }
-
-  .hw-button {
-    padding: 10px 18px;
-    border: 0;
-    border-radius: 4px;
-    background: #263c59;
-    color: white;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .hw-button:hover {
-    background: #3b5c81;
-  }
-
-  .hw-button:disabled {
-    opacity: .5;
-    cursor: wait;
-  }
-
-  .hw-input {
-    font: inherit;
-    padding: 9px;
-    border: 1px solid #bac5d2;
-    border-radius: 4px;
-    width: 90px;
-    margin: 10px 14px 10px 0;
-  }
-
-  .hw-output {
-    background: white;
-    border: 1px solid #e2e5e9;
-    padding: 13px 15px;
-    margin: 12px 0;
-    border-radius: 5px;
-  }
-
-  .hw-output strong {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #263c59;
-  }
-
-  .hw-output code {
-    display: block;
-    font-size: 13px;
-    font-family: Consolas, monospace;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    line-height: 1.7;
-  }
-
-  .hw-address {
-    background: #eaf0f8;
-  }
-
-  .hw-pipeline {
-    max-width: 490px;
-    margin: 25px auto;
-    text-align: center;
-  }
-
-  .hw-pipeline-item {
-    padding: 13px;
-    border: 1px solid #dce2ea;
-    border-radius: 5px;
-    background: #f7f9fc;
-  }
-
-  .hw-pipeline-item strong {
-    display: block;
-  }
-
-  .hw-pipeline-item span {
-    font-size: 13px;
-    color: #64748b;
-  }
-
-  .hw-pipeline-arrow {
-    color: #5578a3;
-    padding: 7px 0;
-    font-size: 20px;
-  }
-
-  .hw-table-wrap {
-    overflow-x: auto;
-  }
-
-  .hw-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 20px 0;
-    font-size: 14px;
-  }
-
-  .hw-table th, .hw-table td {
-    padding: 11px;
-    border-bottom: 1px solid #e2e5e9;
-    text-align: left;
-    vertical-align: top;
-  }
-
-  .hw-table th {
-    background: #f2f5f9;
-  }
-
-  .hw-stat {
-    padding: 14px 17px;
-    margin: 15px 0;
-    border-left: 3px solid #5578a3;
-    background: #f5f7fa;
-  }
-
-  .hw-conclusion {
-    padding: 18px;
-    background: #f2f5f9;
-    border-radius: 5px;
-    margin: 25px 0;
-  }
-
-  .hw-error {
-    color: #a32222;
-  }
-
-  @media (max-width: 600px) {
-    .hw-main {
-      padding: 0 18px;
-    }
-
-    .hw-main h1 {
-      font-size: 30px;
-    }
-
-    .hw-experiment {
-      padding: 15px;
-    }
-  }
-</style>
 </head>
-
-<body>
-
+<body class="page-homework-1-ex2">
 <header>
-  <nav>
-    <a href="index.html" class="logo">Statistics</a>
-
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="homework-1_ex1.html">Homework 1.1</a>
-      <a href="homework-1_ex2.html" class="active">Homework 1.2</a>
-      <a href="homework-2.html">Homework 2</a>
-    </div>
-  </nav>
+<nav>
+<a class="logo" href="index.html">Statistics</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="homework-1_ex1.html">Homework 1.1</a>
+<a class="active" href="homework-1_ex2.html">Homework 1.2</a>
+<a href="homework-2.html">Homework 2</a>
+</div>
+</nav>
 </header>
-
 <main class="hw-main">
-
 <h1>Homework 2</h1>
 <p class="hw-subtitle">
 From Wallet Seed to Ethereum Address:
 Hashing, Key Derivation and Cryptographic Primitives
 </p>
-
 <!-- INTRODUCTION -->
-
 <h2>1. Introduction</h2>
-
 <p>
 Cryptocurrency wallets use several cryptographic
 techniques to manage private keys, generate public
@@ -236,7 +35,6 @@ keys and derive blockchain addresses. Although these
 operations are connected, they serve different purposes
 and cannot be replaced by a single algorithm.
 </p>
-
 <p>
 In Ethereum, many software wallets use a mnemonic
 recovery phrase to generate a deterministic wallet.
@@ -244,7 +42,6 @@ Starting from this phrase, the wallet can derive
 multiple private keys and their corresponding
 public keys and addresses.
 </p>
-
 <p>
 The process involves several standards:
 <strong>BIP-39, BIP-32, BIP-44, secp256k1,
@@ -254,64 +51,46 @@ the role of each component, explore a practical
 example and discuss the relevant statistical
 and cryptographic properties.
 </p>
-
 <!-- PIPELINE -->
-
 <h2>2. Ethereum Wallet Derivation Pipeline</h2>
-
 <p>
 The following diagram summarizes the main steps
 used by a typical hierarchical deterministic
 Ethereum wallet, from its mnemonic phrase to
 the final checksummed address.
 </p>
-
 <div class="hw-pipeline">
-
-  <div class="hw-pipeline-item">
-    <strong>Mnemonic Phrase</strong>
-    <span>Human-readable recovery words</span>
-  </div>
-
-  <div class="hw-pipeline-arrow">↓ BIP-39</div>
-
-  <div class="hw-pipeline-item">
-    <strong>Seed</strong>
-    <span>512-bit binary value</span>
-  </div>
-
-  <div class="hw-pipeline-arrow">↓ BIP-32 / BIP-44</div>
-
-  <div class="hw-pipeline-item">
-    <strong>Private Key</strong>
-    <span>Derived using an HD wallet path</span>
-  </div>
-
-  <div class="hw-pipeline-arrow">↓ secp256k1</div>
-
-  <div class="hw-pipeline-item">
-    <strong>Public Key</strong>
-    <span>Elliptic-curve scalar multiplication</span>
-  </div>
-
-  <div class="hw-pipeline-arrow">↓ Keccak-256</div>
-
-  <div class="hw-pipeline-item">
-    <strong>Ethereum Address</strong>
-    <span>Last 20 bytes of the hash</span>
-  </div>
-
-  <div class="hw-pipeline-arrow">↓ EIP-55</div>
-
-  <div class="hw-pipeline-item">
-    <strong>Checksummed Address</strong>
-    <span>Mixed-case hexadecimal representation</span>
-  </div>
-
+<div class="hw-pipeline-item">
+<strong>Mnemonic Phrase</strong>
+<span>Human-readable recovery words</span>
 </div>
-
+<div class="hw-pipeline-arrow">↓ BIP-39</div>
+<div class="hw-pipeline-item">
+<strong>Seed</strong>
+<span>512-bit binary value</span>
+</div>
+<div class="hw-pipeline-arrow">↓ BIP-32 / BIP-44</div>
+<div class="hw-pipeline-item">
+<strong>Private Key</strong>
+<span>Derived using an HD wallet path</span>
+</div>
+<div class="hw-pipeline-arrow">↓ secp256k1</div>
+<div class="hw-pipeline-item">
+<strong>Public Key</strong>
+<span>Elliptic-curve scalar multiplication</span>
+</div>
+<div class="hw-pipeline-arrow">↓ Keccak-256</div>
+<div class="hw-pipeline-item">
+<strong>Ethereum Address</strong>
+<span>Last 20 bytes of the hash</span>
+</div>
+<div class="hw-pipeline-arrow">↓ EIP-55</div>
+<div class="hw-pipeline-item">
+<strong>Checksummed Address</strong>
+<span>Mixed-case hexadecimal representation</span>
+</div>
+</div>
 <h3>2.1 BIP-39: Mnemonic Phrase and Seed</h3>
-
 <p>
 BIP-39 defines a method for representing randomly
 generated entropy as a human-readable sequence
@@ -319,14 +98,12 @@ of words, typically 12 or 24 words.
 This makes wallet backup and recovery easier
 than storing a long binary secret.
 </p>
-
 <p>
 The mnemonic is converted into a 512-bit seed
 using PBKDF2 with HMAC-SHA512, 2048 iterations
 and a salt consisting of the string "mnemonic"
 followed by an optional passphrase.
 </p>
-
 <p>
 The initial mnemonic is generated from random
 entropy and includes checksum information.
@@ -334,9 +111,7 @@ The subsequent mnemonic-to-seed operation
 is deterministic: the same mnemonic and
 passphrase always produce the same seed.
 </p>
-
 <h3>2.2 BIP-32: Hierarchical Deterministic Wallets</h3>
-
 <p>
 BIP-32 defines how to derive a hierarchy of
 cryptographic keys from a single master seed.
@@ -344,25 +119,20 @@ It uses HMAC-SHA512 to generate master key
 material and derive child keys through
 a hierarchical structure.
 </p>
-
 <p>
 This allows a wallet to generate many accounts
 without independently creating and backing up
 a new random private key for every address.
 </p>
-
 <h3>2.3 BIP-44: Derivation Paths</h3>
-
 <p>
 BIP-44 specifies a common structure for HD
 wallet derivation paths. For Ethereum, one
 widely used path is:
 </p>
-
 <div class="hw-formula">
   m/44'/60'/0'/0/0
 </div>
-
 <p>
 Here, 44' identifies the BIP-44 purpose,
 60' identifies Ethereum, 0' is the account
@@ -370,24 +140,19 @@ index, the following 0 is the change branch,
 and the final 0 selects the address index.
 An apostrophe indicates hardened derivation.
 </p>
-
 <p>
 Changing the address index allows us to derive
 multiple different addresses from the same seed.
 The exact derivation paths used by wallet software
 can vary.
 </p>
-
 <h3>2.4 secp256k1: Public-Key Cryptography</h3>
-
 <p>
 Once a private key has been derived, the public
 key is generated through elliptic-curve scalar
 multiplication, as studied in Homework 1:
 </p>
-
 <div class="hw-formula">Q = kG</div>
-
 <p>
 Ethereum uses the secp256k1 elliptic curve.
 The private key is a scalar, while the public
@@ -396,33 +161,27 @@ The security of the operation is based on
 the computational difficulty of solving
 the Elliptic Curve Discrete Logarithm Problem.
 </p>
-
 <p>
 This public/private key relationship also
 supports digital signatures, which allow
 Ethereum users to authorize transactions
 without revealing their private keys.
 </p>
-
 <h3>2.5 Keccak-256: Ethereum Address Generation</h3>
-
 <p>
 An Ethereum externally owned account address
 is obtained by hashing the 64-byte uncompressed
 public-key coordinates (excluding the 0x04
 format prefix) with Keccak-256.
 </p>
-
 <p>
 Keccak-256 produces a 256-bit hash.
 Ethereum takes the last 20 bytes, equivalent
 to 160 bits, as the account address.
 </p>
-
 <div class="hw-formula">
   Address = last 20 bytes of Keccak-256(Public Key)
 </div>
-
 <p>
 The address is displayed as 40 hexadecimal
 characters preceded by "0x".
@@ -430,15 +189,12 @@ Hashing the public key is distinct from
 the elliptic-curve multiplication that
 generated it.
 </p>
-
 <h3>2.6 EIP-55: Address Checksum</h3>
-
 <p>
 EIP-55 introduces a mixed-case representation
 of Ethereum addresses to help detect accidental
 typing errors.
 </p>
-
 <p>
 It applies Keccak-256 to the lowercase
 hexadecimal address string and uses bits
@@ -446,25 +202,20 @@ of the resulting hash to determine which
 alphabetical hexadecimal characters
 should be uppercase.
 </p>
-
 <p>
 This process does not create a new address
 or change its underlying 160-bit value.
 It only changes its textual representation
 to provide error-detection information.
 </p>
-
 <!-- EXPERIMENT -->
-
 <h2>3. Practical Experiment</h2>
-
 <p>
 To observe the complete pipeline, we use a
 publicly known BIP-39 test mnemonic.
 The JavaScript library ethers.js performs
 the standard cryptographic operations.
 </p>
-
 <p>
 The example generates an Ethereum wallet
 using a BIP-44 derivation path. By changing
@@ -472,84 +223,59 @@ the address index, we can derive different
 accounts while keeping the same mnemonic
 and seed.
 </p>
-
 <div class="hw-experiment">
-
-  <p>
-    <strong>Demonstration mnemonic:</strong>
-  </p>
-
-  <div class="hw-output">
-    <code id="mnemonic">
+<p>
+<strong>Demonstration mnemonic:</strong>
+</p>
+<div class="hw-output">
+<code id="mnemonic">
       abandon abandon abandon abandon abandon abandon
       abandon abandon abandon abandon abandon about
     </code>
-  </div>
-
-  <p class="hw-small">
+</div>
+<p class="hw-small">
     This phrase is publicly known and used only
     for educational purposes. Never use it
     to store real cryptocurrency.
     Never enter a real recovery phrase on this page.
   </p>
-
-  <label for="accountIndex">
+<label for="accountIndex">
     Address index:
   </label>
-
-  <input
-    class="hw-input"
-    type="number"
-    id="accountIndex"
-    min="0"
-    max="20"
-    step="1"
-    value="0"
-  >
-
-  <button class="hw-button" id="deriveButton">
+<input class="hw-input" id="accountIndex" max="20" min="0" step="1" type="number" value="0"/>
+<button class="hw-button" id="deriveButton">
     Derive Address
   </button>
-
-  <p id="status" class="hw-small" role="status"></p>
-
-  <div class="hw-output">
-    <strong>BIP-44 Derivation Path</strong>
-    <code id="pathOutput">-</code>
-  </div>
-
-  <div class="hw-output">
-    <strong>BIP-39 Seed (512 bits)</strong>
-    <code id="seedOutput">-</code>
-  </div>
-
-  <div class="hw-output">
-    <strong>Derived Private Key (256-bit scalar)</strong>
-    <code id="privateOutput">-</code>
-  </div>
-
-  <div class="hw-output">
-    <strong>Public Key (uncompressed)</strong>
-    <code id="publicOutput">-</code>
-  </div>
-
-  <div class="hw-output">
-    <strong>Keccak-256 Hash</strong>
-    <code id="hashOutput">-</code>
-  </div>
-
-  <div class="hw-output">
-    <strong>Ethereum Address (lowercase)</strong>
-    <code id="addressOutput">-</code>
-  </div>
-
-  <div class="hw-output hw-address">
-    <strong>EIP-55 Checksummed Address</strong>
-    <code id="checksumOutput">-</code>
-  </div>
-
+<p class="hw-small" id="status" role="status"></p>
+<div class="hw-output">
+<strong>BIP-44 Derivation Path</strong>
+<code id="pathOutput">-</code>
 </div>
-
+<div class="hw-output">
+<strong>BIP-39 Seed (512 bits)</strong>
+<code id="seedOutput">-</code>
+</div>
+<div class="hw-output">
+<strong>Derived Private Key (256-bit scalar)</strong>
+<code id="privateOutput">-</code>
+</div>
+<div class="hw-output">
+<strong>Public Key (uncompressed)</strong>
+<code id="publicOutput">-</code>
+</div>
+<div class="hw-output">
+<strong>Keccak-256 Hash</strong>
+<code id="hashOutput">-</code>
+</div>
+<div class="hw-output">
+<strong>Ethereum Address (lowercase)</strong>
+<code id="addressOutput">-</code>
+</div>
+<div class="hw-output hw-address">
+<strong>EIP-55 Checksummed Address</strong>
+<code id="checksumOutput">-</code>
+</div>
+</div>
 <p>
 This experiment shows that changing the
 derivation index changes the derived private
@@ -558,11 +284,8 @@ remains unchanged.
 The final checksummed address represents
 the same account as the lowercase address.
 </p>
-
 <!-- DISTINCTIONS -->
-
 <h2>4. Different Cryptographic Operations</h2>
-
 <p>
 The wallet pipeline combines several distinct
 operations. It is important not to confuse
@@ -570,51 +293,49 @@ random key generation, deterministic key
 derivation, public-key cryptography, hashing,
 checksums and encoding.
 </p>
-
 <div class="hw-table-wrap">
 <table class="hw-table">
-  <thead>
-    <tr>
-      <th>Operation</th>
-      <th>Purpose</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Key generation</td>
-      <td>Create new unpredictable secret material</td>
-      <td>Random entropy for a wallet</td>
-    </tr>
-    <tr>
-      <td>Key derivation</td>
-      <td>Derive keys deterministically from a seed</td>
-      <td>BIP-32 / BIP-44</td>
-    </tr>
-    <tr>
-      <td>Public-key cryptography</td>
-      <td>Relate private and public keys; enable signatures</td>
-      <td>secp256k1</td>
-    </tr>
-    <tr>
-      <td>Hashing</td>
-      <td>Produce a fixed-size cryptographic digest</td>
-      <td>Keccak-256</td>
-    </tr>
-    <tr>
-      <td>Checksum</td>
-      <td>Detect some accidental errors</td>
-      <td>EIP-55</td>
-    </tr>
-    <tr>
-      <td>Encoding</td>
-      <td>Represent information in a readable format</td>
-      <td>Mnemonic words, hexadecimal address</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key generation</td>
+<td>Create new unpredictable secret material</td>
+<td>Random entropy for a wallet</td>
+</tr>
+<tr>
+<td>Key derivation</td>
+<td>Derive keys deterministically from a seed</td>
+<td>BIP-32 / BIP-44</td>
+</tr>
+<tr>
+<td>Public-key cryptography</td>
+<td>Relate private and public keys; enable signatures</td>
+<td>secp256k1</td>
+</tr>
+<tr>
+<td>Hashing</td>
+<td>Produce a fixed-size cryptographic digest</td>
+<td>Keccak-256</td>
+</tr>
+<tr>
+<td>Checksum</td>
+<td>Detect some accidental errors</td>
+<td>EIP-55</td>
+</tr>
+<tr>
+<td>Encoding</td>
+<td>Represent information in a readable format</td>
+<td>Mnemonic words, hexadecimal address</td>
+</tr>
+</tbody>
 </table>
 </div>
-
 <p>
 For example, encoding a value into hexadecimal
 does not make it cryptographically secure.
@@ -622,17 +343,13 @@ Similarly, a checksum is designed to detect
 errors, not to provide the same security
 guarantees as a digital signature.
 </p>
-
 <!-- STATISTICAL EXPLORATION -->
-
 <h2>5. Statistical Properties</h2>
-
 <p>
 We can examine some elementary statistical
 properties of the addresses derived from the
 same mnemonic using different BIP-44 indices.
 </p>
-
 <p>
 In this experiment, we derive eight addresses
 using indices 0 through 7. We then count
@@ -640,29 +357,20 @@ their zero and one bits, examine hexadecimal
 digit frequencies, and compare consecutive
 addresses using their Hamming distance.
 </p>
-
 <div class="hw-experiment">
-
-  <button class="hw-button" id="statisticsButton">
+<button class="hw-button" id="statisticsButton">
     Run Statistical Experiment
   </button>
-
-  <p id="statStatus" class="hw-small" role="status"></p>
-
-  <div class="hw-stat" id="bitStats">
+<p class="hw-small" id="statStatus" role="status"></p>
+<div class="hw-stat" id="bitStats">
     Run the experiment to see the results.
   </div>
-
-  <div class="hw-stat" id="digitStats">
-  </div>
-
-  <div class="hw-stat" id="hammingStats">
-  </div>
-
+<div class="hw-stat" id="digitStats">
 </div>
-
+<div class="hw-stat" id="hammingStats">
+</div>
+</div>
 <h3>5.1 Bit Distribution and Uniformity</h3>
-
 <p>
 An Ethereum address consists of 160 bits.
 For eight addresses, we obtain a total
@@ -670,29 +378,24 @@ of 1280 output bits.
 Counting zeros and ones provides a simple
 measure of observed bit balance.
 </p>
-
 <p>
 For a uniform random bit string, each bit
 has probability 1/2 of being zero or one.
 Therefore, we may expect approximately equal
 frequencies in a sufficiently large sample.
 </p>
-
 <p>
 However, observing balanced bits in a small
 sample does not prove that the key-derivation
 process or the hash function is secure.
 </p>
-
 <h3>5.2 Hexadecimal Digit Distribution</h3>
-
 <p>
 Each Ethereum address contains 40 hexadecimal
 digits. In an ideal uniform distribution,
 each of the 16 possible symbols would have
 equal probability.
 </p>
-
 <p>
 We can count the frequency of each digit
 in the derived addresses and compare the
@@ -700,23 +403,19 @@ observed values.
 Since we use only eight addresses, random
 fluctuations are expected.
 </p>
-
 <h3>5.3 Avalanche-like Behaviour</h3>
-
 <p>
 To explore the sensitivity of the output
 to changing derivation indices, we compare
 consecutive addresses with the Hamming
 distance.
 </p>
-
 <p>
 For two independent uniformly distributed
 160-bit strings, the expected Hamming distance
 is 80 bits. We use this value as a statistical
 reference, not as a security test.
 </p>
-
 <p>
 Importantly, changing a derivation index
 is not equivalent to flipping one input bit
@@ -724,7 +423,6 @@ of Keccak-256. Therefore, this experiment
 does not directly measure the strict avalanche
 criterion of the hash function.
 </p>
-
 <p>
 The essential cryptographic properties of
 the pipeline include strong initial entropy,
@@ -734,69 +432,63 @@ and the preimage resistance of the hash
 function. Output-frequency experiments alone
 cannot establish these properties.
 </p>
-
 <!-- HISTORICAL CONTEXT -->
-
 <h2>6. Historical Context</h2>
-
 <p>
 The cryptographic primitives used in Ethereum
 wallets were not developed simultaneously.
 They combine ideas introduced over several
 decades, each solving a different problem.
 </p>
-
 <div class="hw-table-wrap">
 <table class="hw-table">
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th>Technology</th>
-      <th>Contribution</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1977</td>
-      <td>RSA</td>
-      <td>Public-key cryptography</td>
-    </tr>
-    <tr>
-      <td>2001</td>
-      <td>SHA-2 / SHA-512</td>
-      <td>Standardized cryptographic hashing</td>
-    </tr>
-    <tr>
-      <td>2012</td>
-      <td>BIP-32</td>
-      <td>Hierarchical deterministic wallets</td>
-    </tr>
-    <tr>
-      <td>2013</td>
-      <td>BIP-39</td>
-      <td>Mnemonic recovery phrases</td>
-    </tr>
-    <tr>
-      <td>2014</td>
-      <td>BIP-44</td>
-      <td>Standardized multi-account paths</td>
-    </tr>
-    <tr>
-      <td>2015</td>
-      <td>SHA-3</td>
-      <td>NIST standard based on Keccak</td>
-    </tr>
-    <tr>
-      <td>2016</td>
-      <td>EIP-55</td>
-      <td>Mixed-case checksum addresses</td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Year</th>
+<th>Technology</th>
+<th>Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1977</td>
+<td>RSA</td>
+<td>Public-key cryptography</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>SHA-2 / SHA-512</td>
+<td>Standardized cryptographic hashing</td>
+</tr>
+<tr>
+<td>2012</td>
+<td>BIP-32</td>
+<td>Hierarchical deterministic wallets</td>
+</tr>
+<tr>
+<td>2013</td>
+<td>BIP-39</td>
+<td>Mnemonic recovery phrases</td>
+</tr>
+<tr>
+<td>2014</td>
+<td>BIP-44</td>
+<td>Standardized multi-account paths</td>
+</tr>
+<tr>
+<td>2015</td>
+<td>SHA-3</td>
+<td>NIST standard based on Keccak</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>EIP-55</td>
+<td>Mixed-case checksum addresses</td>
+</tr>
+</tbody>
 </table>
 </div>
-
 <h3>SHA-512 vs Keccak-256 / SHA-3</h3>
-
 <p>
 SHA-512 belongs to the SHA-2 family and uses a
 different internal construction from Keccak.
@@ -804,14 +496,12 @@ It produces a 512-bit output and is used
 within HMAC-SHA512 for key derivation in
 BIP-39 and BIP-32.
 </p>
-
 <p>
 Keccak was selected as the foundation of the
 SHA-3 standard, finalized by NIST in 2015.
 Ethereum uses Keccak-256 for several hashing
 operations, including address generation.
 </p>
-
 <p>
 Although Keccak-256 and SHA3-256 are closely
 related, they are not identical. The
@@ -821,18 +511,14 @@ from the Keccak-256 variant used by Ethereum.
 Consequently, the two functions generally
 produce different digests for the same input.
 </p>
-
 <!-- CONCLUSIONS -->
-
 <h2>7. Discussion and Conclusions</h2>
-
 <p>
 The Ethereum wallet pipeline illustrates why
 a single algorithm cannot replace all the
 cryptographic mechanisms involved in wallet
 creation and account management.
 </p>
-
 <p>
 BIP-39 provides a practical recovery mechanism
 and converts the mnemonic into a seed.
@@ -844,7 +530,6 @@ to derive Ethereum addresses.
 Finally, EIP-55 adds error-detection
 information through mixed-case encoding.
 </p>
-
 <p>
 These components provide complementary
 functions. Key derivation manages multiple
@@ -854,12 +539,9 @@ processes data into fixed-size digests,
 and checksums help detect mistakes in
 address transcription.
 </p>
-
 <div class="hw-conclusion">
-
-  <strong>Conclusion</strong>
-
-  <p>
+<strong>Conclusion</strong>
+<p>
   This homework examined the main stages
   involved in deriving an Ethereum address
   from a mnemonic recovery phrase.
@@ -867,8 +549,7 @@ address transcription.
   how a single mnemonic can generate
   multiple deterministic accounts.
   </p>
-
-  <p>
+<p>
   The statistical exploration considered
   bit frequencies, hexadecimal digit
   distributions and Hamming distances
@@ -878,19 +559,15 @@ address transcription.
   independently prove cryptographic
   security.
   </p>
-
-  <p>
+<p>
   The central conclusion is that secure
   Ethereum wallet operation depends on
   combining several cryptographic
   techniques, each designed for a
   specific purpose.
   </p>
-
 </div>
-
 <h3>References</h3>
-
 <p class="hw-small">
 <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">
 BIP-39
@@ -911,275 +588,12 @@ EIP-55
 NIST FIPS 202
 </a>
 </p>
-
 </main>
-
 <footer>
 Statistics - Academic Year 2026/2027
 </footer>
-
 <!-- ethers.js: standard cryptographic implementations -->
 <script src="https://cdn.jsdelivr.net/npm/ethers@6.15.0/dist/ethers.umd.min.js"></script>
-
-<script>
-"use strict";
-
-// Public BIP-39 test vector.
-// NEVER substitute a real wallet recovery phrase.
-const DEMO_MNEMONIC =
-  "abandon abandon abandon abandon " +
-  "abandon abandon abandon abandon " +
-  "abandon abandon abandon about";
-
-const BASE_PATH = "m/44'/60'/0'/0/";
-
-// Derive one account from the fixed test mnemonic.
-function deriveAccount(index) {
-  const path = BASE_PATH + index;
-
-  const mnemonic = ethers.Mnemonic.fromPhrase(
-    DEMO_MNEMONIC
-  );
-
-  const seed = mnemonic.computeSeed();
-
-  const wallet = ethers.HDNodeWallet.fromPhrase(
-    DEMO_MNEMONIC,
-    "",
-    path
-  );
-
-  const publicKey = ethers.SigningKey.computePublicKey(
-    wallet.privateKey,
-    false
-  );
-
-  // The 0x04 prefix is excluded from the Keccak input.
-  const publicCoordinates = "0x" + publicKey.slice(4);
-  const hash = ethers.keccak256(publicCoordinates);
-
-  // Last 20 bytes (40 hexadecimal characters).
-  const lowercaseAddress =
-    "0x" + hash.slice(-40);
-
-  const checksummedAddress =
-    ethers.getAddress(lowercaseAddress);
-
-  return {
-    path,
-    seed,
-    privateKey: wallet.privateKey,
-    publicKey,
-    hash,
-    lowercaseAddress,
-    checksummedAddress
-  };
-}
-
-// Update a text element safely.
-function show(id, value) {
-  document.getElementById(id).textContent = value;
-}
-
-// Interactive wallet derivation.
-function runDerivation() {
-  if (typeof ethers === "undefined") {
-    show("status",
-      "The ethers.js library could not be loaded. " +
-      "Check your internet connection.");
-    return;
-  }
-
-  const index = Number(
-    document.getElementById("accountIndex").value
-  );
-
-  if (!Number.isInteger(index) ||
-      index < 0 || index > 20) {
-    show("status", "Choose an index from 0 to 20.");
-    return;
-  }
-
-  try {
-    const result = deriveAccount(index);
-
-    show("pathOutput", result.path);
-    show("seedOutput", result.seed);
-    show("privateOutput", result.privateKey);
-    show("publicOutput", result.publicKey);
-    show("hashOutput", result.hash);
-    show("addressOutput", result.lowercaseAddress);
-    show("checksumOutput", result.checksummedAddress);
-
-    // Independent library address calculation check.
-    const verifiedAddress = ethers.computeAddress(
-      result.publicKey
-    );
-
-    if (verifiedAddress !== result.checksummedAddress) {
-      throw new Error("Address verification failed.");
-    }
-
-    show("status",
-      "Address derived successfully using " +
-      "the public demonstration mnemonic.");
-
-  } catch (error) {
-    show("status", "Derivation error: " + error.message);
-  }
-}
-
-// Count one-bits in hexadecimal data.
-function countOneBits(hex) {
-  const bits = {
-    "0":0, "1":1, "2":1, "3":2,
-    "4":1, "5":2, "6":2, "7":3,
-    "8":1, "9":2, "a":2, "b":3,
-    "c":2, "d":3, "e":3, "f":4
-  };
-
-  let count = 0;
-
-  for (const c of hex.toLowerCase().replace(/^0x/, "")) {
-    count += bits[c];
-  }
-
-  return count;
-}
-
-// Hamming distance between hexadecimal addresses.
-function hammingDistance(a, b) {
-  const x = a.slice(2).toLowerCase();
-  const y = b.slice(2).toLowerCase();
-
-  let distance = 0;
-
-  for (let i = 0; i < x.length; i++) {
-    const xor =
-      parseInt(x[i], 16) ^ parseInt(y[i], 16);
-
-    distance += countOneBits(xor.toString(16));
-  }
-
-  return distance;
-}
-
-// Statistical exploration using address indices 0..7.
-function runStatistics() {
-  if (typeof ethers === "undefined") {
-    show("statStatus",
-      "The ethers.js library is unavailable.");
-    return;
-  }
-
-  const button =
-    document.getElementById("statisticsButton");
-
-  button.disabled = true;
-  show("statStatus", "Computing eight demo addresses...");
-
-  try {
-    const addresses = [];
-
-    for (let i = 0; i < 8; i++) {
-      const account = deriveAccount(i);
-      addresses.push(account.lowercaseAddress);
-    }
-
-    // 8 addresses * 160 bits each.
-    const totalBits = addresses.length * 160;
-
-    const oneBits = addresses.reduce(
-      (sum, address) => sum + countOneBits(address),
-      0
-    );
-
-    const zeroBits = totalBits - oneBits;
-
-    show(
-      "bitStats",
-      "Bit distribution: " +
-      oneBits + " ones (" +
-      (100 * oneBits / totalBits).toFixed(2) +
-      "%), " +
-      zeroBits + " zeros (" +
-      (100 * zeroBits / totalBits).toFixed(2) +
-      "%). Total: " + totalBits + " bits."
-    );
-
-    // Frequency of hexadecimal symbols.
-    const frequencies = {};
-
-    for (const digit of "0123456789abcdef") {
-      frequencies[digit] = 0;
-    }
-
-    for (const address of addresses) {
-      for (const digit of address.slice(2)) {
-        frequencies[digit]++;
-      }
-    }
-
-    const frequencyText = Object.entries(frequencies)
-      .map(([digit, count]) => `${digit}: ${count}`)
-      .join(" | ");
-
-    show(
-      "digitStats",
-      "Hexadecimal digit frequencies " +
-      "(320 digits): " + frequencyText
-    );
-
-    // Hamming distances of consecutive addresses.
-    const distances = [];
-
-    for (let i = 0; i < addresses.length - 1; i++) {
-      distances.push(
-        hammingDistance(addresses[i], addresses[i + 1])
-      );
-    }
-
-    const average = distances.reduce(
-      (a, b) => a + b, 0
-    ) / distances.length;
-
-    show(
-      "hammingStats",
-      "Consecutive-address Hamming distances: " +
-      distances.join(", ") + " bits. " +
-      "Average: " + average.toFixed(2) +
-      " / 160 bits (reference expectation: 80)."
-    );
-
-    show(
-      "statStatus",
-      "Statistical experiment completed."
-    );
-
-  } catch (error) {
-    show("statStatus",
-      "Statistical experiment failed: " + error.message);
-  } finally {
-    button.disabled = false;
-  }
-}
-
-// Event handlers
-document.getElementById("deriveButton")
-  .addEventListener("click", runDerivation);
-
-document.getElementById("statisticsButton")
-  .addEventListener("click", runStatistics);
-
-document.getElementById("accountIndex")
-  .addEventListener("keydown", event => {
-    if (event.key === "Enter") runDerivation();
-  });
-
-// Start with the first demo account.
-runDerivation();
-
-</script>
-
+<script src="assets/js/homework-1_ex2.js"></script>
 </body>
 </html>
