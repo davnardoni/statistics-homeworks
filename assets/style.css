@@ -292,14 +292,14 @@ footer {
 
 
 
-/* ===== Styles originally from homework-1_ex1.html (scoped for exact appearance) ===== */
+/* ===== Styles originally from homework-1.html (scoped for exact appearance) ===== */
 
 
 /* Homework 1: additional page styling */
 
 
 
-body.page-homework-1-ex1 .hw-main {
+body.page-homework-1 .hw-main {
   max-width: 900px;
   margin: 45px auto 80px;
   padding: 0 25px;
@@ -307,7 +307,7 @@ body.page-homework-1-ex1 .hw-main {
 
 
 
-body.page-homework-1-ex1 .hw-main h1 {
+body.page-homework-1 .hw-main h1 {
   font-size: 38px;
   font-weight: 500;
   margin-bottom: 8px;
@@ -315,7 +315,7 @@ body.page-homework-1-ex1 .hw-main h1 {
 
 
 
-body.page-homework-1-ex1 .hw-main h2 {
+body.page-homework-1 .hw-main h2 {
   margin-top: 45px;
   padding-bottom: 9px;
   border-bottom: 1px solid #dedede;
@@ -323,25 +323,25 @@ body.page-homework-1-ex1 .hw-main h2 {
 
 
 
-body.page-homework-1-ex1 .hw-main h3 {
+body.page-homework-1 .hw-main h3 {
   margin-top: 30px;
 }
 
 
 
-body.page-homework-1-ex1 .hw-main p {
+body.page-homework-1 .hw-main p {
   line-height: 1.85;
 }
 
 
 
-body.page-homework-1-ex1 .hw-subtitle {
+body.page-homework-1 .hw-subtitle {
   color: #64748b;
 }
 
 
 
-body.page-homework-1-ex1 .hw-formula {
+body.page-homework-1 .hw-formula {
   text-align: center;
   background: #f2f5f9;
   border-radius: 5px;
@@ -353,7 +353,7 @@ body.page-homework-1-ex1 .hw-formula {
 
 
 
-body.page-homework-1-ex1 .hw-experiment {
+body.page-homework-1 .hw-experiment {
   border: 1px solid #dce2ea;
   border-radius: 7px;
   padding: 23px;
@@ -363,7 +363,7 @@ body.page-homework-1-ex1 .hw-experiment {
 
 
 
-body.page-homework-1-ex1 .hw-controls {
+body.page-homework-1 .hw-controls {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
@@ -373,7 +373,7 @@ body.page-homework-1-ex1 .hw-controls {
 
 
 
-body.page-homework-1-ex1 .hw-controls input {
+body.page-homework-1 .hw-controls input {
   width: 85px;
   padding: 9px;
   font: inherit;
@@ -383,7 +383,7 @@ body.page-homework-1-ex1 .hw-controls input {
 
 
 
-body.page-homework-1-ex1 .hw-button {
+body.page-homework-1 .hw-button {
   padding: 10px 17px;
   background: #263c59;
   color: white;
@@ -395,20 +395,20 @@ body.page-homework-1-ex1 .hw-button {
 
 
 
-body.page-homework-1-ex1 .hw-button:hover {
+body.page-homework-1 .hw-button:hover {
   background: #3b5c81;
 }
 
 
 
-body.page-homework-1-ex1 .hw-button:disabled {
+body.page-homework-1 .hw-button:disabled {
   opacity: .45;
   cursor: not-allowed;
 }
 
 
 
-body.page-homework-1-ex1 .hw-secondary {
+body.page-homework-1 .hw-secondary {
   background: white;
   color: #263c59;
   border: 1px solid #aebdce;
@@ -416,13 +416,13 @@ body.page-homework-1-ex1 .hw-secondary {
 
 
 
-body.page-homework-1-ex1 .hw-secondary:hover {
+body.page-homework-1 .hw-secondary:hover {
   background: #edf1f6;
 }
 
 
 
-body.page-homework-1-ex1 .hw-result {
+body.page-homework-1 .hw-result {
   margin: 22px 0 8px;
   padding: 17px;
   text-align: center;
@@ -434,20 +434,20 @@ body.page-homework-1-ex1 .hw-result {
 
 
 
-body.page-homework-1-ex1 .hw-small {
+body.page-homework-1 .hw-small {
   color: #64748b;
   font-size: 14px;
 }
 
 
 
-body.page-homework-1-ex1 .hw-table-wrap {
+body.page-homework-1 .hw-table-wrap {
   overflow-x: auto;
 }
 
 
 
-body.page-homework-1-ex1 .hw-table {
+body.page-homework-1 .hw-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -456,7 +456,7 @@ body.page-homework-1-ex1 .hw-table {
 
 
 
-body.page-homework-1-ex1 .hw-table th, body.page-homework-1-ex1 .hw-table td {
+body.page-homework-1 .hw-table th, body.page-homework-1 .hw-table td {
   padding: 10px 12px;
   border-bottom: 1px solid #e2e5e9;
   text-align: left;
@@ -464,20 +464,20 @@ body.page-homework-1-ex1 .hw-table th, body.page-homework-1-ex1 .hw-table td {
 
 
 
-body.page-homework-1-ex1 .hw-table th {
+body.page-homework-1 .hw-table th {
   background: #f2f5f9;
 }
 
 
 
-body.page-homework-1-ex1 .hw-table tr.highlight {
+body.page-homework-1 .hw-table tr.highlight {
   background: #eaf0f8;
   font-weight: 600;
 }
 
 
 
-body.page-homework-1-ex1 .hw-animation {
+body.page-homework-1 .hw-animation {
   margin: 25px 0;
   border: 1px solid #dce2ea;
   border-radius: 7px;
@@ -487,7 +487,7 @@ body.page-homework-1-ex1 .hw-animation {
 
 
 
-body.page-homework-1-ex1 .hw-animation svg {
+body.page-homework-1 .hw-animation svg {
   display: block;
   width: 100%;
   max-width: 440px;
@@ -496,7 +496,7 @@ body.page-homework-1-ex1 .hw-animation svg {
 
 
 
-body.page-homework-1-ex1 .hw-animation-info {
+body.page-homework-1 .hw-animation-info {
   text-align: center;
   margin-bottom: 16px;
   min-height: 30px;
@@ -505,7 +505,7 @@ body.page-homework-1-ex1 .hw-animation-info {
 
 
 
-body.page-homework-1-ex1 .hw-animation-controls {
+body.page-homework-1 .hw-animation-controls {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -515,7 +515,7 @@ body.page-homework-1-ex1 .hw-animation-controls {
 
 
 
-body.page-homework-1-ex1 .hw-legend {
+body.page-homework-1 .hw-legend {
   text-align: center;
   font-size: 13px;
   color: #64748b;
@@ -523,13 +523,13 @@ body.page-homework-1-ex1 .hw-legend {
 
 
 
-body.page-homework-1-ex1 .hw-legend span {
+body.page-homework-1 .hw-legend span {
   margin: 0 8px;
 }
 
 
 
-body.page-homework-1-ex1 .hw-dot {
+body.page-homework-1 .hw-dot {
   display: inline-block;
   width: 9px;
   height: 9px;
@@ -539,14 +539,14 @@ body.page-homework-1-ex1 .hw-dot {
 
 
 
-body.page-homework-1-ex1 .hw-bars {
+body.page-homework-1 .hw-bars {
   margin: 18px 0 25px;
   max-width: 600px;
 }
 
 
 
-body.page-homework-1-ex1 .hw-bar-row {
+body.page-homework-1 .hw-bar-row {
   display: grid;
   grid-template-columns: 38px 1fr 35px;
   gap: 12px;
@@ -557,7 +557,7 @@ body.page-homework-1-ex1 .hw-bar-row {
 
 
 
-body.page-homework-1-ex1 .hw-track {
+body.page-homework-1 .hw-track {
   height: 18px;
   background: #edf1f6;
   border-radius: 3px;
@@ -566,14 +566,14 @@ body.page-homework-1-ex1 .hw-track {
 
 
 
-body.page-homework-1-ex1 .hw-fill {
+body.page-homework-1 .hw-fill {
   height: 100%;
   background: #5578a3;
 }
 
 
 
-body.page-homework-1-ex1 .hw-stat-box {
+body.page-homework-1 .hw-stat-box {
   background: #f5f7fa;
   border-left: 3px solid #5578a3;
   padding: 12px 17px;
@@ -582,19 +582,19 @@ body.page-homework-1-ex1 .hw-stat-box {
 
 
 
-body.page-homework-1-ex1 .hw-comparison {
+body.page-homework-1 .hw-comparison {
   margin: 25px 0;
 }
 
 
 
-body.page-homework-1-ex1 .hw-comparison td:first-child {
+body.page-homework-1 .hw-comparison td:first-child {
   font-weight: 600;
 }
 
 
 
-body.page-homework-1-ex1 .hw-conclusion {
+body.page-homework-1 .hw-conclusion {
   margin-top: 25px;
   padding: 18px;
   background: #f2f5f9;
@@ -606,25 +606,25 @@ body.page-homework-1-ex1 .hw-conclusion {
 @media  (max-width: 600px) {
 
   
-body.page-homework-1-ex1 .hw-main {
+body.page-homework-1 .hw-main {
     padding: 0 18px;
   }
 
 
   
-body.page-homework-1-ex1 .hw-main h1 {
+body.page-homework-1 .hw-main h1 {
     font-size: 30px;
   }
 
 
   
-body.page-homework-1-ex1 .hw-experiment, body.page-homework-1-ex1 .hw-animation {
+body.page-homework-1 .hw-experiment, body.page-homework-1 .hw-animation {
     padding: 15px;
   }
 
 
   
-body.page-homework-1-ex1 .hw-button {
+body.page-homework-1 .hw-button {
     font-size: 14px;
   }
 
@@ -633,10 +633,10 @@ body.page-homework-1-ex1 .hw-button {
 
 
 
-/* ===== Styles originally from homework-1_ex2.html (scoped for exact appearance) ===== */
+/* ===== Styles originally from homework-2true.html (scoped for exact appearance) ===== */
 
   
-body.page-homework-1-ex2 .hw-main {
+body.page-homework-2true .hw-main {
     max-width: 900px;
     margin: 45px auto 80px;
     padding: 0 25px;
@@ -644,7 +644,7 @@ body.page-homework-1-ex2 .hw-main {
 
 
   
-body.page-homework-1-ex2 .hw-main h1 {
+body.page-homework-2true .hw-main h1 {
     font-size: 38px;
     font-weight: 500;
     margin-bottom: 8px;
@@ -652,7 +652,7 @@ body.page-homework-1-ex2 .hw-main h1 {
 
 
   
-body.page-homework-1-ex2 .hw-main h2 {
+body.page-homework-2true .hw-main h2 {
     margin-top: 45px;
     padding-bottom: 9px;
     border-bottom: 1px solid #dedede;
@@ -660,31 +660,31 @@ body.page-homework-1-ex2 .hw-main h2 {
 
 
   
-body.page-homework-1-ex2 .hw-main h3 {
+body.page-homework-2true .hw-main h3 {
     margin-top: 28px;
   }
 
 
   
-body.page-homework-1-ex2 .hw-main p {
+body.page-homework-2true .hw-main p {
     line-height: 1.85;
   }
 
 
   
-body.page-homework-1-ex2 .hw-subtitle, body.page-homework-1-ex2 .hw-small {
+body.page-homework-2true .hw-subtitle, body.page-homework-2true .hw-small {
     color: #64748b;
   }
 
 
   
-body.page-homework-1-ex2 .hw-small {
+body.page-homework-2true .hw-small {
     font-size: 14px;
   }
 
 
   
-body.page-homework-1-ex2 .hw-formula {
+body.page-homework-2true .hw-formula {
     text-align: center;
     background: #f2f5f9;
     border-radius: 5px;
@@ -697,7 +697,7 @@ body.page-homework-1-ex2 .hw-formula {
 
 
   
-body.page-homework-1-ex2 .hw-experiment {
+body.page-homework-2true .hw-experiment {
     background: #fafbfd;
     border: 1px solid #dce2ea;
     border-radius: 7px;
@@ -707,7 +707,7 @@ body.page-homework-1-ex2 .hw-experiment {
 
 
   
-body.page-homework-1-ex2 .hw-button {
+body.page-homework-2true .hw-button {
     padding: 10px 18px;
     border: 0;
     border-radius: 4px;
@@ -719,20 +719,20 @@ body.page-homework-1-ex2 .hw-button {
 
 
   
-body.page-homework-1-ex2 .hw-button:hover {
+body.page-homework-2true .hw-button:hover {
     background: #3b5c81;
   }
 
 
   
-body.page-homework-1-ex2 .hw-button:disabled {
+body.page-homework-2true .hw-button:disabled {
     opacity: .5;
     cursor: wait;
   }
 
 
   
-body.page-homework-1-ex2 .hw-input {
+body.page-homework-2true .hw-input {
     font: inherit;
     padding: 9px;
     border: 1px solid #bac5d2;
@@ -743,7 +743,7 @@ body.page-homework-1-ex2 .hw-input {
 
 
   
-body.page-homework-1-ex2 .hw-output {
+body.page-homework-2true .hw-output {
     background: white;
     border: 1px solid #e2e5e9;
     padding: 13px 15px;
@@ -753,7 +753,7 @@ body.page-homework-1-ex2 .hw-output {
 
 
   
-body.page-homework-1-ex2 .hw-output strong {
+body.page-homework-2true .hw-output strong {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
@@ -762,7 +762,7 @@ body.page-homework-1-ex2 .hw-output strong {
 
 
   
-body.page-homework-1-ex2 .hw-output code {
+body.page-homework-2true .hw-output code {
     display: block;
     font-size: 13px;
     font-family: Consolas, monospace;
@@ -773,13 +773,13 @@ body.page-homework-1-ex2 .hw-output code {
 
 
   
-body.page-homework-1-ex2 .hw-address {
+body.page-homework-2true .hw-address {
     background: #eaf0f8;
   }
 
 
   
-body.page-homework-1-ex2 .hw-pipeline {
+body.page-homework-2true .hw-pipeline {
     max-width: 490px;
     margin: 25px auto;
     text-align: center;
@@ -787,7 +787,7 @@ body.page-homework-1-ex2 .hw-pipeline {
 
 
   
-body.page-homework-1-ex2 .hw-pipeline-item {
+body.page-homework-2true .hw-pipeline-item {
     padding: 13px;
     border: 1px solid #dce2ea;
     border-radius: 5px;
@@ -796,20 +796,20 @@ body.page-homework-1-ex2 .hw-pipeline-item {
 
 
   
-body.page-homework-1-ex2 .hw-pipeline-item strong {
+body.page-homework-2true .hw-pipeline-item strong {
     display: block;
   }
 
 
   
-body.page-homework-1-ex2 .hw-pipeline-item span {
+body.page-homework-2true .hw-pipeline-item span {
     font-size: 13px;
     color: #64748b;
   }
 
 
   
-body.page-homework-1-ex2 .hw-pipeline-arrow {
+body.page-homework-2true .hw-pipeline-arrow {
     color: #5578a3;
     padding: 7px 0;
     font-size: 20px;
@@ -817,13 +817,13 @@ body.page-homework-1-ex2 .hw-pipeline-arrow {
 
 
   
-body.page-homework-1-ex2 .hw-table-wrap {
+body.page-homework-2true .hw-table-wrap {
     overflow-x: auto;
   }
 
 
   
-body.page-homework-1-ex2 .hw-table {
+body.page-homework-2true .hw-table {
     border-collapse: collapse;
     width: 100%;
     margin: 20px 0;
@@ -832,7 +832,7 @@ body.page-homework-1-ex2 .hw-table {
 
 
   
-body.page-homework-1-ex2 .hw-table th, body.page-homework-1-ex2 .hw-table td {
+body.page-homework-2true .hw-table th, body.page-homework-2true .hw-table td {
     padding: 11px;
     border-bottom: 1px solid #e2e5e9;
     text-align: left;
@@ -841,13 +841,13 @@ body.page-homework-1-ex2 .hw-table th, body.page-homework-1-ex2 .hw-table td {
 
 
   
-body.page-homework-1-ex2 .hw-table th {
+body.page-homework-2true .hw-table th {
     background: #f2f5f9;
   }
 
 
   
-body.page-homework-1-ex2 .hw-stat {
+body.page-homework-2true .hw-stat {
     padding: 14px 17px;
     margin: 15px 0;
     border-left: 3px solid #5578a3;
@@ -856,7 +856,7 @@ body.page-homework-1-ex2 .hw-stat {
 
 
   
-body.page-homework-1-ex2 .hw-conclusion {
+body.page-homework-2true .hw-conclusion {
     padding: 18px;
     background: #f2f5f9;
     border-radius: 5px;
@@ -865,7 +865,7 @@ body.page-homework-1-ex2 .hw-conclusion {
 
 
   
-body.page-homework-1-ex2 .hw-error {
+body.page-homework-2true .hw-error {
     color: #a32222;
   }
 
@@ -874,19 +874,19 @@ body.page-homework-1-ex2 .hw-error {
 @media  (max-width: 600px) {
 
     
-body.page-homework-1-ex2 .hw-main {
+body.page-homework-2true .hw-main {
       padding: 0 18px;
     }
 
 
     
-body.page-homework-1-ex2 .hw-main h1 {
+body.page-homework-2true .hw-main h1 {
       font-size: 30px;
     }
 
 
     
-body.page-homework-1-ex2 .hw-experiment {
+body.page-homework-2true .hw-experiment {
       padding: 15px;
     }
 
@@ -895,14 +895,14 @@ body.page-homework-1-ex2 .hw-experiment {
 
 
 
-/* ===== Styles originally from homework-2.html (scoped for exact appearance) ===== */
+/* ===== Styles originally from homework-2true.html (scoped for exact appearance) ===== */
 
 
 /* Homework 2 - Additional styling */
 
 
 
-body.page-homework-2 .hw-main {
+body.page-homework-2true .hw-main {
     max-width: 900px;
     margin: 45px auto 80px;
     padding: 0 25px;
@@ -910,7 +910,7 @@ body.page-homework-2 .hw-main {
 
 
 
-body.page-homework-2 .hw-main h2 {
+body.page-homework-2true .hw-main h2 {
     margin-top: 45px;
     padding-bottom: 10px;
     border-bottom: 1px solid #dedede;
@@ -918,31 +918,31 @@ body.page-homework-2 .hw-main h2 {
 
 
 
-body.page-homework-2 .hw-main h3 {
+body.page-homework-2true .hw-main h3 {
     margin-top: 25px;
 }
 
 
 
-body.page-homework-2 .hw-main p {
+body.page-homework-2true .hw-main p {
     line-height: 1.85;
 }
 
 
 
-body.page-homework-2 .hw-subtitle, body.page-homework-2 .hw-small {
+body.page-homework-2true .hw-subtitle, body.page-homework-2true .hw-small {
     color: #64748b;
 }
 
 
 
-body.page-homework-2 .hw-small {
+body.page-homework-2true .hw-small {
     font-size: 14px;
 }
 
 
 
-body.page-homework-2 .hw-formula {
+body.page-homework-2true .hw-formula {
     background: #f2f5f9;
     border-left: 3px solid #263c59;
     padding: 17px;
@@ -954,7 +954,7 @@ body.page-homework-2 .hw-formula {
 
 
 
-body.page-homework-2 .hw-experiment {
+body.page-homework-2true .hw-experiment {
     background: #fafbfd;
     border: 1px solid #dce2ea;
     border-radius: 7px;
@@ -964,7 +964,7 @@ body.page-homework-2 .hw-experiment {
 
 
 
-body.page-homework-2 .hw-experiment label {
+body.page-homework-2true .hw-experiment label {
     display: block;
     margin-top: 13px;
     font-weight: 600;
@@ -972,7 +972,7 @@ body.page-homework-2 .hw-experiment label {
 
 
 
-body.page-homework-2 .hw-button {
+body.page-homework-2true .hw-button {
     padding: 10px 18px;
     border: none;
     border-radius: 4px;
@@ -985,13 +985,13 @@ body.page-homework-2 .hw-button {
 
 
 
-body.page-homework-2 .hw-button:hover {
+body.page-homework-2true .hw-button:hover {
     background: #3b5c81;
 }
 
 
 
-body.page-homework-2 .hw-input {
+body.page-homework-2true .hw-input {
     font: inherit;
     padding: 9px;
     border: 1px solid #bac5d2;
@@ -1002,7 +1002,7 @@ body.page-homework-2 .hw-input {
 
 
 
-body.page-homework-2 textarea.hw-input {
+body.page-homework-2true textarea.hw-input {
     display: block;
     width: 100%;
     min-height: 85px;
@@ -1011,7 +1011,7 @@ body.page-homework-2 textarea.hw-input {
 
 
 
-body.page-homework-2 .hw-output {
+body.page-homework-2true .hw-output {
     background: white;
     border: 1px solid #e2e5e9;
     padding: 13px 15px;
@@ -1025,13 +1025,13 @@ body.page-homework-2 .hw-output {
 
 
 
-body.page-homework-2 .hw-table-wrap {
+body.page-homework-2true .hw-table-wrap {
     overflow-x: auto;
 }
 
 
 
-body.page-homework-2 .hw-table {
+body.page-homework-2true .hw-table {
     border-collapse: collapse;
     width: 100%;
     margin: 20px 0;
@@ -1040,7 +1040,7 @@ body.page-homework-2 .hw-table {
 
 
 
-body.page-homework-2 .hw-table th, body.page-homework-2 .hw-table td {
+body.page-homework-2true .hw-table th, body.page-homework-2true .hw-table td {
     padding: 11px;
     border-bottom: 1px solid #e2e5e9;
     text-align: left;
@@ -1048,13 +1048,13 @@ body.page-homework-2 .hw-table th, body.page-homework-2 .hw-table td {
 
 
 
-body.page-homework-2 .hw-table th {
+body.page-homework-2true .hw-table th {
     background: #f2f5f9;
 }
 
 
 
-body.page-homework-2 .hw-stat {
+body.page-homework-2true .hw-stat {
     padding: 14px 17px;
     margin: 15px 0;
     border-left: 3px solid #5578a3;
@@ -1063,7 +1063,7 @@ body.page-homework-2 .hw-stat {
 
 
 
-body.page-homework-2 .bars {
+body.page-homework-2true .bars {
     display: grid;
     gap: 5px;
     margin: 15px 0;
@@ -1071,7 +1071,7 @@ body.page-homework-2 .bars {
 
 
 
-body.page-homework-2 .bar-row {
+body.page-homework-2true .bar-row {
     display: grid;
     grid-template-columns: 20px 1fr 55px;
     gap: 8px;
@@ -1081,21 +1081,21 @@ body.page-homework-2 .bar-row {
 
 
 
-body.page-homework-2 .bar-track {
+body.page-homework-2true .bar-track {
     height: 11px;
     background: #e2e8f0;
 }
 
 
 
-body.page-homework-2 .bar-fill {
+body.page-homework-2true .bar-fill {
     height: 100%;
     background: #5578a3;
 }
 
 
 
-body.page-homework-2 .hw-conclusion {
+body.page-homework-2true .hw-conclusion {
     padding: 18px;
     background: #f2f5f9;
     border-radius: 5px;
@@ -1107,13 +1107,13 @@ body.page-homework-2 .hw-conclusion {
 @media  (max-width: 600px) {
 
     
-body.page-homework-2 .hw-experiment {
+body.page-homework-2true .hw-experiment {
         padding: 15px;
     }
 
 
     
-body.page-homework-2 .hw-main {
+body.page-homework-2true .hw-main {
         padding: 0 18px;
     }
 
