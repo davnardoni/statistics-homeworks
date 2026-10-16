@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Homework 2 - Encryption and Cryptanalysis</title>
+<link href="assets/style.css" rel="stylesheet"/>
+
+</head>
+<body class="page-homework-2">
+<!-- NAVIGATION -->
+<header>
+<nav>
+<a class="logo" href="index.html">Statistics</a>
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="homework-1.html">
+            Homework 1.1
+        </a>
+<a href="homework-2.html">
+            Homework 1.2
+        </a>
+<a aria-current="page" class="active" href="homework-2true.html">
+            Homework 2
+        </a>
+</div>
+</nav>
+</header>
+<!-- MAIN CONTENT -->
+<main class="hw-main">
+<h1>Homework 2</h1>
+<p class="hw-subtitle">
+Encryption, Decryption and Statistical Cryptanalysis
+</p>
+<h2>1. Introduction</h2>
+<p>
+The objective of this homework is to investigate encryption,
+decryption, and cryptanalysis using two different cryptographic
+constructions: a toy elliptic-curve encryption scheme and the
+classical Caesar cipher.
+</p>
+<p>
+We first encrypt and decrypt the same message using both
+algorithms. We then compare their procedures, key spaces,
+and statistical properties.
+Finally, we implement attacks that exploit the specific
+weaknesses of each construction.
+</p>
+<p>
+The previous homework introduced the secp256k1 elliptic
+curve and the public-key relationship Q = dG.
+Its interactive demonstration used a much smaller
+educational curve:
+</p>
+<div class="hw-formula">
+    y² = x³ + 7 (mod 17)
+    <br/>
+    G = (1, 5)
+    <br/>
+    d ∈ {1, 2, ..., 8}
+</div>
+<p>
+We reuse this small curve to make the encryption and
+key-recovery experiments computationally transparent.
+It is important to distinguish this educational construction
+from a secure implementation of secp256k1.
+</p>
+<!-- SECTION 2 -->
+<h2>2. Elliptic-Curve Encryption and Decryption</h2>
+<p>
+We implement a simplified ECIES-like hybrid encryption scheme.
+The recipient generates a private scalar d and its corresponding
+public key Q:
+</p>
+<div class="hw-formula">
+    Q = dG
+</div>
+<p>
+The sender uses the recipient's public key and selects
+an ephemeral scalar r.
+The following two elliptic-curve points are computed:
+</p>
+<div class="hw-formula">
+    R = rG
+    <br/>
+    S = rQ
+</div>
+<p>
+The point R can be transmitted publicly. The point S
+represents the shared secret used to derive a byte mask
+for encrypting the message.
+</p>
+<p>
+The recipient uses the private key d to reconstruct
+the same shared point:
+</p>
+<div class="hw-formula">
+    S = dR = d(rG) = r(dG) = rQ
+</div>
+<p>
+In our toy implementation, each plaintext byte is XORed
+with a deterministic mask generated from the coordinates
+of S. Decryption applies the same XOR operation again.
+</p>
+<div class="hw-formula">
+    Cᵢ = Mᵢ XOR mask(S, i)
+    <br/>
+    Mᵢ = Cᵢ XOR mask(S, i)
+</div>
+<p>
+This mask is intentionally simple and insecure.
+A real encryption scheme would require a secure
+key-derivation function, authenticated encryption,
+and carefully generated randomness.
+</p>
+<div class="hw-experiment">
+<h3>Experiment A — ECC Encryption</h3>
+<label for="message">Message:</label>
+<textarea class="hw-input" id="message">STATISTICS AND CRYPTOGRAPHY HELP US UNDERSTAND INFORMATION SECURITY</textarea>
+<label for="private">Private key d (1–8):</label>
+<input class="hw-input" id="private" max="8" min="1" type="number" value="6"/>
+<label for="ephemeral">Ephemeral scalar r (1–8):</label>
+<input class="hw-input" id="ephemeral" max="8" min="1" type="number" value="2"/>
+<button class="hw-button" id="eccRun">
+    Encrypt and Decrypt
+</button>
+<div aria-live="polite" class="hw-output" id="eccResult"></div>
+</div>
+<h3>2.1 Role of the Keys</h3>
+<p>
+The private key d is known only to the recipient.
+The corresponding public key Q can be distributed
+to anyone who wants to encrypt a message.
+</p>
+<p>
+The ephemeral scalar r is selected by the sender
+and determines the temporary public point R.
+The shared point S can then be obtained by the
+sender using r and Q, or by the recipient using
+d and R.
+</p>
+<p>
+In a properly designed elliptic-curve encryption system,
+the private key must be sufficiently large and randomly
+generated. In this experiment, the private-key range
+contains only eight possible values, making exhaustive
+search trivial.
+</p>
+<!-- SECTION 3 -->
+<h2>3. The Caesar Cipher</h2>
+<p>
+The Caesar cipher is a classical substitution cipher
+that shifts every letter of the alphabet by a fixed
+integer k.
+</p>
+<p>
+For an alphabet containing 26 letters, encryption
+and decryption can be expressed as:
+</p>
+<div class="hw-formula">
+    Eₖ(x) = (x + k) mod 26
+    <br/>
+    Dₖ(y) = (y − k) mod 26
+</div>
+<p>
+Unlike the elliptic-curve construction, Caesar is
+a symmetric-key cipher: the same shift k is used
+for encryption and decryption.
+</p>
+<p>
+In our implementation, uppercase and lowercase letters
+are preserved and nonalphabetic characters remain
+unchanged.
+</p>
+<div class="hw-experiment">
+<h3>Experiment B — Caesar Encryption</h3>
+<label for="shift">Shift k (0–25):</label>
+<input class="hw-input" id="shift" max="25" min="0" type="number" value="7"/>
+<button class="hw-button" id="caesarRun">
+    Encrypt and Decrypt
+</button>
+<div aria-live="polite" class="hw-output" id="caesarResult"></div>
+</div>
+<p>
+The experiment uses the same message entered in
+Experiment A. This allows us to directly compare
+the ciphertexts produced by the two constructions.
+</p>
+<!-- SECTION 4 -->
+<h2>4. Comparison of the Two Schemes</h2>
+<div class="hw-table-wrap">
+<table class="hw-table">
+<thead>
+<tr>
+<th>Property</th>
+<th>Toy ECC Scheme</th>
+<th>Caesar Cipher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cryptographic model</td>
+<td>Asymmetric key agreement with symmetric masking</td>
+<td>Symmetric substitution</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Shared point and XOR mask</td>
+<td>Alphabet rotation</td>
+</tr>
+<tr>
+<td>Decryption</td>
+<td>Reconstruct shared point and apply XOR</td>
+<td>Reverse rotation</td>
+</tr>
+<tr>
+<td>Keys</td>
+<td>Private d, public Q, ephemeral r</td>
+<td>Shared shift k</td>
+</tr>
+<tr>
+<td>Experimental key space</td>
+<td>8 recipient private keys</td>
+<td>26 possible shifts</td>
+</tr>
+<tr>
+<td>Statistical properties</td>
+<td>Byte values are masked, but the toy mask is insecure</td>
+<td>Letter frequencies are preserved up to permutation</td>
+</tr>
+<tr>
+<td>Attack investigated</td>
+<td>Exhaustive private-key search</td>
+<td>Letter-frequency analysis</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+The Caesar cipher preserves the relative frequency
+of letters because every occurrence of a given letter
+is always mapped to the same ciphertext letter.
+</p>
+<p>
+The ECC-based toy scheme instead operates on message
+bytes through a shared-secret-derived mask.
+However, the simple mask used in this experiment
+does not provide the security properties of a
+properly designed encryption algorithm.
+</p>
+<!-- SECTION 5 -->
+<h2>5. Statistical Cryptanalysis of Caesar</h2>
+<p>
+Natural languages have characteristic statistical
+distributions of letters.
+For example, the letters E, T, A, and O appear
+relatively frequently in ordinary English text,
+while letters such as Q, X, and Z appear less often.
+</p>
+<p>
+A Caesar cipher does not destroy these frequencies.
+It simply rotates their positions in the alphabet.
+This property allows an attacker to estimate the
+unknown encryption shift.
+</p>
+<h3>5.1 Frequency Analysis</h3>
+<p>
+Our attack tests every candidate shift from 0 to 25.
+For each candidate, it decrypts the ciphertext
+and calculates how closely the resulting letter
+distribution matches the expected English frequencies.
+</p>
+<p>
+We use the chi-square statistic:
+</p>
+<div class="hw-formula">
+    χ²(k) = Σ [ (Oᵢ(k) − Npᵢ)² / (Npᵢ) ]
+</div>
+<p>
+Here, Oᵢ(k) is the observed frequency count of letter i
+after decrypting with shift k, N is the number of
+alphabetic characters, and pᵢ represents the expected
+relative frequency of that letter in English.
+</p>
+<p>
+The shift producing the smallest chi-square statistic
+is selected as the most likely key.
+</p>
+<div class="hw-experiment">
+<h3>Experiment C — Recover the Caesar Key</h3>
+<label for="cipherInput">
+    Ciphertext to analyze:
+</label>
+<textarea class="hw-input" id="cipherInput"></textarea>
+<button class="hw-button" id="attackCaesar">
+    Recover Key
+</button>
+<div aria-live="polite" class="hw-output" id="attackResult"></div>
+<h3>Ciphertext Letter Distribution</h3>
+<div class="bars" id="frequencyBars"></div>
+</div>
+<h3>5.2 Effect of Ciphertext Length</h3>
+<p>
+Frequency analysis depends on the amount of available
+ciphertext. Very short messages may have letter
+distributions that differ substantially from the
+expected English distribution.
+</p>
+<p>
+As the sample size increases, the observed frequencies
+generally become more representative of the language.
+We test this behavior using different prefix lengths
+from a fixed English sample.
+</p>
+<div class="hw-experiment">
+<h3>Experiment D — Ciphertext Length</h3>
+<button class="hw-button" id="lengthTest">
+    Run Length Experiment
+</button>
+<div class="hw-table-wrap">
+<table class="hw-table">
+<thead>
+<tr>
+<th>Letters</th>
+<th>Actual Shift</th>
+<th>Estimated Shift</th>
+<th>Correct?</th>
+<th>Chi-Square</th>
+</tr>
+</thead>
+<tbody id="lengthRows"></tbody>
+</table>
+</div>
+<p class="hw-small" id="lengthNote"></p>
+</div>
+<div class="hw-stat">
+<strong>Observations and Limitations</strong>
+<p>
+Statistical cryptanalysis generally becomes more
+reliable as more ciphertext is available, but
+its effectiveness also depends on how representative
+the plaintext is of the reference language.
+</p>
+<p>
+Short messages, unusual vocabulary, repetitive
+text, and texts in a different language can
+produce incorrect key estimates.
+</p>
+<p>
+The Caesar cipher also has a very small key space,
+so exhaustive search is always practical.
+N-gram scoring could improve candidate ranking,
+especially for some shorter messages.
+</p>
+</div>
+<!-- SECTION 6 -->
+<h2>6. Recovering the ECC Private Key</h2>
+<p>
+We now investigate an attack against the restricted
+private-key range of the educational elliptic-curve
+scheme.
+</p>
+<p>
+The attacker knows the public key:
+</p>
+<div class="hw-formula">
+    Q = dG
+</div>
+<p>
+Because d can only take values from 1 to 8,
+the attacker can simply calculate:
+</p>
+<div class="hw-formula">
+    G, 2G, 3G, ..., 8G
+</div>
+<p>
+The candidate matching Q reveals the private
+scalar d. Once d is recovered, the attacker
+can compute the shared point using the
+transmitted ephemeral public point R:
+</p>
+<div class="hw-formula">
+    S = dR
+</div>
+<p>
+The attacker can then reconstruct the byte mask
+and decrypt the intercepted ciphertext.
+</p>
+<div class="hw-experiment">
+<h3>Experiment E — Private-Key Recovery</h3>
+<button class="hw-button" id="attackEcc">
+    Recover Private Key
+</button>
+<div aria-live="polite" class="hw-output" id="eccAttackResult"></div>
+<div class="hw-table-wrap">
+<table class="hw-table">
+<thead>
+<tr>
+<th>Candidate d</th>
+<th>Computed dG</th>
+<th>Matches Q?</th>
+</tr>
+</thead>
+<tbody id="eccAttackRows"></tbody>
+</table>
+</div>
+</div>
+<h3>6.1 Why the Attack Works</h3>
+<p>
+The vulnerability is caused by the restricted
+private-key space.
+An attacker only needs to test eight possible
+private scalars to find the correct one.
+</p>
+<p>
+The attack does not require any statistical
+information about the plaintext.
+It relies entirely on the mathematical relationship
+between the public and private keys.
+</p>
+<h3>6.2 Why Real ECC Is Different</h3>
+<p>
+In a properly configured secp256k1 system,
+private keys are selected from a group of order
+approximately 2²⁵⁶.
+</p>
+<p>
+Trying every possible private key is therefore
+computationally infeasible.
+Generic discrete-logarithm algorithms such as
+Pollard's rho still require approximately
+2¹²⁸ group operations.
+</p>
+<p>
+Importantly, even if a real secp256k1 curve
+were used, restricting its private keys to
+only eight possible values would make
+the same exhaustive attack practical.
+</p>
+<p>
+Therefore, the security problem is not simply
+the choice of elliptic curve, but the combination
+of curve parameters, key generation, entropy,
+and encryption design.
+</p>
+<!-- SECTION 7 -->
+<h2>7. Comparison of the Attacks</h2>
+<div class="hw-table-wrap">
+<table class="hw-table">
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Caesar Attack</th>
+<th>ECC Attack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exploited weakness</td>
+<td>Language statistics</td>
+<td>Restricted private-key space</td>
+</tr>
+<tr>
+<td>Required information</td>
+<td>Ciphertext and reference frequencies</td>
+<td>Public key and curve parameters</td>
+</tr>
+<tr>
+<td>Recovery method</td>
+<td>Chi-square minimization</td>
+<td>Exhaustive scalar multiplication</td>
+</tr>
+<tr>
+<td>Role of message length</td>
+<td>Strongly influences accuracy</td>
+<td>Not needed to identify the private key</td>
+</tr>
+<tr>
+<td>Application to secure systems</td>
+<td>Caesar is inherently insecure</td>
+<td>Exhaustive recovery becomes infeasible with a large key space</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- SECTION 8 -->
+<h2>8. Conclusions</h2>
+<div class="hw-conclusion">
+<p>
+These experiments illustrate two fundamentally
+different forms of cryptanalysis.
+</p>
+<p>
+The Caesar cipher can be attacked by exploiting
+the statistical redundancy of natural language.
+Its substitution operation preserves letter
+frequencies, allowing the shift to be estimated
+using a reference distribution.
+</p>
+<p>
+The toy elliptic-curve scheme is vulnerable
+because the private-key range is extremely small.
+The attacker can recover the key by computing
+all possible public points and comparing
+them with the known public key.
+</p>
+<p>
+While increasing the ciphertext length generally
+helps statistical analysis of Caesar, the
+exhaustive ECC attack depends primarily
+on the number of possible private keys.
+</p>
+<p>
+The main lesson is that cryptographic security
+depends not only on the mathematical algorithm,
+but also on key-space size, secure randomness,
+implementation choices, and protocol design.
+</p>
+</div>
+</main>
+<footer>
+    Statistics - Academic Year 2026/2027
+</footer>
+<!-- JAVASCRIPT IMPLEMENTATION -->
+<script src="assets/js/homework-2.js"></script>
+</body>
+</html>
