@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 3 - Statistics</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="page-homework-3">
+
+<header>
+    <nav>
+        <a class="logo" href="index.html">Statistics</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="homework-1.html">Homework 1.1</a>
+            <a href="homework-2.html">Homework 1.2</a>
+            <a href="homework-2true.html">Homework 2</a>
+            <a class="active" href="homework-3.html">Homework 3</a>
+        </div>
+    </nav>
+</header>
+
+<main class="hw-main">
+
+<h1>Homework 3</h1>
+<p class="hw-subtitle">
+    Stochastic Penetration Process — LLN and CLT
+</p>
+
+<h2>1. Introduction</h2>
+<p>
+    We consider n systems and m independent attackers.
+    Each attacker performs n penetration attempts, represented
+    by independent and identically distributed random variables
+    X₁, X₂, ..., Xₙ.
+    We study three quantities:
+</p>
+
+<div class="hw-formula">
+    Total score: Sₙ = Σ Xᵢ<br>
+    Average score: Sₙ/n<br>
+    Normalized total: Sₙ/√n
+</div>
+
+<h2>2. Probability Models</h2>
+
+<p>
+    <strong>Bernoulli model:</strong> Xᵢ ∈ {0, 1}, with
+    P(Xᵢ = 1) = p. A score of 1 represents a successful
+    penetration, while 0 represents a failure.
+</p>
+
+<div class="hw-formula">
+    E[Xᵢ] = p,
+    Var(Xᵢ) = p(1 − p)
+</div>
+
+<p>
+    <strong>Rademacher model:</strong> Xᵢ ∈ {−1, +1},
+    with equal probabilities 1/2.
+    This represents a symmetric random walk.
+</p>
+
+<div class="hw-formula">
+    E[Xᵢ] = 0,
+    Var(Xᵢ) = 1
+</div>
+
+<h2>3. Monte Carlo Simulation</h2>
+
+<p>
+    Each attacker generates one independent trajectory.
+    The simulation compares the three score distributions
+    for increasing numbers of systems.
+</p>
+
+<div class="hw-experiment">
+
+    <div class="hw-controls">
+        <div>
+            <label for="model">Model</label>
+            <select id="model" class="hw-input">
+                <option value="bernoulli">Bernoulli</option>
+                <option value="rademacher">Rademacher</option>
+            </select>
+        </div>
+
+        <div id="p-field">
+            <label for="probability">Probability p</label>
+            <input id="probability" class="hw-input"
+                   type="number" min="0" max="1"
+                   step="0.05" value="0.5">
+        </div>
+
+        <div>
+            <label for="systems">Systems (n)</label>
+            <select id="systems" class="hw-input">
+                <option value="25">25</option>
+                <option value="100" selected>100</option>
+                <option value="400">400</option>
+                <option value="1600">1600</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="attackers">Attackers (m)</label>
+            <select id="attackers" class="hw-input">
+                <option value="100">100</option>
+                <option value="1000" selected>1000</option>
+                <option value="5000">5000</option>
+            </select>
+        </div>
+    </div>
+
+    <button id="run" class="hw-button">
+        Run Simulation
+    </button>
+
+    <p id="status" class="hw-small" role="status"></p>
+
+    <h3>3.1 Sample Trajectories</h3>
+    <p>
+        The graph displays the cumulative penetration
+        scores of 10 representative attackers.
+    </p>
+    <div class="hw-chart">
+        <h4>Cumulative Score</h4>
+        <canvas id="trajectories"></canvas>
+    </div>
+
+    <h3>3.2 Score Distributions</h3>
+    <p>
+        The histograms show the distribution of final scores
+        across all m attackers. The dashed curve is the
+        corresponding normal approximation.
+    </p>
+
+    <div class="hw-chart">
+        <h4>Total Score Sₙ</h4>
+        <canvas id="total"></canvas>
+    </div>
+
+    <div class="hw-chart">
+        <h4>Average Score Sₙ/n</h4>
+        <canvas id="average"></canvas>
+    </div>
+
+    <div class="hw-chart">
+        <h4>Normalized Total Sₙ/√n</h4>
+        <canvas id="normalized"></canvas>
+    </div>
+
+</div>
+
+<h2>4. Law of Large Numbers</h2>
+<p>
+    The Law of Large Numbers states that the average
+    score converges in probability to its expected value μ:
+</p>
+
+<div class="hw-formula">
+    Sₙ/n → μ in probability<br>
+    P(|Sₙ/n − μ| &gt; ε) → 0
+</div>
+
+<p>
+    In the Bernoulli model μ = p, while in the
+    Rademacher model μ = 0.
+    We estimate the deviation probability using ε = 0.1.
+</p>
+
+<h2>5. Variance and Central Limit Theorem</h2>
+<p>
+    Since the increments are independent with variance σ²,
+    the three normalizations have different variances:
+</p>
+
+<div class="hw-formula">
+    Var(Sₙ) = nσ²<br>
+    Var(Sₙ/n) = σ²/n<br>
+    Var(Sₙ/√n) = σ²
+</div>
+
+<p>
+    Thus, the total variance increases with n, the
+    average variance approaches zero, and the normalized
+    total maintains constant variance.
+</p>
+
+<p>
+    The Central Limit Theorem states that:
+</p>
+
+<div class="hw-formula">
+    (Sₙ − nμ)/(σ√n) ⇒ N(0, 1)
+</div>
+
+<p>
+    For Rademacher increments, μ = 0 and σ = 1,
+    so Sₙ/√n converges in distribution to N(0, 1).
+    For Bernoulli increments, centering is necessary:
+    Sₙ/√n has mean p√n and does not converge to
+    N(0, 1) when p &gt; 0.
+</p>
+
+<h3>5.1 Comparison for Increasing n</h3>
+<p>
+    Each row uses m independent trajectories.
+    The table compares empirical variances with their
+    theoretical values and reports the proportion of
+    attackers whose average deviates from μ by more
+    than 0.1.
+</p>
+
+<div class="hw-table-wrap">
+    <table class="hw-table">
+        <thead>
+            <tr>
+                <th>n</th>
+                <th>Var(Sₙ)<br>Emp. / Theory</th>
+                <th>Var(Sₙ/n)<br>Emp. / Theory</th>
+                <th>Var(Sₙ/√n)<br>Emp. / Theory</th>
+                <th>P(|Sₙ/n − μ| &gt; 0.1)</th>
+            </tr>
+        </thead>
+        <tbody id="results"></tbody>
+    </table>
+</div>
+
+
+<h3>5.2 Variance Comparison</h3>
+
+<p>
+    The graph compares the empirical variances of
+    the three quantities for increasing n.
+    A logarithmic vertical scale is used to display
+    their different rates of growth.
+</p>
+
+<div class="hw-chart">
+    <h4>Variance vs Number of Systems</h4>
+    <canvas id="variance-chart"></canvas>
+    <p class="hw-small">
+        Blue: Var(Sₙ) |
+        Green: Var(Sₙ/n) |
+        Orange: Var(Sₙ/√n)
+    </p>
+</div>
+
+<h3>5.3 Central Limit Theorem</h3>
+
+<p>
+    The graph compares the distributions of the
+    standardized total scores for increasing n
+    with the standard normal density N(0,1).
+    In the Rademacher model, the standardized
+    score is exactly Sₙ/√n.
+</p>
+
+<div class="hw-chart">
+    <h4>Convergence to the Standard Normal Distribution</h4>
+    <canvas id="clt-chart"></canvas>
+    <p class="hw-small">
+        Blue: n = 25 |
+        Green: n = 100 |
+        Orange: n = 400 |
+        Purple: n = 1600 |
+        Black dashed: N(0,1)
+    </p>
+</div>
+
+
+<div class="hw-output" id="interpretation"></div>
+
+<h2>6. Conclusions</h2>
+
+<div class="hw-conclusion">
+    <p>
+        <strong>Increasing n:</strong> the total score
+        becomes more variable, while the average converges
+        to its expected value, confirming the Law of Large
+        Numbers. The square-root normalization preserves
+        the variance and, in the Rademacher case, leads to
+        the standard normal distribution as predicted by
+        the Central Limit Theorem.
+    </p>
+    <p>
+        <strong>Increasing m:</strong> more attackers provide
+        more independent observations, producing smoother
+        histograms and more accurate empirical estimates.
+        However, m does not change the probability
+        distribution of an individual attacker.
+    </p>
+    <p>
+        The model assumes independent attempts with identical
+        probabilities. Real penetration processes may also
+        involve dependencies and different vulnerability levels.
+    </p>
+</div>
+
+</main>
+
+<footer>
+    Statistics - Academic Year 2026/2027
+</footer>
+
+<script src="assets/js/homework-3.js"></script>
+</body>
+</html>
