@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Statistics Homework 4 - Welford's recurrence formulas, sampling mean and variance.">
+  <title>Homework 4 | Statistics</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/js/homework-4.js" defer></script>
+</head>
+
+<body class="page-homework-4">
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Statistics</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="homework-1.html">Homework 1.1</a>
+        <a href="homework-2.html">Homework 1.2</a>
+        <a href="homework-2true.html">Homework 2</a>
+        <a href="homework-3.html">Homework 3</a>
+        <a href="homework-4.html" class="active" aria-current="page">Homework 4</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hw-main">
+
+    <h1>Homework 4 — Welford's Algorithm and Sampling Statistics</h1>
+
+    <p class="hw-subtitle">
+      Deriving numerically stable recurrence formulas for the mean and variance,
+      and investigating their statistical properties through Monte Carlo simulation.
+    </p>
+
+    <section>
+      <h2>Exercise 1 — Welford's Recurrence Formulas</h2>
+
+      <h3>1. Objective</h3>
+      <p>
+        The goal is to derive recurrence formulas for the sum of squared deviations
+        and the sample variance, following the same incremental approach used by
+        Knuth's recurrence formula for the mean.
+      </p>
+
+      <p>
+        The main advantage is that we can update the mean and variance whenever a
+        new observation arrives, without storing all previous observations.
+      </p>
+
+      <h3>2. Incremental mean</h3>
+
+      <p>
+        Let x₁, x₂, ..., xₙ be a sequence of observations. Knuth's recurrence
+        formula updates the mean as follows:
+      </p>
+
+      <div class="hw-formula">
+        μₙ = μₙ₋₁ + (xₙ − μₙ₋₁) / n
+      </div>
+
+      <p>
+        Define δ = xₙ − μₙ₋₁. Then the new mean is obtained by adding
+        δ/n to the previous mean.
+      </p>
+
+      <h3>3. Derivation of Welford's sum of squares</h3>
+
+      <p>
+        Define the sum of squared deviations from the current mean:
+      </p>
+
+      <div class="hw-formula">
+        SSₙ = Σᵢ₌₁ⁿ (xᵢ − μₙ)²
+      </div>
+
+      <p>
+        We separate the last observation from the previous n − 1 observations:
+      </p>
+
+      <div class="hw-formula">
+        SSₙ = Σᵢ₌₁ⁿ⁻¹ (xᵢ − μₙ)² + (xₙ − μₙ)²
+      </div>
+
+      <p>
+        For the first n − 1 observations, write
+        xᵢ − μₙ = (xᵢ − μₙ₋₁) + (μₙ₋₁ − μₙ).
+        Expanding the square, the cross term disappears because the deviations
+        from the previous mean sum to zero.
+      </p>
+
+      <div class="hw-formula">
+        SSₙ = SSₙ₋₁ + (n − 1)(μₙ − μₙ₋₁)²
+        + (xₙ − μₙ)²
+      </div>
+
+      <p>
+        Using μₙ − μₙ₋₁ = δ/n and xₙ − μₙ = δ(n − 1)/n,
+        we obtain:
+      </p>
+
+      <div class="hw-formula">
+        SSₙ = SSₙ₋₁ + δ²(n − 1)/n
+      </div>
+
+      <p>
+        Since xₙ − μₙ = δ(n − 1)/n, the recurrence can also be
+        written in Welford's standard form:
+      </p>
+
+      <div class="hw-formula">
+        SSₙ = SSₙ₋₁ + (xₙ − μₙ₋₁)(xₙ − μₙ)
+      </div>
+
+      <h3>4. Recurrence formula for variance</h3>
+
+      <p>
+        The unbiased sample variance divides the sum of squares by n − 1:
+      </p>
+
+      <div class="hw-formula">
+        s²ₙ = SSₙ / (n − 1), for n ≥ 2
+      </div>
+
+      <p>
+        Substituting the recurrence for SS gives the equivalent direct update:
+      </p>
+
+      <div class="hw-formula">
+        s²ₙ = [(n − 2)s²ₙ₋₁ + δ²(n − 1)/n] / (n − 1)
+      </div>
+
+      <p>
+        For n ≥ 3, this can be simplified to:
+      </p>
+
+      <div class="hw-formula">
+        s²ₙ = [(n − 2)/(n − 1)]s²ₙ₋₁ + δ²/n
+      </div>
+
+      <p>
+        In practice, Welford's algorithm keeps the running sum of squares
+        and computes the sample variance from it. This avoids unnecessary
+        repeated divisions.
+      </p>
+
+      <h3>5. Implementation</h3>
+
+      <p>
+        The essential update requires only three statements, once n has
+        been incremented:
+      </p>
+
+      <pre class="hw-code"><code>const delta = x - mean;
+mean += delta / n;
+SS += delta * (x - mean);</code></pre>
+
+      <p>
+        Initialize n = 0, mean = 0 and SS = 0. At the end, the sample
+        variance is SS / (n − 1), provided n ≥ 2.
+      </p>
+
+      <h3>6. Interactive verification</h3>
+
+      <div class="hw-experiment">
+        <p>
+          Enter a sequence of numerical observations. The application
+          updates the mean, sum of squares and sample variance after
+          every observation.
+        </p>
+
+        <div class="hw-controls">
+          <label class="hw-field hw-field-wide">
+            <span>Observations (comma-separated)</span>
+            <input
+              id="welford-values"
+              class="hw-input"
+              type="text"
+              value="2, 4, 4, 4, 5, 5, 7, 9"
+            >
+          </label>
+
+          <button id="welford-run" class="hw-button" type="button">
+            Calculate
+          </button>
+        </div>
+
+        <div id="welford-error" class="hw-error" role="alert"></div>
+
+        <div class="hw4-stats">
+          <div class="hw4-stat">
+            <span>Observations</span>
+            <strong id="welford-count">—</strong>
+          </div>
+          <div class="hw4-stat">
+            <span>Sample mean</span>
+            <strong id="welford-mean">—</strong>
+          </div>
+          <div class="hw4-stat">
+            <span>Sum of squares</span>
+            <strong id="welford-ss">—</strong>
+          </div>
+          <div class="hw4-stat">
+            <span>Sample variance</span>
+            <strong id="welford-variance">—</strong>
+          </div>
+        </div>
+
+        <div class="hw-table-wrap">
+          <table class="hw-table">
+            <thead>
+              <tr>
+                <th>n</th>
+                <th>xₙ</th>
+                <th>δ</th>
+                <th>Mean</th>
+                <th>SS</th>
+                <th>Sample variance</th>
+              </tr>
+            </thead>
+            <tbody id="welford-rows"></tbody>
+          </table>
+        </div>
+
+        <p id="welford-check" class="hw-small"></p>
+      </div>
+
+      <div class="hw-conclusion">
+        <h3>Exercise 1 — Conclusion</h3>
+        <p>
+          Welford's algorithm computes the mean and sample variance in a
+          single pass, using constant memory and O(n) total time.
+          It is generally more numerically stable than computing variance
+          as the difference between the mean of the squares and the
+          square of the mean, especially when observations have a large
+          common offset.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Exercise 2 — Sampling Mean and Variance</h2>
+
+      <h3>1. Experimental model</h3>
+
+      <p>
+        We consider m independent hackers, each attempting to penetrate n
+        systems. Every attempt produces a score between 0 and 10.
+        For each hacker, the n scores form one sample trajectory.
+      </p>
+
+      <p>
+        The scores are independently generated from a fixed binomial
+        distribution with parameters 10 and 0.5.
+        Each score represents the number of successes in 10 independent
+        Bernoulli trials.
+      </p>
+
+      <div class="hw-formula">
+        X ~ Binomial(10, 0.5)
+      </div>
+
+      <div class="hw-formula">
+        E[X] = μ = 10 × 0.5 = 5
+      </div>
+
+      <div class="hw-formula">
+        Var(X) = σ² = 10 × 0.5 × 0.5 = 2.5
+      </div>
+
+      <p>
+        For each hacker, we compute the sample mean and unbiased sample
+        variance with Welford's recurrence formulas.
+      </p>
+
+      <div class="hw-formula">
+        X̄ⱼ = (1/n) Σᵢ₌₁ⁿ Xⱼᵢ
+      </div>
+
+      <div class="hw-formula">
+        S²ⱼ = (1/(n − 1)) Σᵢ₌₁ⁿ (Xⱼᵢ − X̄ⱼ)²
+      </div>
+
+      <p>
+        We then average these two statistics over the m hackers:
+      </p>
+
+      <div class="hw-formula">
+        Average sample mean = (1/m) Σⱼ₌₁ᵐ X̄ⱼ
+      </div>
+
+      <div class="hw-formula">
+        Average sample variance = (1/m) Σⱼ₌₁ᵐ S²ⱼ
+      </div>
+
+      <h3>2. Simulation parameters</h3>
+
+      <div class="hw-experiment">
+        <p>
+          Choose the number of hackers and systems, then run the simulation.
+          The same theoretical distribution is used for every experiment.
+        </p>
+
+        <div class="hw-controls">
+          <label class="hw-field">
+            <span>Number of hackers (m)</span>
+            <input
+              id="sim-hackers"
+              class="hw-input"
+              type="number"
+              min="10"
+              max="10000"
+              step="10"
+              value="1000"
+            >
+          </label>
+
+          <label class="hw-field">
+            <span>Systems per hacker (n)</span>
+            <select id="sim-systems" class="hw-input">
+              <option value="2">2</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="30" selected>30</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="300">300</option>
+            </select>
+          </label>
+
+          <button id="sim-run" class="hw-button" type="button">
+            Run simulation
+          </button>
+        </div>
+
+        <div id="sim-error" class="hw-error" role="alert"></div>
+
+        <h3>Simulation results</h3>
+
+        <div class="hw4-stats">
+          <div class="hw4-stat">
+            <span>Average sample mean</span>
+            <strong id="sim-mean">—</strong>
+            <small>Theoretical: 5</small>
+          </div>
+          <div class="hw4-stat">
+            <span>Average sample variance</span>
+            <strong id="sim-variance">—</strong>
+            <small>Theoretical: 2.5</small>
+          </div>
+          <div class="hw4-stat">
+            <span>SD of sample means</span>
+            <strong id="sim-mean-sd">—</strong>
+            <small id="sim-mean-sd-theory">Theoretical: —</small>
+          </div>
+          <div class="hw4-stat">
+            <span>SD of sample variances</span>
+            <strong id="sim-variance-sd">—</strong>
+            <small>Across hackers</small>
+          </div>
+        </div>
+
+        <div id="sim-comparison" class="hw-output" aria-live="polite"></div>
+
+        <h3>Sampling distribution of the means</h3>
+        <p class="hw-small">
+          Histogram of the m sample means. The dashed vertical line
+          marks the theoretical population mean μ = 5.
+        </p>
+
+        <div class="hw4-plot">
+          <canvas id="sim-mean-chart" width="860" height="330"></canvas>
+        </div>
+
+        <h3>Sampling distribution of the variances</h3>
+        <p class="hw-small">
+          Histogram of the m unbiased sample variances. The dashed vertical
+          line marks the theoretical population variance σ² = 2.5.
+        </p>
+
+        <div class="hw4-plot">
+          <canvas id="sim-variance-chart" width="860" height="330"></canvas>
+        </div>
+
+        <h3>Example hacker trajectory</h3>
+        <p class="hw-small">
+          Individual scores obtained by the first simulated hacker,
+          with the cumulative sample mean calculated through Welford's algorithm.
+        </p>
+
+        <div class="hw4-plot">
+          <canvas id="sim-trajectory-chart" width="860" height="330"></canvas>
+        </div>
+      </div>
+
+      <h3>3. Effect of increasing the sample size</h3>
+
+      <p>
+        To study the influence of n, we repeat the experiment using several
+        sample sizes while keeping the number of hackers constant.
+      </p>
+
+      <div class="hw-experiment">
+        <div class="hw-controls">
+          <button id="sim-compare" class="hw-button" type="button">
+            Compare different sample sizes
+          </button>
+        </div>
+
+        <p class="hw-small">
+          Sample sizes: n = 2, 5, 10, 30, 50, 100, 300.
+        </p>
+
+        <div class="hw-table-wrap">
+          <table class="hw-table">
+            <thead>
+              <tr>
+                <th>n</th>
+                <th>Avg. mean</th>
+                <th>Avg. variance</th>
+                <th>SD of means</th>
+                <th>Theoretical SD</th>
+                <th>SD of variances</th>
+              </tr>
+            </thead>
+            <tbody id="sim-comparison-rows"></tbody>
+          </table>
+        </div>
+
+        <h3>Variability of sample means</h3>
+        <div class="hw4-plot">
+          <canvas id="sim-mean-sd-chart" width="860" height="330"></canvas>
+        </div>
+
+        <h3>Variability of sample variances</h3>
+        <div class="hw4-plot">
+          <canvas id="sim-variance-sd-chart" width="860" height="330"></canvas>
+        </div>
+
+        <p id="sim-size-summary" class="hw-output"></p>
+      </div>
+
+      <h3>4. Statistical interpretation</h3>
+
+      <p>
+        The sample mean and unbiased sample variance are unbiased
+        estimators of the population mean and variance:
+      </p>
+
+      <div class="hw-formula">
+        E[X̄] = μ = 5
+      </div>
+
+      <div class="hw-formula">
+        E[S²] = σ² = 2.5
+      </div>
+
+      <p>
+        Consequently, averaging the estimates over many independent hackers
+        should produce values close to their theoretical population parameters.
+        Differences are expected because the experiment uses a finite
+        number of random samples.
+      </p>
+
+      <p>
+        The variability of the sample mean decreases according to:
+      </p>
+
+      <div class="hw-formula">
+        Var(X̄) = σ²/n = 2.5/n
+      </div>
+
+      <div class="hw-formula">
+        SD(X̄) = σ/√n = √(2.5/n)
+      </div>
+
+      <p>
+        The unbiased sample variance also becomes more concentrated around
+        the population variance as n increases, although its variability
+        depends on the fourth central moment of the underlying distribution.
+      </p>
+
+      <p>
+        For the selected binomial distribution, the fourth central
+        moment is μ₄ = 17.5. Therefore:
+      </p>
+
+      <div class="hw-formula">
+        Var(S²) = [17.5 − ((n − 3)/(n − 1)) × 6.25] / n
+      </div>
+
+      <p>
+        Both statistics become more precise with increasing sample size.
+        This is directly related to the law of large numbers and the
+        consistency of these estimators.
+      </p>
+
+      <h3>5. Why this is useful in inferential statistics</h3>
+
+      <p>
+        Inferential statistics uses sample data to estimate unknown
+        population characteristics. The simulation shows that sample
+        statistics can estimate population parameters without observing
+        the entire population.
+      </p>
+
+      <p>
+        Unbiasedness ensures that the estimators are correct on average,
+        while decreasing sampling variability makes individual estimates
+        more reliable for large sample sizes.
+        The standard error of the mean is fundamental for confidence
+        intervals and hypothesis testing.
+      </p>
+
+      <div class="hw-conclusion">
+        <h3>Exercise 2 — Conclusion</h3>
+
+        <p>
+          The average of the sample means approaches the theoretical
+          mean μ = 5, and the average of the unbiased sample variances
+          approaches σ² = 2.5 as the number of independent replications
+          increases.
+        </p>
+
+        <p>
+          Increasing n reduces the spread of both sampling distributions.
+          The sample means become more tightly concentrated around μ,
+          with standard deviation proportional to 1/√n.
+          The sample variances also become more stable around σ².
+        </p>
+
+        <p>
+          These results demonstrate the importance of unbiased,
+          consistent estimators and sample size in statistical inference.
+          Welford's recurrence formulas allow these estimates to be
+          calculated efficiently and accurately even for large streams
+          of observations.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Statistics — Homework 4</p>
+  </footer>
+
+</body>
+</html>
