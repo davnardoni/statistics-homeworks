@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Statistics Homework 5 - Numerical Integration and Normal CDF">
+  <title>Homework 5 | Statistics</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <!-- MathJax for mathematical formulas -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+
+  <script src="assets/js/homework-5.js" defer></script>
+</head>
+
+<body class="page-homework-5">
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Statistics</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="homework-1.html">Homework 1.1</a>
+        <a href="homework-2.html">Homework 1.2</a>
+        <a href="homework-2true.html">Homework 2</a>
+        <a href="homework-3.html">Homework 3</a>
+        <a href="homework-4.html">Homework 4</a>
+        <a href="homework-5.html" class="active" aria-current="page">Homework 5</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hw-main">
+
+    <h1>Homework 5 — Numerical Integration and Normal CDF</h1>
+
+    <p class="hw-subtitle">
+      Comparing Riemann and Lebesgue integration through
+      numerical experiments, and investigating efficient
+      methods for computing the standard normal CDF.
+    </p>
+
+    <!-- ==================================
+         EXERCISE 1
+         ================================== -->
+
+    <section>
+      <h2>Exercise 1 — Riemann and Lebesgue Integration</h2>
+
+      <h3>1. Introduction</h3>
+
+      <p>
+        Riemann and Lebesgue integration are two mathematical
+        approaches to computing integrals. Although they
+        produce the same result for Riemann-integrable
+        functions, they differ in how they partition
+        the problem.
+      </p>
+
+      <p>
+        Riemann integration partitions the domain of a
+        function, while Lebesgue integration considers
+        the sets of points associated with different
+        function values. We implement numerical
+        approximations inspired by both definitions
+        and compare their convergence and efficiency.
+      </p>
+
+      <h3>2. Riemann integration</h3>
+
+      <p>
+        The Riemann integral approximates the area under
+        a curve by dividing the domain into subintervals.
+        Each subinterval contributes the area of a rectangle.
+      </p>
+
+      <p>
+        We use the <strong>midpoint rule</strong>, evaluating
+        the function at the center of each subinterval:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        R_n =
+        \sum_{i=0}^{n-1}
+        f\left(a+\left(i+\frac12\right)\Delta x\right)
+        \Delta x,
+        \qquad
+        \Delta x=\frac{b-a}{n}
+        \]
+      </div>
+
+      <p>
+        As the number of subintervals increases, the
+        approximation generally becomes more accurate
+        for Riemann-integrable functions.
+      </p>
+
+      <h3>3. Lebesgue integration</h3>
+
+      <p>
+        Lebesgue integration follows a different perspective.
+        Instead of dividing the horizontal axis, we consider
+        different levels of function values and measure
+        the domain points that reach each level.
+      </p>
+
+      <p>
+        For a bounded nonnegative measurable function,
+        the layer-cake representation gives:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \int_a^b f(x)\,dx =
+        \int_0^M
+        \mu\left(
+          \{x\in[a,b]:f(x)\geq t\}
+        \right)\,dt
+        \]
+      </div>
+
+      <p>
+        Here, \(M\) is an upper bound for the function,
+        and \(\mu\) denotes Lebesgue measure. We divide
+        the range into \(n\) levels and apply a
+        midpoint approximation:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        L_n = \Delta y
+        \sum_{j=0}^{n-1}
+        \mu\left(
+          \left\{
+          x\in[a,b]:
+          f(x)\geq
+          \left(j+\frac12\right)\Delta y
+          \right\}
+        \right)
+        \]
+        \[
+        \Delta y=\frac{M}{n}
+        \]
+      </div>
+
+      <p>
+        In our implementation, the measures of these sets
+        are determined analytically for each function.
+        This allows us to compare domain and range
+        partitions without introducing an additional
+        sampling error in the Lebesgue method.
+      </p>
+
+      <h3>4. Numerical experiment</h3>
+
+      <p>
+        We consider continuous, piecewise constant, and
+        pathological functions. For each function, we
+        compare the numerical approximations with its
+        exact integral using increasing partition sizes.
+      </p>
+
+      <div class="hw-experiment">
+
+        <h3>Integration comparison</h3>
+
+        <div class="hw-controls">
+          <label class="hw-field">
+            <span>Select function</span>
+            <select class="hw-input" id="int-function">
+              <option value="square">f(x) = x², [0,1]</option>
+              <option value="sine">f(x) = sin(x), [0,π]</option>
+              <option value="step">f(x) = 1 or 3 (step function)</option>
+              <option value="absolute">f(x) = |x − 0.5|, [0,1]</option>
+              <option value="dirichlet">Dirichlet function, [0,1]</option>
+              <option value="thomae">Thomae function, [0,1]</option>
+            </select>
+          </label>
+
+          <button class="hw-button" id="int-run" type="button">
+            Run comparison
+          </button>
+        </div>
+
+        <p class="hw-result" id="int-reference"
+           aria-live="polite"></p>
+
+        <div class="hw-table-wrap">
+          <table class="hw-table">
+            <thead>
+              <tr>
+                <th>n</th>
+                <th>Riemann</th>
+                <th>Riemann error</th>
+                <th>Lebesgue</th>
+                <th>Lebesgue error</th>
+              </tr>
+            </thead>
+            <tbody id="int-rows"></tbody>
+          </table>
+        </div>
+
+        <p class="hw-small" id="int-time"></p>
+        <p class="hw-note" id="int-note"
+           aria-live="polite"></p>
+
+      </div>
+
+      <h3>5. Discussion of the results</h3>
+
+      <p>
+        For the continuous and piecewise constant functions,
+        both methods converge to the same exact integral.
+        Their numerical errors may differ because the
+        methods partition different axes.
+      </p>
+
+      <p>
+        The pathological examples reveal a more important
+        distinction. The <strong>Dirichlet function</strong>
+        equals 1 at rational points and 0 at irrational points.
+        It is not Riemann-integrable because every interval
+        contains both rational and irrational numbers.
+        However, its Lebesgue integral is 0 because
+        the rational numbers have measure zero.
+      </p>
+
+      <p>
+        The <strong>Thomae function</strong> assigns
+        \(1/q\) to a rational number \(p/q\) in lowest
+        terms and 0 to irrational numbers. Unlike
+        Dirichlet's function, it is Riemann-integrable,
+        and both integrals equal 0.
+      </p>
+
+      <div class="hw-conclusion">
+        <h3>Conclusion</h3>
+        <p>
+          The experiments confirm that Riemann and
+          Lebesgue integration agree whenever the
+          function is Riemann-integrable.
+          Lebesgue integration also handles functions
+          such as Dirichlet's, for which the Riemann
+          integral does not exist.
+        </p>
+        <p>
+          Both implemented algorithms require O(n)
+          operations when the preimage measures are
+          available analytically. For general functions,
+          computing these measures may be more expensive,
+          so the measured runtimes are specific to
+          our implementation.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ==================================
+         EXERCISE 2
+         ================================== -->
+
+    <section>
+      <h2>Exercise 2 — Numerical Computation of the Normal CDF</h2>
+
+      <h3>1. Introduction</h3>
+
+      <p>
+        The cumulative distribution function (CDF) of
+        the standard normal distribution gives the
+        probability that a random variable \(Z\sim N(0,1)\)
+        takes a value less than or equal to \(z\).
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \Phi(z)=P(Z\leq z)
+        =\frac{1}{\sqrt{2\pi}}
+        \int_{-\infty}^{z} e^{-t^2/2}\,dt
+        \]
+      </div>
+
+      <p>
+        Unlike many common probability distributions,
+        the normal CDF cannot be expressed using only
+        elementary functions. This makes its numerical
+        computation an important practical problem.
+      </p>
+
+      <h3>2. Liouville's theorem and the error function</h3>
+
+      <p>
+        The difficulty comes from the fact that
+        the function \(e^{-t^2}\) has no elementary
+        antiderivative.
+      </p>
+
+      <p>
+        Liouville's theorem on elementary antiderivatives
+        provides a mathematical explanation. In this case,
+        an elementary antiderivative would require a rational
+        function \(R(t)\) satisfying
+        \(R'(t)-2tR(t)=1\), but no such rational
+        function exists.
+      </p>
+
+      <p>
+        To represent this integral exactly, we introduce
+        the <strong>error function</strong>:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \operatorname{erf}(x)
+        =
+        \frac{2}{\sqrt{\pi}}
+        \int_0^x e^{-t^2}\,dt
+        \]
+      </div>
+
+      <p>
+        Through a change of variables, the normal CDF
+        can be written exactly in terms of this
+        special function:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \boxed{
+        \Phi(z)=\frac12
+        \left[
+        1+\operatorname{erf}
+        \left(\frac{z}{\sqrt2}\right)
+        \right]
+        }
+        \]
+      </div>
+
+      <p>
+        This gives an exact analytical representation,
+        but the error function itself still needs to be
+        evaluated numerically in practical applications.
+      </p>
+
+      <h3>3. Numerical methods</h3>
+
+      <p>
+        We implement three approaches and compare
+        them in terms of accuracy and computational cost.
+      </p>
+
+      <h4>Method 1 — Composite Simpson's rule</h4>
+
+      <p>
+        Simpson's rule approximates the integral by
+        fitting quadratic polynomials over pairs
+        of subintervals.
+        Using the symmetry of the normal distribution,
+        we can avoid integrating from negative infinity:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \Phi(z)=\frac12+
+        \frac{1}{\sqrt{2\pi}}
+        \int_0^z e^{-t^2/2}\,dt
+        \]
+      </div>
+
+      <p>
+        The integral is then evaluated over a finite
+        interval. Simpson's rule has fourth-order
+        convergence for sufficiently smooth functions.
+      </p>
+
+      <h4>Method 2 — Power series expansion</h4>
+
+      <p>
+        Another approach is to expand the exponential
+        function into its Taylor series and integrate
+        term by term. This gives:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \Phi(z)=\frac12+
+        \frac{1}{\sqrt{2\pi}}
+        \sum_{k=0}^{\infty}
+        \frac{(-1)^k z^{2k+1}}
+        {2^k k!(2k+1)}
+        \]
+      </div>
+
+      <p>
+        In practice, we truncate the series once
+        the terms become sufficiently small.
+        The method works well near the origin,
+        but cancellation can reduce its numerical
+        reliability for large values of \(|z|\).
+      </p>
+
+      <h4>Method 3 — Error function approximation</h4>
+
+      <p>
+        The third approach uses the approximation
+        of the error function given by
+        Abramowitz and Stegun (formula 7.1.26).
+        It replaces direct integration with a short
+        polynomial computation.
+      </p>
+
+      <p>
+        The approximation has an absolute error below
+        \(1.5\times10^{-7}\) for the error function,
+        making it a fast method for evaluating the CDF.
+      </p>
+
+      <h3>4. Numerical experiment</h3>
+
+      <p>
+        We evaluate the CDF at several points and
+        compare the results with the standard normal
+        probability table published by NIST.
+        We also measure execution time to compare
+        the efficiency of the implementations.
+      </p>
+
+      <div class="hw-experiment">
+
+        <h3>Normal CDF comparison</h3>
+
+        <div class="hw-controls">
+          
+            <label class="hw-field">
+            <span>Simpson subintervals</span>
+            <select class="hw-input" id="cdf-steps">
+                <option value="2" selected>2</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+                <option value="64">64</option>
+                <option value="256">256</option>
+                <option value="1024">1024</option>
+            </select>
+            </label>
+
+
+          <button class="hw-button" id="cdf-run" type="button">
+            Compute CDF
+          </button>
+        </div>
+
+        <div class="hw-table-wrap">
+          <table class="hw-table">
+            <thead>
+              <tr>
+                <th>z</th>
+                <th>NIST reference</th>
+                <th>Simpson</th>
+                <th>Power series</th>
+                <th>erf approx.</th>
+                <th>Simpson error*</th>
+              </tr>
+            </thead>
+            <tbody id="cdf-rows"></tbody>
+          </table>
+        </div>
+
+        <p class="hw-small" id="cdf-benchmark"></p>
+
+        <p class="hw-small">
+            *Absolute error relative to a high-precision reference.
+            Values agree with the published NIST normal CDF table
+            to its displayed precision.
+        </p>
+
+      </div>
+
+      <h3>5. Discussion of the results</h3>
+
+      <p>
+        The results show that all three methods provide
+        accurate CDF estimates for the selected values.
+        Simpson's rule improves as the number of
+        subintervals increases, while the power series
+        is especially effective near the origin.
+      </p>
+
+      <p>
+        The error function approximation has a small,
+        fixed approximation error and requires only
+        a few arithmetic operations. It is therefore
+        particularly attractive when many CDF evaluations
+        are needed.
+      </p>
+
+      <div class="hw-conclusion">
+        <h3>Conclusion</h3>
+        <p>
+          Although the normal CDF has no elementary
+          closed-form expression, the error function
+          provides an exact mathematical representation.
+          Numerical integration, series expansions,
+          and special-function approximations make
+          its practical computation possible.
+        </p>
+        <p>
+          Simpson's rule offers controllable accuracy,
+          the power series is effective near zero,
+          and the erf approximation provides an
+          efficient solution with a known error bound.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Statistics — Homework 5</p>
+  </footer>
+
+</body>
+</html>

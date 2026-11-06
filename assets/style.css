@@ -1533,3 +1533,293 @@ body.page-homework-4 .hw4-plot {
     padding: 15px;
   }
 }
+
+
+
+/* ============================================
+   HOMEWORK 5
+   NUMERICAL INTEGRATION AND NORMAL CDF
+   ============================================ */
+
+body.page-homework-5 .hw-main {
+  max-width: 900px;
+  margin: 45px auto 80px;
+  padding: 0 25px;
+}
+
+body.page-homework-5 .hw-main h1 {
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+body.page-homework-5 .hw-subtitle {
+  color: #64748b;
+  font-size: 17px;
+  margin-bottom: 40px;
+}
+
+body.page-homework-5 .hw-main section {
+  margin-bottom: 55px;
+}
+
+body.page-homework-5 .hw-main h2 {
+  margin-top: 45px;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dedede;
+  font-size: 25px;
+}
+
+body.page-homework-5 .hw-main h3 {
+  margin-top: 28px;
+  margin-bottom: 12px;
+  font-size: 19px;
+  color: #263c59;
+}
+
+body.page-homework-5 .hw-main h4 {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #263c59;
+}
+
+body.page-homework-5 .hw-main p {
+  line-height: 1.75;
+  margin-bottom: 15px;
+}
+
+/* Mathematical formulas */
+
+body.page-homework-5 .hw-formula {
+  margin: 22px 0;
+  padding: 20px 16px;
+  background: #f2f5f9;
+  border-left: 3px solid #263c59;
+  border-radius: 4px;
+  color: #263c59;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+body.page-homework-5 .hw-formula mjx-container {
+  font-size: 112% !important;
+}
+
+body.page-homework-5 .hw-formula mjx-container[display="true"] {
+  margin: 8px 0 !important;
+}
+
+/* Experiment container */
+
+body.page-homework-5 .hw-experiment {
+  background: #fafbfd;
+  border: 1px solid #dce2ea;
+  border-radius: 7px;
+  padding: 23px;
+  margin: 25px 0;
+}
+
+body.page-homework-5 .hw-experiment h3 {
+  margin-top: 0;
+}
+
+/* Controls */
+
+body.page-homework-5 .hw-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: flex-end;
+  margin: 20px 0;
+}
+
+body.page-homework-5 .hw-field {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+body.page-homework-5 .hw-field span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+body.page-homework-5 .hw-input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #bac5d2;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #303030;
+  font: inherit;
+}
+
+body.page-homework-5 .hw-button {
+  padding: 10px 18px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 4px;
+  background: #263c59;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+body.page-homework-5 .hw-button:hover {
+  background: #3b5c81;
+}
+
+body.page-homework-5 .hw-button:focus-visible,
+body.page-homework-5 .hw-input:focus-visible {
+  outline: 2px solid #2457a7;
+  outline-offset: 2px;
+}
+
+/* Tables */
+
+body.page-homework-5 .hw-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+body.page-homework-5 .hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+body.page-homework-5 .hw-table th,
+body.page-homework-5 .hw-table td {
+  padding: 11px 9px;
+  border-bottom: 1px solid #e2e5e9;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+body.page-homework-5 .hw-table th {
+  background: #f2f5f9;
+  color: #263c59;
+  font-weight: 700;
+}
+
+body.page-homework-5 .hw-table th:first-child,
+body.page-homework-5 .hw-table td:first-child {
+  text-align: left;
+}
+
+body.page-homework-5 .hw-table tbody tr:hover {
+  background: #f7f9fc;
+}
+
+/* Results and notes */
+
+body.page-homework-5 .hw-result {
+  margin: 15px 0 8px;
+  font-weight: 700;
+  color: #263c59;
+}
+
+body.page-homework-5 .hw-small {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+body.page-homework-5 .hw-note {
+  margin-top: 18px;
+  padding: 12px 15px;
+  border-left: 3px solid #5578a3;
+  background: #eef3f8;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Conclusions */
+
+body.page-homework-5 .hw-conclusion {
+  background: #f2f5f9;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 28px 0;
+}
+
+body.page-homework-5 .hw-conclusion h3 {
+  margin-top: 0;
+}
+
+body.page-homework-5 .hw-conclusion p:last-child {
+  margin-bottom: 0;
+}
+
+/* References */
+
+body.page-homework-5 .hw-main a {
+  color: #2457a7;
+  text-decoration: none;
+}
+
+body.page-homework-5 .hw-main a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive layout */
+
+@media (max-width: 600px) {
+
+  body.page-homework-5 .hw-main {
+    margin-top: 30px;
+    padding: 0 18px;
+  }
+
+  body.page-homework-5 .hw-main h1 {
+    font-size: 30px;
+  }
+
+  body.page-homework-5 .hw-main h2 {
+    font-size: 22px;
+  }
+
+  body.page-homework-5 .hw-experiment {
+    padding: 15px;
+  }
+
+  body.page-homework-5 .hw-formula {
+    padding: 18px 12px;
+  }
+
+  body.page-homework-5 .hw-formula mjx-container {
+    font-size: 100% !important;
+  }
+
+  body.page-homework-5 .hw-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.page-homework-5 .hw-field {
+    flex: auto;
+  }
+
+  body.page-homework-5 .hw-button {
+    width: 100%;
+  }
+
+  body.page-homework-5 .hw-table {
+    font-size: 12px;
+  }
+
+  body.page-homework-5 .hw-table th,
+  body.page-homework-5 .hw-table td {
+    padding: 8px;
+  }
+}
