@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Statistics Homework 6 - Statistical Independence">
+  <title>Homework 6 | Statistics</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+
+  <script src="assets/js/homework-6.js" defer></script>
+</head>
+
+<body class="page-homework-6">
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Statistics</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="homework-1.html">Homework 1.1</a>
+        <a href="homework-2.html">Homework 1.2</a>
+        <a href="homework-2true.html">Homework 2</a>
+        <a href="homework-3.html">Homework 3</a>
+        <a href="homework-4.html">Homework 4</a>
+        <a href="homework-5.html">Homework 5</a>
+        <a href="homework-6.html" class="active" aria-current="page">Homework 6</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hw-main">
+
+    <h1>Homework 6 — Statistical Independence</h1>
+
+    <p class="hw-subtitle">
+      Constructing contingency tables, computing marginal
+      and conditional frequencies, and investigating
+      statistical independence using the Chi-square test.
+    </p>
+
+    <section>
+      <h2>1. Theoretical Background</h2>
+
+      <h3>Independence in probability</h3>
+
+      <p>
+        Two random variables X and F are independent if
+        knowing the value of one variable does not change
+        the probability distribution of the other.
+        For discrete random variables, independence requires:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(X=x_i,F=f_j)
+        =
+        P(X=x_i)P(F=f_j)
+        \]
+      </div>
+
+      <p>
+        Equivalently, whenever the conditioning event has
+        positive probability:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(F=f_j\mid X=x_i)=P(F=f_j)
+        \]
+      </div>
+
+      <h3>Independence in statistics</h3>
+
+      <p>
+        In statistics, independence is investigated using
+        observed data. A contingency table summarizes
+        the joint frequencies of two categorical variables.
+        If the variables are independent, the joint relative
+        frequencies should be approximately equal to the
+        products of the corresponding marginal relative
+        frequencies.
+      </p>
+
+      <p>
+        The Chi-square test of independence evaluates
+        whether the differences between observed and
+        expected frequencies provide evidence against
+        the hypothesis of independence.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        H_0: X \text{ and } F \text{ are independent}
+        \]
+        \[
+        H_1: X \text{ and } F \text{ are dependent}
+        \]
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Bivariate Dataset</h2>
+
+      <p>
+        We consider a dataset containing two categorical
+        variables: X (study method) and F (exam result).
+        Each row represents one observation.
+      </p>
+
+      <div class="hw-experiment">
+        <h3>Dataset input</h3>
+
+        <p>
+          Enter one observation per line, separating
+          the values of X and F with a comma.
+        </p>
+
+        <label for="dataset" class="hw-small">
+          Observations (X, F)
+        </label>
+
+        <textarea id="dataset" class="hw-input"
+                  rows="10" spellcheck="false">Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Pass
+Individual,Fail
+Individual,Fail
+Group,Pass
+Group,Pass
+Group,Pass
+Group,Pass
+Group,Fail
+Group,Fail
+Group,Fail
+Group,Fail
+Group,Fail
+Group,Fail</textarea>
+
+        <div class="hw-controls">
+          <button class="hw-button" id="calculate"
+                  type="button">
+            Calculate
+          </button>
+        </div>
+
+        <p id="dataset-error" class="hw-error"
+           role="alert"></p>
+      </div>
+    </section>
+
+    <section id="results" hidden>
+      <h2>3. Contingency Table</h2>
+
+      <p>
+        The observed frequency \(O_{ij}\) counts the
+        observations belonging to category \(x_i\)
+        and category \(f_j\).
+      </p>
+
+      <div class="hw-table-wrap" id="observed-table"></div>
+
+      <h3>Marginal relative frequencies</h3>
+
+      <p>
+        Marginal frequencies describe the distribution
+        of each variable independently of the other.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        p_{i\cdot}=\frac{O_{i\cdot}}{n},
+        \qquad
+        p_{\cdot j}=\frac{O_{\cdot j}}{n}
+        \]
+      </div>
+
+      <div class="hw-table-wrap" id="marginal-table"></div>
+
+      <h3>Conditional relative frequencies</h3>
+
+      <p>
+        Conditional frequencies describe the distribution
+        of one variable for a fixed category of the other.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(F=f_j\mid X=x_i)
+        =
+        \frac{O_{ij}}{O_{i\cdot}}
+        \]
+        \[
+        P(X=x_i\mid F=f_j)
+        =
+        \frac{O_{ij}}{O_{\cdot j}}
+        \]
+      </div>
+
+      <h3>Distribution of F given X</h3>
+      <div class="hw-table-wrap" id="conditional-f-table"></div>
+
+      <h3>Distribution of X given F</h3>
+      <div class="hw-table-wrap" id="conditional-x-table"></div>
+    </section>
+
+    <section id="expected-section" hidden>
+      <h2>4. Expected Frequencies Under Independence</h2>
+
+      <p>
+        Under the null hypothesis of independence,
+        each expected absolute frequency is calculated
+        by multiplying the corresponding row and column
+        totals and dividing by the sample size.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        E_{ij}
+        =
+        \frac{O_{i\cdot}O_{\cdot j}}{n}
+        \]
+      </div>
+
+      <div class="hw-table-wrap" id="expected-table"></div>
+    </section>
+
+    <section id="test-section" hidden>
+      <h2>5. Chi-square Test of Independence</h2>
+
+      <p>
+        The Pearson Chi-square statistic measures the
+        discrepancy between observed and expected
+        frequencies:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \chi^2 =
+        \sum_{i=1}^{r}
+        \sum_{j=1}^{c}
+        \frac{(O_{ij}-E_{ij})^2}{E_{ij}}
+        \]
+      </div>
+
+      <p>
+        The degrees of freedom are:
+        \((r-1)(c-1)\), where r and c represent
+        the numbers of categories of X and F.
+      </p>
+
+      <div class="hw-result" id="test-result"></div>
+
+      <p class="hw-small">
+        Significance level: \(\alpha=0.05\).
+        The Chi-square approximation is generally
+        considered reliable when expected cell
+        frequencies are sufficiently large.
+      </p>
+    </section>
+
+    <section id="conclusion-section" hidden>
+      <h2>6. Interpretation and Conclusion</h2>
+
+      <div class="hw-conclusion">
+        <h3>Conclusion</h3>
+        <p id="interpretation"></p>
+        <p id="assumptions"></p>
+        <p>
+          Statistical association does not imply causality.
+          Even when two variables are associated, this
+          does not establish that one causes the other.
+          Other variables or confounding factors may
+          explain the observed relationship.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Statistics — Homework 6
+  </footer>
+
+</body>
+</html>

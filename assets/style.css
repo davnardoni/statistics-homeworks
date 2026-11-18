@@ -1823,3 +1823,175 @@ body.page-homework-5 .hw-main a:hover {
     padding: 8px;
   }
 }
+
+
+
+/* ==========================================
+   HOMEWORK 6 — STATISTICAL INDEPENDENCE
+   ========================================== */
+
+body.page-homework-6 .hw-main {
+  max-width: 900px;
+  margin: 45px auto 80px;
+  padding: 0 25px;
+}
+
+body.page-homework-6 .hw-main h1 {
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+body.page-homework-6 .hw-main h2 {
+  margin-top: 45px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dedede;
+}
+
+body.page-homework-6 .hw-main h3 {
+  margin-top: 28px;
+}
+
+body.page-homework-6 .hw-main p {
+  line-height: 1.85;
+}
+
+body.page-homework-6 .hw-subtitle,
+body.page-homework-6 .hw-small {
+  color: #64748b;
+}
+
+body.page-homework-6 .hw-small {
+  font-size: 14px;
+}
+
+body.page-homework-6 .hw-formula {
+  text-align: center;
+  background: #f2f5f9;
+  border-radius: 5px;
+  padding: 17px;
+  margin: 22px 0;
+  font-size: 18px;
+  color: #263c59;
+  overflow-x: auto;
+}
+
+body.page-homework-6 .hw-experiment {
+  background: #fafbfd;
+  border: 1px solid #dce2ea;
+  border-radius: 7px;
+  padding: 23px;
+  margin: 25px 0;
+}
+
+body.page-homework-6 .hw-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px 0;
+}
+
+body.page-homework-6 .hw-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #bac5d2;
+  border-radius: 4px;
+  background: white;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+body.page-homework-6 .hw-button {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 4px;
+  background: #263c59;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+body.page-homework-6 .hw-button:hover {
+  background: #3b5c81;
+}
+
+body.page-homework-6 .hw-table-wrap {
+  overflow-x: auto;
+}
+
+body.page-homework-6 .hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+body.page-homework-6 .hw-table th,
+body.page-homework-6 .hw-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e2e5e9;
+  text-align: left;
+}
+
+body.page-homework-6 .hw-table th {
+  background: #f2f5f9;
+  font-weight: 600;
+}
+
+body.page-homework-6 .hw-table td:first-child {
+  font-weight: 600;
+}
+
+body.page-homework-6 .hw-result {
+  margin: 22px 0;
+  padding: 18px;
+  background: #eaf0f8;
+  color: #203d61;
+  border-radius: 5px;
+  font-size: 17px;
+  line-height: 2;
+  text-align: center;
+}
+
+body.page-homework-6 .hw-conclusion {
+  margin-top: 25px;
+  padding: 18px;
+  background: #f2f5f9;
+  border-radius: 5px;
+}
+
+body.page-homework-6 .hw-error {
+  color: #a32222;
+  font-size: 14px;
+}
+
+body.page-homework-6 [hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  body.page-homework-6 .hw-main {
+    padding: 0 18px;
+  }
+
+  body.page-homework-6 .hw-main h1 {
+    font-size: 30px;
+  }
+
+  body.page-homework-6 .hw-experiment {
+    padding: 15px;
+  }
+
+  body.page-homework-6 .hw-formula {
+    font-size: 15px;
+  }
+
+  body.page-homework-6 .hw-table {
+    font-size: 13px;
+  }
+}
