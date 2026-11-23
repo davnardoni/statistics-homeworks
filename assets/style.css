@@ -1995,3 +1995,300 @@ body.page-homework-6 [hidden] {
     font-size: 13px;
   }
 }
+
+
+
+/* ==========================================
+   HOMEWORK 7 — CONVERGENCE AND BAYESIAN INFERENCE
+   ========================================== */
+
+body.page-homework-7 .hw-main {
+  max-width: 900px;
+  margin: 45px auto 80px;
+  padding: 0 25px;
+}
+
+body.page-homework-7 .hw-main h1 {
+  font-size: 38px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+body.page-homework-7 .hw-main h2 {
+  margin-top: 45px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dedede;
+}
+
+body.page-homework-7 .hw-main h3 {
+  margin-top: 28px;
+}
+
+body.page-homework-7 .hw-main p {
+  line-height: 1.85;
+}
+
+/* Part titles */
+
+body.page-homework-7 .hw-part-title {
+  margin-top: 55px !important;
+  padding: 14px 18px !important;
+  background: #eaf0f8;
+  border-left: 4px solid #263c59;
+  border-bottom: none !important;
+  border-radius: 4px;
+  color: #263c59;
+  font-size: 23px;
+}
+
+/* Subtitle */
+
+body.page-homework-7 .hw-subtitle,
+body.page-homework-7 .hw-small {
+  color: #64748b;
+}
+
+body.page-homework-7 .hw-small {
+  font-size: 14px;
+}
+
+/* Mathematical formulas */
+
+body.page-homework-7 .hw-formula {
+  text-align: center;
+  background: #f2f5f9;
+  border-radius: 5px;
+  padding: 18px;
+  margin: 22px 0;
+  font-size: 18px;
+  color: #263c59;
+  overflow-x: auto;
+}
+
+body.page-homework-7 .hw-formula mjx-container {
+  max-width: 100%;
+}
+
+/* Experiment containers */
+
+body.page-homework-7 .hw-experiment {
+  background: #fafbfd;
+  border: 1px solid #dce2ea;
+  border-radius: 7px;
+  padding: 23px;
+  margin: 25px 0;
+}
+
+body.page-homework-7 .hw-experiment h3 {
+  margin-top: 0;
+}
+
+/* Input controls */
+
+body.page-homework-7 .hw-controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin: 20px 0;
+}
+
+body.page-homework-7 .hw-field {
+  flex: 1 1 170px;
+  min-width: 0;
+}
+
+body.page-homework-7 .hw-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #263c59;
+}
+
+body.page-homework-7 .hw-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #bac5d2;
+  border-radius: 4px;
+  background: white;
+  font: inherit;
+  font-size: 14px;
+}
+
+body.page-homework-7 .hw-input:focus-visible {
+  outline: 2px solid #2457a7;
+  outline-offset: 2px;
+}
+
+/* Buttons */
+
+body.page-homework-7 .hw-button {
+  padding: 11px 19px;
+  border: 0;
+  border-radius: 4px;
+  background: #263c59;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+body.page-homework-7 .hw-button:hover {
+  background: #3b5c81;
+}
+
+body.page-homework-7 .hw-button:focus-visible {
+  outline: 2px solid #2457a7;
+  outline-offset: 3px;
+}
+
+/* Tables */
+
+body.page-homework-7 .hw-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+body.page-homework-7 .hw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+body.page-homework-7 .hw-table th,
+body.page-homework-7 .hw-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e5e9;
+  text-align: left;
+  vertical-align: top;
+}
+
+body.page-homework-7 .hw-table th {
+  background: #f2f5f9;
+  color: #263c59;
+  font-weight: 600;
+}
+
+body.page-homework-7 .hw-table td:first-child {
+  font-weight: 600;
+}
+
+/* Bayesian results */
+
+body.page-homework-7 .hw-result {
+  margin: 22px 0;
+  padding: 20px;
+  background: #eaf0f8;
+  color: #203d61;
+  border-radius: 5px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+body.page-homework-7 .hw-result h4 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: #263c59;
+}
+
+body.page-homework-7 .hw-result p {
+  margin: 8px 0;
+}
+
+body.page-homework-7 .hw-interpretation {
+  margin-top: 17px !important;
+  padding-top: 12px;
+  border-top: 1px solid #cbd6e5;
+}
+
+/* Conclusions */
+
+body.page-homework-7 .hw-conclusion {
+  margin: 25px 0;
+  padding: 20px;
+  background: #f2f5f9;
+  border-radius: 5px;
+}
+
+body.page-homework-7 .hw-conclusion h3 {
+  margin-top: 0;
+}
+
+body.page-homework-7 .hw-conclusion p:last-child {
+  margin-bottom: 0;
+}
+
+/* Error messages */
+
+body.page-homework-7 .hw-error {
+  color: #a32222;
+  font-size: 14px;
+}
+
+body.page-homework-7 .hw-error:empty {
+  display: none;
+}
+
+body.page-homework-7 [hidden] {
+  display: none;
+}
+
+/* Responsive layout */
+
+@media (max-width: 600px) {
+
+  body.page-homework-7 .hw-main {
+    margin-top: 30px;
+    padding: 0 18px;
+  }
+
+  body.page-homework-7 .hw-main h1 {
+    font-size: 30px;
+  }
+
+  body.page-homework-7 .hw-main h2 {
+    font-size: 22px;
+  }
+
+  body.page-homework-7 .hw-part-title {
+    font-size: 20px;
+  }
+
+  body.page-homework-7 .hw-experiment {
+    padding: 15px;
+  }
+
+  body.page-homework-7 .hw-formula {
+    padding: 16px 10px;
+    font-size: 15px;
+  }
+
+  body.page-homework-7 .hw-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  body.page-homework-7 .hw-field {
+    flex: auto;
+  }
+
+  body.page-homework-7 .hw-button {
+    width: 100%;
+  }
+
+  body.page-homework-7 .hw-table {
+    font-size: 12px;
+  }
+
+  body.page-homework-7 .hw-table th,
+  body.page-homework-7 .hw-table td {
+    padding: 9px;
+  }
+
+  body.page-homework-7 .hw-result {
+    padding: 15px;
+  }
+}

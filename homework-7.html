@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+        content="Statistics Homework 7 - Modes of Convergence and Bayesian Inference">
+
+  <title>Homework 7 | Statistics</title>
+
+  <link rel="stylesheet" href="assets/style.css">
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      }
+    };
+  </script>
+
+  <script defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+
+  <script src="assets/js/homework-7.js" defer></script>
+</head>
+
+<body class="page-homework-7">
+
+  <header>
+    <nav>
+      <a href="index.html" class="logo">Statistics</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="homework-1.html">Homework 1.1</a>
+        <a href="homework-2.html">Homework 1.2</a>
+        <a href="homework-2true.html">Homework 2</a>
+        <a href="homework-3.html">Homework 3</a>
+        <a href="homework-4.html">Homework 4</a>
+        <a href="homework-5.html">Homework 5</a>
+        <a href="homework-6.html">Homework 6</a>
+        <a href="homework-7.html" class="active" aria-current="page">Homework 7</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="hw-main">
+
+    <h1>Homework 7 — Convergence and Bayesian Inference</h1>
+
+    <p class="hw-subtitle">
+      Modes of convergence, the Law of Large Numbers,
+      the Central Limit Theorem, conditional probability,
+      and Bayesian statistical inference.
+    </p>
+
+    <!-- PART I -->
+
+    <h2 class="hw-part-title">
+      Part I — Modes of Convergence in Probability Theory
+    </h2>
+
+    <section>
+      <h2>1. Main Modes of Convergence</h2>
+
+      <p>
+        In probability theory, convergence describes how
+        a sequence of random variables approaches a limiting
+        random variable. Different modes of convergence
+        specify different meanings of this approximation.
+      </p>
+
+      <h3>1.1 Convergence in probability</h3>
+
+      <p>
+        A sequence of random variables \(X_n\) converges
+        in probability to \(X\) if, for every
+        \(\varepsilon > 0\), the probability that
+        \(X_n\) differs from \(X\) by more than
+        \(\varepsilon\) tends to zero.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        X_n \xrightarrow{P} X
+        \iff
+        \forall\varepsilon>0,\quad
+        P(|X_n-X|>\varepsilon)\to 0
+        \]
+      </div>
+
+      <p>
+        This means that large deviations from the limit
+        become increasingly unlikely. It is particularly
+        important in statistics because it is the usual
+        notion of consistency for estimators.
+      </p>
+
+      <h3>1.2 Almost sure convergence</h3>
+
+      <p>
+        Almost sure convergence means that, with probability
+        one, the sequence of observed values converges
+        to the limiting random variable.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        X_n\xrightarrow{a.s.}X
+        \iff
+        P\left(
+          \lim_{n\to\infty}X_n=X
+        \right)=1
+        \]
+      </div>
+
+      <p>
+        This is stronger than convergence in probability.
+        The sequence converges along almost every possible
+        outcome, although exceptions on a set of probability
+        zero are allowed.
+      </p>
+
+      <h3>1.3 Mean-square convergence (L²)</h3>
+
+      <p>
+        Mean-square convergence requires the expected squared
+        difference between \(X_n\) and \(X\) to approach zero.
+        The relevant second moments must be finite.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        X_n\xrightarrow{L^2}X
+        \iff
+        E[(X_n-X)^2]\to 0
+        \]
+      </div>
+
+      <p>
+        This mode controls the average squared estimation
+        error. It is useful when studying the mean squared
+        error of estimators. By Markov's inequality applied
+        to the squared error, L² convergence implies
+        convergence in probability.
+      </p>
+
+      <h3>1.4 Convergence in distribution</h3>
+
+      <p>
+        Convergence in distribution occurs when the
+        cumulative distribution functions of \(X_n\)
+        converge to the distribution function of \(X\)
+        at every continuity point of the limiting
+        distribution function.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        X_n\xrightarrow{d}X
+        \iff
+        F_{X_n}(t)\to F_X(t)
+        \]
+        \[
+        \text{for every continuity point }t
+        \text{ of }F_X
+        \]
+      </div>
+
+      <p>
+        It describes convergence of probability
+        distributions rather than necessarily the
+        observed values themselves. This mode is
+        fundamental to the Central Limit Theorem.
+      </p>
+
+      <h3>1.5 Relationships between convergence modes</h3>
+
+      <p>
+        The main implications are:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        X_n\xrightarrow{a.s.}X
+        \implies
+        X_n\xrightarrow{P}X
+        \]
+        \[
+        X_n\xrightarrow{L^2}X
+        \implies
+        X_n\xrightarrow{P}X
+        \]
+        \[
+        X_n\xrightarrow{P}X
+        \implies
+        X_n\xrightarrow{d}X
+        \]
+      </div>
+
+      <p>
+        In general, the reverse implications do not hold.
+        Almost sure convergence and L² convergence do
+        not imply one another without additional assumptions.
+        However, convergence in distribution to a constant
+        implies convergence in probability to that constant.
+      </p>
+
+      <div class="hw-table-wrap">
+        <table class="hw-table">
+          <thead>
+            <tr>
+              <th>Mode</th>
+              <th>What converges?</th>
+              <th>Main statistical role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>In probability</td>
+              <td>Probability of large errors</td>
+              <td>Estimator consistency; Weak LLN</td>
+            </tr>
+            <tr>
+              <td>Almost surely</td>
+              <td>Values for almost every outcome</td>
+              <td>Strong LLN</td>
+            </tr>
+            <tr>
+              <td>Mean-square (L²)</td>
+              <td>Expected squared error</td>
+              <td>Mean squared error analysis</td>
+            </tr>
+            <tr>
+              <td>In distribution</td>
+              <td>Cumulative distribution functions</td>
+              <td>CLT; asymptotic inference</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Law of Large Numbers (LLN)</h2>
+
+      <p>
+        Consider independent and identically distributed
+        random variables \(X_1,\ldots,X_n\), with
+        finite mean \(\mu=E[X_i]\). Their sample mean is:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \overline X_n
+        =
+        \frac{1}{n}\sum_{i=1}^{n}X_i
+        \]
+      </div>
+
+      <h3>Weak Law of Large Numbers</h3>
+
+      <p>
+        The Weak LLN states that the sample mean
+        converges in probability to the population mean.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \overline X_n\xrightarrow{P}\mu
+        \]
+      </div>
+
+      <p>
+        If the observations also have finite variance
+        \(\sigma^2\), independence gives:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \operatorname{Var}(\overline X_n)
+        =
+        \frac{\sigma^2}{n}
+        \]
+        \[
+        P(|\overline X_n-\mu|\geq\varepsilon)
+        \leq
+        \frac{\sigma^2}{n\varepsilon^2}
+        \to 0
+        \]
+      </div>
+
+      <p>
+        The second inequality is Chebyshev's inequality.
+        It provides a direct proof of the Weak LLN under
+        the finite-variance assumption.
+      </p>
+
+      <h3>Strong Law of Large Numbers</h3>
+
+      <p>
+        The Strong LLN states that the sample mean
+        converges almost surely to the population mean.
+        For i.i.d. observations, a finite absolute first
+        moment is sufficient.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        E[|X_1|]<\infty
+        \quad\Longrightarrow\quad
+        \overline X_n\xrightarrow{a.s.}\mu
+        \]
+      </div>
+
+      <p>
+        Therefore, the Weak LLN guarantees convergence
+        in probability, while the Strong LLN guarantees
+        almost sure convergence.
+      </p>
+
+      <h3>LLN and L² convergence</h3>
+
+      <p>
+        Under the finite-variance i.i.d. assumptions,
+        the sample mean also converges in mean square:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        E[(\overline X_n-\mu)^2]
+        =
+        \frac{\sigma^2}{n}
+        \to 0
+        \]
+      </div>
+
+      <p>
+        Thus, the same sample mean can satisfy several
+        modes of convergence simultaneously, depending
+        on the assumptions.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Central Limit Theorem (CLT)</h2>
+
+      <p>
+        The classical CLT describes the limiting
+        distribution of a properly standardized sample
+        mean. For i.i.d. observations with finite mean
+        \(\mu\) and finite positive variance
+        \(\sigma^2\):
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \frac{\sqrt n(\overline X_n-\mu)}{\sigma}
+        \xrightarrow{d}
+        N(0,1)
+        \]
+      </div>
+
+      <p>
+        Unlike the LLN, which describes convergence of
+        the sample mean to the population mean, the CLT
+        describes the distribution of the estimation error
+        after scaling by \(\sqrt n\).
+      </p>
+
+      <p>
+        The limiting normal distribution makes it possible
+        to approximate sampling probabilities, construct
+        confidence intervals, and perform hypothesis tests
+        for sufficiently large samples.
+      </p>
+
+      <div class="hw-conclusion">
+        <h3>LLN versus CLT</h3>
+        <p>
+          The LLN explains why the sample mean approaches
+          the true mean. The CLT explains the approximate
+          distribution of its fluctuations around that
+          mean. Convergence in probability is central to
+          the Weak LLN, almost sure convergence to the
+          Strong LLN, and convergence in distribution
+          to the CLT.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>4. Why Does the Factor √n Appear?</h2>
+
+      <p>
+        The factor \(\sqrt n\) arises from the behavior
+        of variance when independent random variables
+        are added.
+      </p>
+
+      <p>
+        For independent observations with common
+        variance \(\sigma^2\), covariance terms vanish:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \operatorname{Var}
+        \left(\sum_{i=1}^{n}X_i\right)
+        =
+        \sum_{i=1}^{n}\operatorname{Var}(X_i)
+        =
+        n\sigma^2
+        \]
+      </div>
+
+      <p>
+        Consequently, the standard deviation of the sum
+        is \(\sigma\sqrt n\), while the variance and
+        standard deviation of the sample mean are:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \operatorname{Var}(\overline X_n)
+        =
+        \frac{n\sigma^2}{n^2}
+        =
+        \frac{\sigma^2}{n}
+        \]
+        \[
+        \operatorname{SD}(\overline X_n)
+        =
+        \frac{\sigma}{\sqrt n}
+        \]
+      </div>
+
+      <p>
+        Therefore, the typical size of the sample mean's
+        fluctuations is proportional to \(1/\sqrt n\).
+        Multiplication by \(\sqrt n\) produces a
+        standardized quantity with non-vanishing variance:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \operatorname{Var}
+        \left(\sqrt n(\overline X_n-\mu)\right)
+        =
+        \sigma^2
+        \]
+      </div>
+
+      <p>
+        Independence is sufficient for variance
+        additivity, although zero covariance is enough.
+        With dependent observations, covariance terms
+        must also be considered:
+      </p>
+      
+      <div class="hw-formula">
+      \[
+      \operatorname{Var}\left(\sum_{i=1}^{n}X_i\right)
+      = \sum_{i=1}^{n}\operatorname{Var}(X_i)
+      + 2\sum_{i&lt;j}\operatorname{Cov}(X_i,X_j)
+      \]
+      </div>
+
+      <p>
+        Depending on the strength of dependence, these
+        covariance terms may change the variance growth
+        and the appropriate convergence rate.
+      </p>
+
+      <h3>Role in statistical inference</h3>
+
+      <p>
+        Under the classical i.i.d. assumptions, the
+        standard error of the sample mean is
+        \(\sigma/\sqrt n\). In practice, the unknown
+        population standard deviation is commonly
+        estimated using the sample standard deviation.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        SE(\overline X_n)
+        \approx
+        \frac{s}{\sqrt n}
+        \]
+      </div>
+
+      <p>
+        The \(\sqrt n\) rate is fundamental to the
+        asymptotic distribution of many estimators.
+        Increasing the sample size by a factor of four
+        approximately halves the standard error when
+        the usual assumptions apply.
+      </p>
+    </section>
+
+    <!-- PART II -->
+
+    <h2 class="hw-part-title">
+      Part II — Conditional Probability and Bayesian Inference
+    </h2>
+
+    <section>
+      <h2>5. Conditional Probability</h2>
+
+      <p>
+        In probability theory, conditional probability
+        measures the probability of an event A when
+        another event B is known to have occurred.
+        For \(P(B)>0\):
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(A\mid B)
+        =
+        \frac{P(A\cap B)}{P(B)}
+        \]
+      </div>
+
+      <p>
+        If A and B are independent, knowing B does not
+        change the probability of A:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(A\mid B)=P(A)
+        \]
+      </div>
+
+      <p>
+        In statistics, conditional probabilities are used
+        to describe relationships between variables and
+        construct statistical models. In particular,
+        a likelihood function describes the probability
+        or density of observed data conditional on a
+        parameter or hypothesis.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Bayes' Theorem</h2>
+
+      <p>
+        Bayes' theorem reverses the conditioning
+        direction, allowing us to update the probability
+        of a hypothesis after observing evidence.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(H\mid D)
+        =
+        \frac{P(D\mid H)P(H)}{P(D)}
+        \]
+      </div>
+
+      <p>
+        Here, H is a hypothesis and D represents the
+        observed evidence.
+      </p>
+
+      <h3>The three fundamental components</h3>
+
+      <div class="hw-table-wrap">
+        <table class="hw-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Meaning</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prior</td>
+              <td>\(P(H)\)</td>
+              <td>Belief before observing the data</td>
+            </tr>
+            <tr>
+              <td>Likelihood</td>
+              <td>\(P(D\mid H)\)</td>
+              <td>How compatible the data are with H</td>
+            </tr>
+            <tr>
+              <td>Posterior</td>
+              <td>\(P(H\mid D)\)</td>
+              <td>Updated belief after observing the data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The denominator \(P(D)\) is the evidence, or
+        marginal likelihood. It normalizes the posterior
+        so that probabilities sum to one.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \text{Posterior}
+        \propto
+        \text{Likelihood}\times\text{Prior}
+        \]
+      </div>
+
+      <p>
+        For a continuous parameter \(\theta\), Bayesian
+        updating is written using probability densities:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \pi(\theta\mid D)
+        =
+        \frac{
+          L(\theta;D)\pi(\theta)
+        }{
+          \int L(u;D)\pi(u)\,du
+        }
+        \]
+      </div>
+
+      <p>
+        This updating process is central to Bayesian
+        statistical inference because it combines prior
+        information with observed evidence to obtain
+        posterior distributions for unknown quantities.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Example 1 — Diagnostic Test</h2>
+
+      <p>
+        Consider a diagnostic test for a disease.
+        The prior probability is the disease prevalence.
+        The likelihood of a positive test depends on
+        whether the disease is present.
+      </p>
+
+      <div class="hw-formula">
+        \[
+        P(D\mid +)
+        =
+        \frac{
+          P(+\mid D)P(D)
+        }{
+          P(+\mid D)P(D)
+          +
+          P(+\mid D^c)P(D^c)
+        }
+        \]
+      </div>
+
+      <p>
+        Here \(P(+\mid D)\) is sensitivity, while
+        \(P(+\mid D^c)=1-\text{specificity}\)
+        is the false-positive probability.
+      </p>
+
+      <div class="hw-experiment">
+        <h3>Bayesian diagnostic test calculator</h3>
+
+        <div class="hw-controls">
+          <div class="hw-field">
+            <label for="prior-disease">
+              Prior prevalence (%)
+            </label>
+            <input class="hw-input" type="number"
+                   id="prior-disease"
+                   min="0" max="100" step="0.1"
+                   value="1">
+          </div>
+
+          <div class="hw-field">
+            <label for="sensitivity">
+              Sensitivity (%)
+            </label>
+            <input class="hw-input" type="number"
+                   id="sensitivity"
+                   min="0" max="100" step="0.1"
+                   value="99">
+          </div>
+
+          <div class="hw-field">
+            <label for="specificity">
+              Specificity (%)
+            </label>
+            <input class="hw-input" type="number"
+                   id="specificity"
+                   min="0" max="100" step="0.1"
+                   value="95">
+          </div>
+        </div>
+
+        <button class="hw-button" id="calculate-diagnostic"
+                type="button">
+          Calculate posterior
+        </button>
+
+        <p id="diagnostic-error" class="hw-error"
+           role="alert"></p>
+
+        <div id="diagnostic-result"
+             class="hw-result" hidden></div>
+      </div>
+
+      <p>
+        This example illustrates the base-rate effect:
+        even a highly sensitive test may have a relatively
+        low posterior probability of disease when the
+        initial prevalence is small.
+      </p>
+
+      <p>
+        Diagnostic testing is an application of Bayesian
+        updating. Its conclusions depend on the prior
+        prevalence and on the assumed accuracy of the test.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. Example 2 — Estimating a Coin's Probability</h2>
+
+      <p>
+        Suppose a coin has an unknown probability
+        \(\theta\) of producing heads. We observe
+        h heads and t tails, with \(n=h+t\).
+      </p>
+
+      <p>
+        Assuming independent Bernoulli trials with a
+        common probability \(\theta\), the binomial
+        likelihood is proportional to:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        L(\theta;h,t)
+        \propto
+        \theta^h(1-\theta)^t
+        \]
+      </div>
+
+      <p>
+        Choose a Beta prior distribution:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \theta\sim\operatorname{Beta}(a,b)
+        \]
+        \[
+        \pi(\theta)\propto
+        \theta^{a-1}(1-\theta)^{b-1}
+        \]
+      </div>
+
+      <p>
+        Multiplying the likelihood by the prior produces
+        another Beta distribution:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        \theta\mid h,t
+        \sim
+        \operatorname{Beta}(a+h,b+t)
+        \]
+      </div>
+
+      <p>
+        The corresponding prior and posterior means are:
+      </p>
+
+      <div class="hw-formula">
+        \[
+        E[\theta]=\frac{a}{a+b}
+        \]
+        \[
+        E[\theta\mid h,t]
+        =
+        \frac{a+h}{a+b+h+t}
+        \]
+      </div>
+
+      <div class="hw-experiment">
+        <h3>Beta-Binomial updating calculator</h3>
+
+        <div class="hw-controls">
+          <div class="hw-field">
+            <label for="beta-a">
+              Prior parameter a
+            </label>
+            <input class="hw-input" type="number"
+                   id="beta-a" min="0.01"
+                   step="0.1" value="2">
+          </div>
+
+          <div class="hw-field">
+            <label for="beta-b">
+              Prior parameter b
+            </label>
+            <input class="hw-input" type="number"
+                   id="beta-b" min="0.01"
+                   step="0.1" value="2">
+          </div>
+
+          <div class="hw-field">
+            <label for="heads">
+              Observed heads
+            </label>
+            <input class="hw-input" type="number"
+                   id="heads" min="0"
+                   step="1" value="8">
+          </div>
+
+          <div class="hw-field">
+            <label for="tails">
+              Observed tails
+            </label>
+            <input class="hw-input" type="number"
+                   id="tails" min="0"
+                   step="1" value="2">
+          </div>
+        </div>
+
+        <button class="hw-button" id="calculate-beta"
+                type="button">
+          Update posterior
+        </button>
+
+        <p id="beta-error" class="hw-error"
+           role="alert"></p>
+
+        <div id="beta-result"
+             class="hw-result" hidden></div>
+      </div>
+
+      <p>
+        The Beta prior represents information about the
+        probability of heads before observing the data.
+        The binomial likelihood summarizes the evidence
+        provided by the observed heads and tails.
+        The posterior combines both sources of information.
+      </p>
+
+      <p>
+        With a small sample, the prior can substantially
+        influence the posterior. As more independent
+        observations are collected, the likelihood
+        generally becomes increasingly influential.
+      </p>
+    </section>
+
+    <section>
+      <h2>9. Applications, Advantages and Limitations</h2>
+
+      <h3>Applications</h3>
+
+      <p>
+        Bayesian inference is used in diagnostic testing,
+        parameter estimation, forecasting, and decision-making
+        under uncertainty. Prior distributions can incorporate
+        information from previous studies or expert knowledge,
+        while likelihood functions connect statistical models
+        to newly observed data.
+      </p>
+
+      <h3>Advantages</h3>
+
+      <p>
+        Bayesian methods provide a systematic framework
+        for updating uncertainty as new information becomes
+        available. They allow previous information to be
+        incorporated explicitly and produce posterior
+        distributions for unknown parameters.
+      </p>
+
+      <h3>Limitations</h3>
+
+      <p>
+        Posterior conclusions may be sensitive to the
+        chosen prior, especially with limited data.
+        Incorrect likelihood models or violated
+        independence assumptions can lead to misleading
+        results. Some Bayesian models also require
+        computationally demanding posterior calculations.
+      </p>
+
+      <div class="hw-conclusion">
+        <h3>Final Conclusion</h3>
+
+        <p>
+          The modes of convergence explain different
+          aspects of the limiting behavior of random
+          variables. The LLN establishes the consistency
+          of sample averages, while the CLT characterizes
+          their asymptotic fluctuations and explains the
+          importance of the square-root sample-size rate.
+        </p>
+
+        <p>
+          Conditional probability and Bayes' theorem
+          provide the mathematical basis for Bayesian
+          inference. The posterior combines the prior
+          with the likelihood, so statistical conclusions
+          depend on both the observed data and the
+          assumptions used to model them.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Statistics — Homework 7
+  </footer>
+
+</body>
+</html>
